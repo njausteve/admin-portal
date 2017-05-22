@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AppMart SSP (Self Service Portal)</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+</head>
+<body><div class="container">
+
+
+
+
+
+
+<h1 id="appmart-ssp-self-service-portal">AppMart SSP (Self Service Portal)</h1>
+
+<p>(c)Pirate 2017</p>
+
+<p><div class="toc">
+<ul>
+<li><a href="#appmart-ssp-self-service-portal">AppMart SSP (Self Service Portal)</a><ul>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#1-setup">1. Setup</a></li>
+<li><a href="#2-watch-files-run-application-from-development-folder-ie-src">2. Watch files/ run application from development folder i.e. /src</a></li>
+<li><a href="#3-build-production-version">3. Build production version</a></li>
+<li><a href="#4-start-webserver-from-build-folder">4. Start webserver from build folder</a></li>
+</ul>
+</li>
+<li><a href="#features-available-with-gulp-task">Features available with Gulp task</a></li>
+<li><a href="#project-structure">Project structure</a><ul>
+<li><a href="#build">_build</a></li>
+<li><a href="#nodemodules">node_modules</a></li>
+<li><a href="#src">src</a></li>
+<li><a href="#app">app</a></li>
+<li><a href="#assets">assets</a></li>
+<li><a href="#bowercomponents">bower_components</a></li>
+<li><a href="#indexhtml">index.html</a></li>
+<li><a href="#bowerjson">bower.json</a></li>
+<li><a href="#gulpfilejs">gulpfile.js</a></li>
+<li><a href="#packagejson">package.json</a></li>
+<li><a href="#readmemd-and-readmehtml">README.md and README.html</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</p>
+
+<hr>
+
+
+
+<h2 id="usage">Usage</h2>
+
+<p><strong>Pre-requisite:</strong>  <br>
+- <a href="https://nodejs.org/en/">Node JS</a>; an open-source JavaScript runtime built on Chrome’s V8 JavaScript engine. We are using this to load our packages via <code>npm</code>. And to run all automation with <code>Gulp</code>. <br>
+- Node JS a runtime envionment. And NPM (Node Package Manager) is a package loader comes with Node JS. It is a command line tool. <br>
+- It almost <a href="http://stackoverflow.com/questions/38388824/is-maven-similar-to-npm">similar</a> to Maven for JAVA.  <br>
+- It may need proxy configuration settings. Plz check <a href="https://knome.ultimatix.net/blogposts/318727-npm-on-tcs-network">here</a> for the same. <br>
+- <a href="https://bower.io/">Bower</a>;  A package manager for the front end libraries. It is just similar as NPM but only concentrate on frontend libraries.</p>
+
+<blockquote>
+  <p><strong>Why NODE/NPM ?</strong> <br>
+  A Package Manager allows you to specify the dependencies for your project, to say that in order to run (or develop) this tool or site it needs these particular 3rd party components. And it’ll then figure out what they need and also download them. </p>
+
+  <p>NPM is a Java Script package manager. This help JS developer to develop and share code easily.</p>
+
+  <p>All required packages are written in file named <code>package.json</code>.</p>
+
+  <p>We can get all packages downloaded with single command <code>npm install</code>.</p>
+
+  <p>All packages will be saved in a specific folder named <code>node_modules</code>.</p>
+</blockquote>
+
+<p>**Folders not to be committed to any version control or shared are: <code>node_mouldes</code> and <code>bower_components</code>. If you get a project having these folders already present then you may skip first installtion i.e. <code>npm install</code>.</p>
+
+<p>You may have look-in <a href="https://www.lynda.com/Web-Development-tutorials/Up-Running-NPM-Node-Package-Manager/409274-2.html?org=tcs.com">Up and Running with NPM, the Node Package Manager</a> Lynda.com course for better knowledge. <br>
+As well <a href="https://www.lynda.com/Web-Design-tutorials/Web-Project-Workflows-Gulp-js-Git-Browserify/154416-2.html?org=tcs.com">Web Project Workflows with Gulp.js, Git, and Browserify</a> for better knowledge on Gulp automation. <br>
+Also <a href="https://www.lynda.com/Sass-tutorials/Sass-Essential-Training/375925-2.html?org=tcs.com">Sass Essential Training</a> for better knowledge on SASS; a CSS pre processor.</p>
+
+<h3 id="1-setup">1. Setup</h3>
+
+
+
+<pre class="prettyprint"><code class="language-bash hljs ">npm install</code></pre>
+
+<ul>
+<li>This will install all npm and bower dependencies (Only one time process)</li>
+<li>Node Packages will be downloaded in <code>node_modules</code> folder in root directory.</li>
+<li>Bower components will be downloaded in <code>src/bower_component</code> folder.</li>
+</ul>
+
+
+
+<h3 id="2-watch-files-run-application-from-development-folder-ie-src">2. Watch files/ run application from development folder i.e. /src</h3>
+
+
+
+<pre class="prettyprint"><code class=" hljs ">gulp</code></pre>
+
+
+
+<h3 id="3-build-production-version">3. Build production version</h3>
+
+
+
+<pre class="prettyprint"><code class=" hljs ">gulp build</code></pre>
+
+
+
+<h3 id="4-start-webserver-from-build-folder">4. Start webserver from build folder</h3>
+
+
+
+<pre class="prettyprint"><code class=" hljs lasso">gulp serve<span class="hljs-attribute">-build</span></code></pre>
+
+<p>** all above command should be used on CMD in root directoy. To do the same do following steps: <br>
+Assuming that in File Explorer you have opened the target directory/folder, do this: <br>
+ 1. Click on address bar, alternatively press Alt+D <br>
+ 2.  Now when address bar is highlighted, type cmd in the bar. <br>
+ 3. Press Enter key <br>
+You will notice that command prompt from that folder.</p>
+
+<hr>
+
+
+
+<h2 id="features-available-with-gulp-task">Features available with Gulp task</h2>
+
+<ul>
+<li>SASS support including sourceMaps</li>
+<li>Minimal CSS styling of the view</li>
+<li>Gulp watch, build and local server tasks</li>
+<li>Minified HTML, CSS and JS build files</li>
+<li>Automatic file Reversioning </li>
+<li>Browser-sync support</li>
+<li>File concatinatition for prod</li>
+<li>Service worker generation support</li>
+</ul>
+
+<hr>
+
+
+
+<h2 id="project-structure">Project structure</h2>
+
+
+
+<pre class="prettyprint"><code class=" hljs haml"> _build
+ node_modules*
+ src
+ -<span class="ruby">- app
+</span> -<span class="ruby">----- components
+</span> -<span class="ruby">----- externalModules
+</span> -<span class="ruby">----- shared
+</span> -<span class="ruby">----- app.js
+</span> -<span class="ruby">----- config.js
+</span> -<span class="ruby">----- constants.js
+</span> -<span class="ruby">----- route.js
+</span> -<span class="ruby">----- run.js
+</span> -<span class="ruby">- assets
+</span> -<span class="ruby">----- css
+</span> -<span class="ruby">----- fonts
+</span> -<span class="ruby">----- images
+</span> -<span class="ruby">- bower_components*
+</span> -<span class="ruby">- index.html
+</span> bower.json
+ gulpfile.js
+ package.json
+ README.md
+ README.html</code></pre>
+
+<p>** Folders marked with <code>*</code> should be exclude while commiting to SVN or Git or even sharing.</p>
+
+
+
+<h3 id="build">_build</h3>
+
+<p>This folder will contain Production build of the Project. It will be generated automatically with gulp build process <code>gulp build</code>.</p>
+
+
+
+<h3 id="nodemodules">node_modules</h3>
+
+<p>This folder will contain all necessary components.  <br>
+<code>npm install</code> <br>
+will download all these.</p>
+
+
+
+<h3 id="src">src</h3>
+
+<p>This is where all development will happen. It contains:</p>
+
+<blockquote>
+  <ul>
+  <li>app: This will contain all angular files for the application</li>
+  <li>assets: This will contain all assets like images, css, fonts etc.</li>
+  <li>bower_component: This will contain all libraries downloaded from bower. npm install command will install all the required component here. </li>
+  <li>index.html</li>
+  </ul>
+</blockquote>
+
+
+
+<h3 id="app">app</h3>
+
+<p>This will contain all angular files for the application.  <br>
+We are following coding guidelines of <a href="https://github.com/johnpapa/angular-styleguide/tree/master/a1">John Papa</a>.</p>
+
+<ul>
+<li>Main file is <code>app.js</code>.</li>
+<li>All configuration functions are written in <code>config.js</code>.</li>
+<li>Ui-routing is written in <code>route.js</code>.</li>
+<li>Any run block functions can be written in <code>run.js</code>.</li>
+<li>Any constants can be defined in <code>constants.js</code>.</li>
+<li>All components and there respective controllers/services/directive should be written in folder <code>components</code>.</li>
+<li>Any external modules should be added to folder <code>externalModules</code>. Only JS files. If any css is present for particular module then it should be added to folder <code>assets/css</code>.</li>
+<li>Any shared directive or services can be places in folder <code>shared</code>.</li>
+</ul>
+
+
+
+<h3 id="assets">assets</h3>
+
+<p>This will contain all assests required by the project like css, images etc.</p>
+
+<ul>
+<li>Any sass or plain css files shoild go in folder <code>css</code>.</li>
+<li>All fonts will be available in folder <code>fonts</code>.</li>
+<li>All images should go in folder <code>images</code>.</li>
+</ul>
+
+
+
+<h3 id="bowercomponents">bower_components</h3>
+
+<p>This will contain all library files added via <code>bower.json</code>.</p>
+
+
+
+<h3 id="indexhtml">index.html</h3>
+
+<p>This is the first file loaded by the browser.</p>
+
+
+
+<h3 id="bowerjson">bower.json</h3>
+
+<p>This is a file specific to <code>Bower</code> package manager. All front end packages like Angular, Bootstrap, Ui-router etc. will be downloaded automatically just after <code>npm install</code>.</p>
+
+
+
+<h3 id="gulpfilejs">gulpfile.js</h3>
+
+<p>This is a file specific to <code>Gulp</code>. Gulp is a task runner, which help us to automate in development time. Task such as; automatically reloading browser if any file changes, minifying files etc.</p>
+
+
+
+<h3 id="packagejson">package.json</h3>
+
+<p>This is a file specific to Node Package Manager <code>npm</code>. It will download all the external packages required for the project to run like Gulp, Browser-sync etc.</p>
+
+
+
+<h3 id="readmemd-and-readmehtml">README.md and README.html</h3>
+
+<p>This is the file you are reading up now. All the documentation is written in MARKDOWN language (the same pattern is used on Github) and then converted into HTML pages using an Online Markdown editor <a href="https://stackedit.io">StackEdit</a>. Both .md (markdown) and HTML is kept in the directory.</p>
+
+
+
+
+
+
+
+
+</div></body>
+</html>

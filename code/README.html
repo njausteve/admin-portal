@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AppMart SSP (Self Service Portal)</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+</head>
+<body><div class="container">
+
+
+
+<h1 id="appmart-ssp-self-service-portal">AppMart SSP (Self Service Portal)</h1>
+
+<p>(c)Pirate 2017<i class="icon-anchor"></i> </p>
+
+<p><div class="toc">
+<ul>
+<li><a href="#appmart-ssp-self-service-portal">AppMart SSP (Self Service Portal)</a><ul>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#available-commands">Available Commands</a></li>
+<li><a href="#1-setup">1. Setup</a></li>
+<li><a href="#2-watch-files-run-application-from-development-folder-ie-src">2. Watch files/ run application from development folder i.e. /src</a></li>
+<li><a href="#3-build-production-version">3. Build production version</a></li>
+<li><a href="#4-start-webserver-from-build-folder">4. Start webserver from build folder</a></li>
+<li><a href="#5-start-karmajasmine-unit-test">5. Start Karma/Jasmine Unit test</a></li>
+<li><a href="#6-start-karmajasmine-unit-test-in-continuous-mode">6. Start Karma/Jasmine Unit test in Continuous mode</a></li>
+<li><a href="#7-start-end-to-end-e2e-test-using-protractor">7. Start End-to-End (e2e) test using Protractor</a></li>
+</ul>
+</li>
+<li><a href="#features-available-with-gulp-task">Features available with Gulp task</a></li>
+<li><a href="#project-structure">Project structure</a><ul>
+<li><a href="#build"> _build</a></li>
+<li><a href="#nodemodules"> node_modules</a></li>
+<li><a href="#e2e"> e2e</a></li>
+<li><a href="#src"> src</a></li>
+<li><a href="#app"> app</a></li>
+<li><a href="#assets"> assets</a></li>
+<li><a href="#bowercomponents"> bower_components</a></li>
+<li><a href="#indexhtml"> index.html</a></li>
+<li><a href="#bowerjson">  bower.json</a></li>
+<li><a href="#gulpfilejs">  gulpfile.js</a></li>
+<li><a href="#karmaconfjs">  karma.conf.js</a></li>
+<li><a href="#packagejson">  package.json</a></li>
+<li><a href="#protractorconfigjs">  protractor.config.js</a></li>
+<li><a href="#readmemd-and-readmehtml">  README.md and README.html</a></li>
+</ul>
+</li>
+<li><a href="#tech-stack">Tech Stack</a><ul>
+<li><a href="#production">Production</a><ul>
+<li><a href="#1-angular-js">1. Angular JS</a></li>
+<li><a href="#2-bootstrap">2. Bootstrap</a></li>
+<li><a href="#3-ui-bootstrap">3. UI Bootstrap</a></li>
+<li><a href="#4-ui-router">4. UI-Router</a></li>
+<li><a href="#5-oclazyload">5. OcLazyLoad</a></li>
+<li><a href="#6-service-worker">6. Service Worker</a></li>
+</ul>
+</li>
+<li><a href="#developement">Developement</a><ul>
+<li><a href="#1-sass">1. SASS</a></li>
+<li><a href="#2-gulp">2. Gulp</a></li>
+<li><a href="#3-karma">3. Karma</a></li>
+<li><a href="#4-jasmine">4. Jasmine</a></li>
+<li><a href="#5-protractor">5. Protractor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#lost-somewhere">Lost somewhere???</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</p>
+
+<hr>
+
+
+
+<h2 id="usage">Usage</h2>
+
+<p><strong>Pre-requisite:</strong>  <br>
+- <a href="https://nodejs.org/en/">Node JS</a>; an open-source JavaScript runtime built on Chrome’s V8 JavaScript engine. We are using this to load our packages via <code>npm</code>. And to run all automation with <code>Gulp</code>. <br>
+- Node JS a runtime environment. And NPM (Node Package Manager) is a package loader comes with Node JS. It is a command line tool. <br>
+- It almost <a href="http://stackoverflow.com/questions/38388824/is-maven-similar-to-npm">similar</a> to Maven for JAVA.  <br>
+- It may need proxy configuration settings. Plz check <a href="https://knome.ultimatix.net/blogposts/318727-npm-on-tcs-network">here</a> for the same. <br>
+- <a href="https://bower.io/">Bower</a>;  A package manager for the front end libraries. It is just similar as NPM but only concentrate on front-end libraries.</p>
+
+<blockquote>
+  <p><strong>Why NODE/NPM ?</strong> <br>
+  A Package Manager allows you to specify the dependencies for your project, to say that in order to run (or develop) this tool or site it needs these particular 3rd party components. And it’ll then figure out what they need and also download them. </p>
+
+  <p>NPM is a Java Script package manager. This help JS developer to develop and share code easily.</p>
+
+  <p>All required packages are written in file named <code>package.json</code>.</p>
+
+  <p>We can get all packages downloaded with single command <code>npm install</code>.</p>
+
+  <p>All packages will be saved in a specific folder named <code>node_modules</code>.</p>
+</blockquote>
+
+<p><i class=" icon-info-circled"></i> Folders not to be committed to any version control or shared are: <code>node_mouldes</code> and <code>bower_components</code>. If you get a project having these folders already present then you may skip first installation i.e. <code>npm install</code>.</p>
+
+
+
+<h3 id="available-commands">Available Commands</h3>
+
+
+
+<h3 id="1-setup">1. Setup</h3>
+
+
+
+<pre class="prettyprint"><code class="language-bash hljs ">npm install</code></pre>
+
+<ul>
+<li>This will install all npm and bower dependencies (Only one time process)</li>
+<li>Node Packages will be downloaded in <code>node_modules</code> folder in root directory.</li>
+<li>Bower components will be downloaded in <code>src/bower_component</code> folder.</li>
+</ul>
+
+
+
+<h3 id="2-watch-files-run-application-from-development-folder-ie-src">2. Watch files/ run application from development folder i.e. /src</h3>
+
+
+
+<pre class="prettyprint"><code class="language-bash hljs ">gulp</code></pre>
+
+
+
+<h3 id="3-build-production-version">3. Build production version</h3>
+
+
+
+<pre class="prettyprint"><code class="language-bash hljs ">gulp build</code></pre>
+
+
+
+<h3 id="4-start-webserver-from-build-folder">4. Start webserver from build folder</h3>
+
+
+
+<pre class="prettyprint"><code class="language-bash hljs ">gulp serve-build</code></pre>
+
+
+
+<h3 id="5-start-karmajasmine-unit-test">5. Start Karma/Jasmine Unit test</h3>
+
+
+
+<pre class="prettyprint"><code class="language-bash hljs ">gulp test</code></pre>
+
+
+
+<h3 id="6-start-karmajasmine-unit-test-in-continuous-mode">6. Start Karma/Jasmine Unit test in Continuous mode</h3>
+
+
+
+<pre class="prettyprint"><code class="language-bash hljs ">gulp test-auto</code></pre>
+
+
+
+<h3 id="7-start-end-to-end-e2e-test-using-protractor">7. Start End-to-End (e2e) test using Protractor</h3>
+
+
+
+<pre class="prettyprint"><code class="language-bash hljs ">gulp protractor</code></pre>
+
+<br>
+
+<p><i class=" icon-attention-alt"></i> all above command should be used on CMD in root directory. To do the same do following steps: <br>
+Assuming that in File Explorer you have opened the target directory/folder, do this: <br>
+ 1. Click on address bar, alternatively press Alt+D <br>
+ 2.  Now when address bar is highlighted, type cmd in the bar. <br>
+ 3. Press Enter key <br>
+You will notice that command prompt from that folder.</p>
+
+<hr>
+
+
+
+<h2 id="features-available-with-gulp-task">Features available with Gulp task</h2>
+
+<ul>
+<li>SASS support including sourceMaps</li>
+<li>Minimal CSS styling of the view</li>
+<li>Gulp watch, build and local server tasks</li>
+<li>Minified HTML, CSS and JS build files</li>
+<li>Automatic file Reversion </li>
+<li>Browser-sync support</li>
+<li>File concatenation for prod</li>
+<li>Service worker generation support</li>
+<li>Automated Unit testing with Karma and Jasmine</li>
+<li>Automated End-to-End (e2e) testing with Protractor</li>
+</ul>
+
+<hr>
+
+
+
+<h2 id="project-structure">Project structure</h2>
+
+
+
+<pre class="prettyprint"><code class=" hljs haml"> _build
+ node_modules*
+ e2e
+ src
+ -<span class="ruby">- app
+</span> -<span class="ruby">----- components
+</span> -<span class="ruby">----- externalModules
+</span> -<span class="ruby">----- shared
+</span> -<span class="ruby">----- app.js
+</span> -<span class="ruby">----- config.js
+</span> -<span class="ruby">----- constants.js
+</span> -<span class="ruby">----- route.js
+</span> -<span class="ruby">----- run.js
+</span> -<span class="ruby">- assets
+</span> -<span class="ruby">----- css
+</span> -<span class="ruby">----- fonts
+</span> -<span class="ruby">----- images
+</span> -<span class="ruby">- bower_components*
+</span> -<span class="ruby">- index.html
+</span> bower.json
+ gulpfile.js
+ karma.conf.js
+ package.json
+ protractor.config.js
+ README.md
+ README.html</code></pre>
+
+<p><i class=" icon-attention-alt"></i>Folders marked with <code>*</code> should be exclude while committing to SVN or Git or even sharing.</p>
+
+
+
+<h3 id="build"><i class="icon-folder-open"></i> _build</h3>
+
+<p>This folder will contain Production build of the Project. It will be generated automatically with gulp build process <code>gulp build</code>.</p>
+
+
+
+<h3 id="nodemodules"><i class="icon-folder-open"></i> node_modules</h3>
+
+<p>This folder will contain all necessary components.  <br>
+<code>npm install</code> <br>
+will download all these.</p>
+
+
+
+<h3 id="e2e"><i class="icon-folder-open"></i> e2e</h3>
+
+<p>This folder will contain all End_to-End testing spec files.</p>
+
+
+
+<h3 id="src"><i class="icon-folder-open"></i> src</h3>
+
+<p>This is where all development will happen. It contains:</p>
+
+<blockquote>
+  <ul>
+  <li>app: This will contain all angular files for the application</li>
+  <li>assets: This will contain all assets like images, css, fonts etc.</li>
+  <li>bower_component: This will contain all libraries downloaded from bower. npm install command will install all the required component here. </li>
+  <li>index.html</li>
+  </ul>
+</blockquote>
+
+
+
+<h3 id="app"><i class="icon-folder-open"></i> app</h3>
+
+<p>This will contain all angular files for the application.  <br>
+We are following coding guidelines of <a href="https://github.com/johnpapa/angular-styleguide/tree/master/a1">John Papa</a>.</p>
+
+<ul>
+<li>Main file is <code>app.js</code>.</li>
+<li>All configuration functions are written in <code>config.js</code>.</li>
+<li>Ui-routing is written in <code>route.js</code>.</li>
+<li>Any run block functions can be written in <code>run.js</code>.</li>
+<li>Any constants can be defined in <code>constants.js</code>.</li>
+<li>All components and there respective controllers/services/directive should be written in folder <code>components</code>.</li>
+<li>Any external modules should be added to folder <code>externalModules</code>. Only JS files. If any css is present for particular module then it should be added to folder <code>assets/css</code>.</li>
+<li>Any shared directive or services can be places in folder <code>shared</code>.</li>
+</ul>
+
+
+
+<h3 id="assets"><i class="icon-folder-open"></i> assets</h3>
+
+<p>This will contain all assets required by the project like css, images etc.</p>
+
+<ul>
+<li>Any sass or plain css files should go in folder <code>css</code>.</li>
+<li>All fonts will be available in folder <code>fonts</code>.</li>
+<li>All images should go in folder <code>images</code>.</li>
+</ul>
+
+
+
+<h3 id="bowercomponents"><i class="icon-folder-open"></i> bower_components</h3>
+
+<p>This will contain all library files added via <code>bower.json</code>.</p>
+
+
+
+<h3 id="indexhtml"><i class="icon-file"></i> index.html</h3>
+
+<p>This is the first file loaded by the browser.</p>
+
+
+
+<h3 id="bowerjson"><i class="icon-file"></i>  bower.json</h3>
+
+<p>This is a file specific to <code>Bower</code> package manager. All front end packages like Angular, Bootstrap, Ui-router etc. will be downloaded automatically just after <code>npm install</code>.</p>
+
+
+
+<h3 id="gulpfilejs"><i class="icon-file"></i>  gulpfile.js</h3>
+
+<p>This is a file specific to <code>Gulp</code>. Gulp is a task runner, which help us to automate in development time. Task such as; automatically reloading browser if any file changes, minifying files etc.</p>
+
+
+
+<h3 id="karmaconfjs"><i class="icon-file"></i>  karma.conf.js</h3>
+
+<p>This is a <code>Karma</code> configuration file.</p>
+
+
+
+<h3 id="packagejson"><i class="icon-file"></i>  package.json</h3>
+
+<p>This is a file specific to Node Package Manager <code>npm</code>. It will download all the external packages required for the project to run like Gulp, Browser-sync etc.</p>
+
+
+
+<h3 id="protractorconfigjs"><i class="icon-file"></i>  protractor.config.js</h3>
+
+<p>This is a <code>Protractor</code> configuration file.</p>
+
+
+
+<h3 id="readmemd-and-readmehtml"><i class="icon-file"></i>  README.md and README.html</h3>
+
+<p>This is the file you are reading up now. All the documentation is written in MARKDOWN language (the same pattern is used on GitHub) and then converted into HTML pages using an Online Markdown editor <a href="https://stackedit.io">StackEdit</a>. Both .md (markdown) and HTML is kept in the directory.</p>
+
+<hr>
+
+
+
+<h2 id="tech-stack">Tech Stack</h2>
+
+
+
+<h3 id="production">Production</h3>
+
+<hr>
+
+
+
+<h4 id="1-angular-js">1. Angular JS</h4>
+
+<p><code>Version: 1.4 / 1.6 (latest)</code> <br>
+<code>Link : https://angularjs.org</code> <br>
+<code>License: The MIT License</code></p>
+
+<p><strong>Description</strong>: <br>
+<a href="https://angularjs.org/">Angular JS 1.X</a> is a supersonic Clien-Side Java Script framework. </p>
+
+<hr>
+
+
+
+<h4 id="2-bootstrap">2. Bootstrap</h4>
+
+<p><code>Version: 3.3.7</code> <br>
+<code>Link : http://getbootstrap.com</code> <br>
+<code>License: The MIT License</code></p>
+
+<p><strong>Description</strong>: <br>
+<a href="http://getbootstrap.com">Bootstrap</a> is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.</p>
+
+<hr>
+
+
+
+<h4 id="3-ui-bootstrap">3. UI Bootstrap</h4>
+
+<p><code>Version: 2.5.0</code> <br>
+<code>Link : https://github.com/angular-ui/bootstrap</code> <br>
+<code>License: The MIT License</code></p>
+
+<p><strong>Description</strong>: <br>
+UI Bootstrap has Bootstrap JS components written in pure AngularJS. No dependency on Bootstrap JS and jQuery.</p>
+
+<p><strong>Specific Use-Case in application</strong>: <br>
+To remove dependency on jQuery.</p>
+
+<hr>
+
+
+
+<h4 id="4-ui-router">4. UI-Router</h4>
+
+<p><code>Version: 1.0.0</code> <br>
+<code>Link : https://ui-router.github.io</code> <br>
+<code>License: The MIT License</code></p>
+
+<p><strong>Description</strong>: <br>
+<a href="https://ui-router.github.io">Angular UI-Router</a> is a client-side Single Page Application routing framework for AngularJS. <br>
+Routing frameworks for SPAs update the browser’s URL as the user navigates through the app. Conversely, this allows changes to the browser’s URL to drive navigation through the app, thus allowing the user to create a bookmark to a location deep within the SPA.</p>
+
+<p>UI-Router applications are modeled as a hierarchical tree of states. UI-Router provides a state machine to manage the transitions between those application states in a transaction-like manner.</p>
+
+<p><strong>Specific Use-Case in application</strong>: <br>
+To achieve nested routing.</p>
+
+<hr>
+
+
+
+<h4 id="5-oclazyload">5. OcLazyLoad</h4>
+
+<p><code>Version: 1.1.0</code> <br>
+<code>Link : https://github.com/ocombe/ocLazyLoad</code> <br>
+<code>License: The MIT License</code></p>
+
+<p><strong>Description</strong>: <br>
+<a href="https://github.com/ocombe/ocLazyLoad">OcLazyLoad</a> is used to load the dependency files and also to inject the AngularJS modules on the fly. Perfectly suitable to load JS or even CSS async. A recommended lazy loader for Angular 1.X .</p>
+
+<p>Key features: <br>
+ - Dependencies are automatically loaded Debugger friendly <br>
+ - The ability to mix normal boot and load on demand Load via the service or the directive <br>
+ - Use the embedded async loader or use your own (<a href="https://webpack.github.io/">Web Pack</a>, <a href="http://requirejs.org/">requireJS</a>, …) <br>
+ - Load js / css / templates files <br>
+ - Compatible with AngularJS 1.2.x/1.3.x/1.4.x/1.5.x/1.6.x</p>
+
+<p><strong>Specific Use-Case in application</strong>: <br>
+To achieve Lazy-loading and dependency injection on the fly. </p>
+
+<hr>
+
+
+
+<h4 id="6-service-worker">6. Service Worker</h4>
+
+<p><code>A Browser feature</code></p>
+
+<p><strong>Description</strong>: <br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker</a> is a brand new Cache API provided by Modern Browsers. A major advantage of the service worker cache API is that it gives you more detailed control than the built-in browser cache does. Older browsers will work with a fall-back to normal browser cache mechanism.</p>
+
+<p><strong>Specific Use-Case in application</strong>: <br>
+To achieve fine tune control over browser cache.</p>
+
+<hr>
+
+
+
+<h3 id="developement">Developement</h3>
+
+
+
+<h4 id="1-sass">1. SASS</h4>
+
+<p><code>Version: 3.4.23</code> <br>
+<code>Link : sass-lang.com</code> <br>
+<code>License: The MIT License</code></p>
+
+<p><strong>Description</strong>: <br>
+<a href="sass-lang.com">Sass</a> is an extension of CSS, adding nested rules, variables, mixins, selector inheritance, and more. It’s translated to well-formatted, standard CSS using the command line tool or a web-framework plugin.</p>
+
+<p><strong>Specific Use-Case in application</strong>: <br>
+To achieve faster CSS development.</p>
+
+<p><strong>Available Alternative</strong>: <br>
+Plain CSS, LESS.</p>
+
+<hr>
+
+
+
+<h4 id="2-gulp">2. Gulp</h4>
+
+<p><code>Version: 4</code> <br>
+<code>Link : http://gulpjs.com</code> <br>
+<code>License: The MIT License</code></p>
+
+<p><strong>Description</strong>: <br>
+<a href="http://gulpjs.com/">Gulp</a> is a toolkit that helps you automate painful or time-consuming tasks like Minification, concatenation, live reload, running test etc. in your development workflow.</p>
+
+<p><strong>Specific Use-Case in application</strong>: <br>
+To make development workflow easy and automated.</p>
+
+<p><strong>Available Alternative</strong>: <br>
+Grunt. </p>
+
+<hr>
+
+
+
+<h4 id="3-karma">3. Karma</h4>
+
+<p><code>Version: 1.5.0</code> <br>
+<code>Link : https://github.com/karma-runner/karma</code> <br>
+<code>License: The MIT License</code></p>
+
+<p><strong>Description</strong>: <br>
+<a href="https://github.com/karma-runner/karma">Karma</a> is Test runner JavaScript. Specifically designed for Angular.</p>
+
+<p><strong>Specific Use-Case in application</strong>: <br>
+To achieve Unit testing using Jasmine testing framework.</p>
+
+<hr>
+
+
+
+<h4 id="4-jasmine">4. Jasmine</h4>
+
+<p><code>Version: 1.1.0</code> <br>
+<code>Link : https://github.com/karma-runner/karma-jasmine</code> <br>
+<code>License: The MIT License</code></p>
+
+<p><strong>Description</strong>: <br>
+<a href="https://jasmine.github.io/2.0/introduction.html">Jasmine</a> is a behavior-driven development framework for testing JavaScript code.</p>
+
+<p><strong>Specific Use-Case in application</strong>: <br>
+To Unit test code.</p>
+
+<p><strong>Available Alternative</strong>: <br>
+Mocha, QUnit etc.</p>
+
+<hr>
+
+
+
+<h4 id="5-protractor">5. Protractor</h4>
+
+<p><code>Version: 5.1.1</code> <br>
+<code>Link : http://www.protractortest.org</code> <br>
+<code>License: The MIT License</code></p>
+
+<p><strong>Description</strong>: <br>
+<a href="http://www.protractortest.org">Protractor</a> is an end-to-end test framework for Angular and AngularJS applications. Protractor runs tests against your application running in a real browser, interacting with it as a user would.</p>
+
+<p><strong>Specific Use-Case in application</strong>: <br>
+To End-to-End (e2e) testing of project.</p>
+
+<hr>
+
+
+
+<h2 id="lost-somewhere">Lost somewhere???</h2>
+
+<p>Don’t worry.  We’ll take you till the end of this document with complete understanding. <br>
+Let’s start from very basic level.</p>
+
+<p>Before getting started with coding, you must know there is <strong>no direct connection between Front-End and Back-End except HTTP calls (RESTful services)</strong>. Hence we can decouple Front-End and Back-End code and move out of bulky IDE’s like Eclipse or NetBeens. We can simply use advanced text editors like Sublime, Atom, Brackets and many more. We suggest to stick to Sublime as it has great community support and large Packages repository.</p>
+
+<p>Have a look at all the magic you can do with Sublime <a href="https://www.lynda.com/Sublime-Text-tutorials/Learn-Sublime-Text-3-Basics/513594-2.html?org=tcs.com">here</a>.</p>
+
+<p>We consider, you already know the basics of HTML, CSS (Bootstrap) and Angular. If not please go through following courses one by one. <strong>Don’t skip any.</strong> (Just click on  the Titles to view)</p>
+
+<ol>
+<li><a href="https://www.w3schools.com/html/default.asp">HTML 5</a></li>
+<li><a href="https://www.w3schools.com/css/default.asp">CSS 3</a></li>
+<li><a href="https://www.w3schools.com/bootstrap/default.asp">Bootstrap 3</a></li>
+<li><a href="https://www.lynda.com/Bootstrap-tutorials/Bootstrap-4-Essential-Training/372545-2.html?org=tcs.com">Bootstrap 4</a> (Grid system only: Chapter3. Mastering Layout with Bootstrap)</li>
+<li><a href="https://www.w3schools.com/js/default.asp">Javascript</a></li>
+<li>Angular 1.x core <br>
+<ol><li><a href="https://www.w3schools.com/angular/default.asp">W3School</a></li>
+<li><a href="https://www.codecademy.com/learn/learn-angularjs">Codecademy</a></li></ol></li>
+</ol>
+
+<p>Horrified??? <br>
+This is just a start.</p>
+
+<p>All the above courses are the most basic intro to Angular Eco System/programming in JS  and  the programming done in these courses is in loose fashion to make you understand easily . But to develop a full-fledged big web application, you need to set up some automation not only to speed up development but also to make your life easier  .</p>
+
+<p>And for the same, first you’re needed to learn a Coding Style, in other words best practices of Angular Coding. After that we’ll jump to automation stuff.</p>
+
+<p>There are different ways of writing codes and hence different coding styles, but we’ll strictly stick to ECMA Script-5 and <a href="https://github.com/johnpapa/angular-styleguide/tree/master/a1">Angular 1 Style by John Papa</a>.  <br>
+Please go through it.</p>
+
+<p>Now, let’s head to Awesome world of JavaScript. <br>
+<strong>Node JS</strong> is an open-source JavaScript runtime built on Chrome V8 JavaScript engine. In simple words, we can run JS on Node JS. Ha ha ha, isn’t it so simple?? But here lies the magic. Many developers out there came up with few script files (Packages) that run on Node JS and can perform many tasks like copying files, minification, concatenation and many more. Using multiple packages simultaneously we can automate many tasks. There exists Node Package Manager (a repository of all these packages online); comes inbuilt with Node JS installer. We just need to specify the name of packages in <strong>packages.json</strong> file to download them for development . After that, executing one simple instruction in CMD will download those packages for you. And then Task runner like Gulp makes it as simple as to run any package as per certain conditions with simple instructions in CMD.</p>
+
+<p>Head on to following <strong>Lynda.com</strong> courses to get started with Node JS and NPM: <br>
+1. <a href="https://www.lynda.com/Web-Development-tutorials/Up-Running-NPM-Node-Package-Manager/409274-2.html?org=tcs.com">Learning NPM the Node Package Manager</a> <br>
+2. <a href="https://www.lynda.com/NPM-tutorials/Tooling-NPM-Scripts/495275-2.html?org=tcs.com">Tooling with NPM Scripts</a> <br>
+3. <a href="https://www.udacity.com/course/web-tooling-automation--ud892">Web Tooling &amp; Automation</a> <br>
+4.  <a href="https://www.lynda.com/Sass-tutorials/Sass-Essential-Training/375925-2.html?org=tcs.com">Sass Essential Training</a> <br>
+5. <a href="https://www.lynda.com/Web-Design-tutorials/Web-Project-Workflows-Gulp-js-Git-Browserify/154416-2.html?org=tcs.com">Web Project Workflows with Gulp.js, Git, and Browserify</a></p>
+
+<p>Also have a look at following (very advanced and important ) concepts: <br>
+1. <a href="https://www.udacity.com/course/browser-rendering-optimization--ud860">Browser Rendering Optimization</a> <br>
+2. <a href="https://www.udacity.com/course/website-performance-optimization--ud884">Website Performance Optimization</a> <br>
+3. <a href="https://www.udacity.com/course/offline-web-applications--ud899">Offline Web Applications</a></p>
+
+<p>Hell…lot of courses?? <br>
+But this is where, after watching all the mentioned courses, you will understand/enjoy the magical world of JS.</p>
+
+<p>This was all about development. But without testing it is useless. We strongly believe in Test Driven Development, wherein <strong>first we’ve to write Unit tests and then code to pass those tests</strong>. For Angular we have <strong>Karma</strong> as test runner and <strong>Jasmine</strong> as unit testing framework. As well we have <strong>Protractor</strong> for End-to-End test. These are quite advanced topics. You can head to following links for more info.</p>
+
+<ol>
+<li><a href="https://www.lynda.com/AngularJS-tutorials/Learning-AngularJS-Testing/521229-2.html?org=tcs.com">Learning AngularJS Testing</a>,   <a href="https://scotch.io/tutorials/testing-angularjs-with-jasmine-and-karma-part-1">Tutorial1</a> and <a href="https://scotch.io/tutorials/testing-angularjs-with-jasmine-and-karma-part-2">Tutorial2</a>. </li>
+</ol>
+
+<p>Till now we have learnt everything to follow this project structure. <br>
+Here you complete the basic training! </p>
+
+<p>Now <em>Let the hacking begin!</em></p>
+
+
+
+
+
+
+
+</div></body>
+</html>

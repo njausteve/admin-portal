@@ -1,0 +1,369 @@
+<!-- <div>
+<h2>Appmart Coming soon</h2>
+<h3> You are Running </h3>
+<p><strong>OS</strong> : <em> {{home.os}}</em></p>
+<p><strong>Browser</strong> : <em> {{home.browser}}</em></p>
+<p><strong>Device</strong> : <em> {{home.device}}</em></p>
+</div>
+<br>
+<div>
+
+</div>
+ -->
+
+<!-- Banner Section -->
+<div class="hidden-sm-down banner"> <!-- Banner Section for md and lg  -->
+  <div class="container-fluid height-inherit"> <!-- Container div -->
+    <div class="row justify-content-center height-inherit"> <!-- Row div -->
+
+      <div class="col-md-4" style="max-width: 350px;"> <!-- Positioning Balancing div -->
+      </div>
+
+      <div class="col-md-6 align-self-center banner-content"> <!-- Banner Content -->
+        <h1>A platform to get all TCS apps at one stop!</h1>
+        <h3>Simple. Secure. Superior.</h3>
+        <span class="banner-line"></span>
+        <div class="row">
+          <div class="col-2 align-self-center">
+            <img class="banner-img" src="./assets/images/download_icon.svg" alt="Download AppMart">
+          </div>
+          <div class="col align-self-center">
+            <div ng-show="!home.showDownloadButton">
+              <h4>Open</h4>
+              <span style="font-size:1.5em; color: #10cda7; font-style: italic; font-weight: 700;">appmart.ultimatix.net</span> <h5>on your smart phone or tablet to download it directly</h5>
+              <h5 style="color: #acc4c4 !important">Available on <img style="margin: 0 5px 5px 5px;" src="assets/images/android.svg" alt="Android logo" width="22" height="22"> <span style="color: #709090 !important">Android</span> <img style="margin: 0 5px 9px 5px;" src="assets/images/apple.svg" alt="iOS logo" width="22" height="22"> <span style="color: #709090 !important">iOS</span></h5>
+            </div>
+
+            <div ng-show="home.showDownloadButton">
+              <button class="download-btn align-self-center">Download AppMart
+                <svg fill="#FFFFFF" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div> <!--end: Banner Content -->
+    </div> <!--end: Row div -->
+  </div> <!--end: Container div -->
+</div> <!--end: Banner Section for md and lg  -->
+
+<div class="hidden-md-up banner-sm-background"> <!-- Banner Section for sm and xm  -->
+  <div class="banner-sm">
+    <div class="container height-inherit-sm">
+      <div class="row justify-content-center height-inherit-sm">
+        <div class="col-12 text-center align-self-start banner-content-sm">
+          <h1>A platform to get all TCS apps at one stop!</h1>
+          <span class="banner-sm-line"></span>
+          <h4>Simple. Secure. Superior.</h4>
+        </div>
+        <div class="col-12 text-center align-self-end">
+          <button ng-show="home.showDownloadButton" class="download-btn align-self-center">Download AppMart
+            <svg fill="#FFFFFF" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          </button>
+          <div ng-show="!home.showDownloadButton" class="download-btn align-self-center">
+            AppMart is only avalibale on <img style="margin: 0 5px 9px 5px;" src="assets/images/apple.svg" alt="iOS logo" width="22" height="22"> &amp; <img style="margin: 0 5px 5px 5px;" src="assets/images/android.svg" alt="Android logo" width="22" height="22">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!--end: Banner Section for sm and xm  -->
+
+<!--end: Banner Section -->
+
+
+
+<!--device management  section-->
+<div class="devices" ng-hide="home.taggedDevices.length == 0 || home.taggedDevices == null">
+  <div class="container-fluid">
+    <div class="row justify-content-center text-center">
+      <div class="col-12 heading">
+        <span>Your Devices</span>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-11 col-md-12 device_list">
+        <div class="row align-items-center" ng-repeat="device in home.taggedDevices">
+          <div class="col-12 col-sm-8 device_details">
+            <img class="align-self-center" ng-src="{{device.deviceType == 'Android' ? 'assets/images/android.svg' : 'assets/images/apple.svg'}}" alt="{{device.deviceType}}" width="22" height="22">
+            <div>
+              <span class="device_name">{{device.deviceName}} {{device.modelNo}}</span> <br>
+              <span class="registration_date">Registered on 15th Jan 2017</span>
+              <a href="" ng-click="home.openModal( 'modal',device)" id="tooltip" data-microtip=">{{device.deviceName}}" data-microtip-position="bottom" >
+                <svg fill="#709090" width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="col-12 col-sm-4 remove-btn">
+            <button type="button" class="btn btn-default align-self-center">REMOVE</button>
+          </div>
+        </div>
+        <hr>
+        <div class="text-center align-content-center view_policy">
+          <h4><a href="" ng-click="home.openModal('device-policy')">View Device Policy</a></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end: device management  section -->
+
+<!-- About Section -->
+<div class="container-fluid" style="margin-bottom: 50px;"> <!-- About AppMart -->
+  <div class="row text-center justify-content-center"> <!-- Heading Section -->
+    <div class="col-12 heading"><span>About Appmart</span></div>
+    <div class="col-12 about-heading-content">TCS endeavors to give early TCSers the power and ability to collaborate, ideate and innovate without being restricted to the confines of their work desk.
+      One of the significant benefits is the flexibility and comfort of using your own device. The Appmart is the app catalog for all the TCs owned apps. It is
+      widely used among associates to download the apps according to their requirement. The objective is to provide associates easy access to the TCS owned apps.
+    </div>
+  </div> <!--end: Heading Section -->
+
+
+
+  <div class="row justify-content-center about-row" > <!-- About Content Section Row 1 -->
+    <div class="col-md-2 col-10 text-center align-self-center about-img">
+      <img src="./assets/images/home_tcs_apps_icon.svg" alt="Home for TCS apps" width="100%" height="100%">
+    </div>
+    <div class="col-md-4 col-12 about-div">
+      <div class="about-section">
+        <div class="about-heading">Home for TCS Apps</div>
+        <div>Appmart is a one stop place to explore wide range of TCS mobile applications. It provides easy download and update of all applications to its
+          users.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 col-10 text-center align-self-center about-img">
+      <img src="./assets/images/multiple_device_policy_icon.svg" alt="Multiple Device Policy" width="100%" height="100%">
+    </div>
+    <div class="col-md-4 col-12 about-div">
+      <div class="about-section">
+        <div class="about-heading">Multiple Device Policy</div>
+        <div>Appmart allows a user to register into it through five devices. It also provides user the facility to remove any of his devices through mobile application as well as web as web portal.
+        </div>
+      </div>
+    </div>
+  </div> <!--end: About Content Section Row 1 -->
+
+  <div class="row justify-content-center about-row"> <!-- About Content Section Row 2 -->
+    <div class="col-md-2 col-10 text-center align-self-center about-img" >
+      <img src="./assets/images/fast_reliable_icon.svg" alt="Fast and Reliable" width="100%" height="100%">
+    </div>
+    <div class="col-md-4 col-12 about-div">
+      <div class="about-section">
+        <div class="about-heading">Fast and Reliable</div>
+        <div>Built using the latest tech stack, Appmart works smoothly on a variety of latest mobile devices.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 col-10 text-center align-self-center about-img">
+      <img src="./assets/images/interactive_user_interface_icon.svg" alt="Interactive User Interface" width="100%" height="100%">
+    </div>
+    <div class="col-md-4 col-12 about-div">
+      <div class="about-section">
+        <div class="about-heading">Interactive User Interface </div>
+        <div>Appmart is an easy-to-navigate app that delivers a suite of key functionalities and mobile services through an intuitive, entertaining user interface.
+        </div>
+      </div>
+    </div>
+  </div> <!--end About Content Section Row 2 -->
+</div> <!--end: About AppMart -->
+
+
+<!-- what users say section-->
+<div class="wus">
+    <div class="container-fluid">
+        <div class="row justify-content-center text-center">
+            <div class="col-12 heading">
+                <span>What our users say</span>
+            </div>
+        </div>
+        <!--carousel : what users say -->
+        <div uib-carousel ng-swipe-right="next()" ng-swipe-left="prev()" active="home.active" interval="home.myInterval" no-wrap="home.noWrapSlides">
+            <div uib-slide ng-repeat="user in home.users " index="user.id">
+                <div class="row justify-content-center wus-comment">
+                    <div class="col-md-3 col-lg-3 profile_pic" style=" background: url('{{user.image}}') no-repeat center center;">
+                    </div>
+                    <div class="col-md-9 col-lg-9 user_comments">
+                        <h4><span id="quotes">&#8220;</span>{{user.comment}}
+                        </h4>
+                        <p id="wus_name">~{{user.name}} <br>
+                            <span>{{user.title}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div><!--end :  carousel-->
+    </div>
+</div><!--end: what users say-->
+
+
+
+
+
+  <!-- support section -->
+  <div class="support">
+    <div class="container-fluid text-center">
+      <div class="row justify-content-center text-center">
+        <div class="col-12 support_heading">
+          <span>Support</span>
+        </div>
+      </div>
+      <div class="row justify-content-center text-center support_statement">
+        <div class="col-md-6">
+          <h4>Lorem ipsum dolor sit amet, Possimus voluptate cum nobis exercitationem magni asperiores perspiciatis tempore atque.
+          </h4>
+        </div>
+      </div>
+
+
+      <div class="row justify-content-center align-items-center support_row">
+        <div class="col-md-2 align-self-center support_icon">
+          <span>
+            <svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+            </svg>
+          </span>
+        </div>
+        <div class="col-md-4 align-self-center support_content">
+          <h4>helpdesk.appmart@tcs.com</h4>
+        </div>
+      </div>
+      <div class="row justify-content-center align-items-center support_row">
+        <div class="col-md-2 align-self-center support_icon">
+          <span>
+            <svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+          </span>
+        </div>
+        <div class="col-md-4 align-self-center support_content">
+          <h4>1800 0820 025</h4>
+        </div>
+      </div>
+
+    </div>
+  </div> <!--end: support section-->
+
+
+  <!-- footer section-->
+  <div class="footer ">
+    <div class="upper_footer"> <!--upper footer -->
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-md-3 terms">
+            <a href ng-click="home.openModal('terms-condition')">Terms of use</a>
+          </div>
+          <div class="col-md-3 policy">
+            <a href ng-click="home.openModal('device-policy')">Appmart Device Policy</a>
+          </div>
+        </div>
+      </div>
+    </div> <!--end: upper footer -->
+
+    <!-- lower footer section -->
+    <div class="lower_footer">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-md-6 align-self-center text-center copyright">
+            <img src="/assets/images/tcs_logo.png " alt="Tata Consultancy Services" width="218" height="10">
+            <h4>Copyright &copy; 2017 Tata Consultancy Services</h4>
+          </div>
+          <div class="col-md-6 align-self-center text-center compatibility">
+            <img src="/assets/images/tata_logo.png " alt="Tata" width="71" height="14">
+            <h4><a href=" ">Browser and Display Compatibility</a></h4>
+          </div>
+        </div>
+      </div>
+    </div> <!--end : lower footer -->
+  </div> <!--end : footer-->
+
+
+  <!-- Modal Section -->
+  <div id="modal-container">
+    <div class="modal-background">
+      <div class="modal">
+
+      <div class="pull-right close-button"> <!-- Close button -->
+        <span ng-click="home.closeModal();">
+          <svg fill="#000000" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+          </svg>
+        </span>
+      </div> <!--end: Close button -->
+
+      <div ng-show="home.modal.identity == 'terms-condition'"> <!-- Modal content for Terms and Conditions -->
+          <h2>Copyright © 2017 Tata Consultancy Services.</h2>
+          <h3>All rights reserved.</h3>
+
+          <h4>
+            The contents hereof are the sole and exclusive property of Tata Consultancy
+            Services ('TCS') and may not be, for whatsoever purpose, reproduced, stored,
+            copied or archived in any manner whatsoever either in full or in parts without the
+            prior express consent of TCS. <br><br>
+
+            The contents hereof are purely for internal circulation in TCS and any access of
+            whatsoever nature of these materials outside the TCS network is strictly prohibited and will attract legal liability of both civil and criminal nature. Any access of these materials outside the TCS network amounts to an act of infringement of the intellectual and other proprietary rights of TCS. <br><br>
+
+            Within TCS, only the personnel authorised for the time being belonging to the Ultimatix Project of TCS alone shall have the right to modify, alter or change these materials. <br><br>
+
+            No other person shall at any time modify, alter or change these materials (or any
+            part thereof) nor attempt to do so under whatsoever circumstances. Any such act
+            amounts to an act of infringement of the intellectual and other proprietary rights of
+            TCS and shall attract the strictest action possible under law.
+          </h4>
+      </div> <!--end: Modal content for Terms and Conditions -->
+
+
+      <div ng-show="home.modal.identity == 'device-policy'"> <!-- Modal content for Device Policy -->
+        <h2>Appmart allows you to log-in into Appmart on up to 5 devices.</h2>
+        <h3>You can choose any 5 devices from the below list:-</h3>
+        <ul>
+          <li>Android Smart Phone</li>
+          <li>Android Tablet</li>
+          <li>iPhone</li>
+          <li>iPad</li>
+        </ul>
+        <h3>If you wish to log-in through a 6th device, you need to first remove one of the 5 registered devices from your device list.</h3>
+      </div> <!--end: Modal content for Device Policy -->
+
+
+
+      <div ng-show="home.modal.identity == 'modal'"> <!-- Modal for Device details -->
+        <table>
+          <tbody>
+            <tr>
+              <td class="details">Device Name</td>
+              <td>{{home.modal.data.deviceName}}</td>
+            </tr>
+            <tr>
+              <td class="details">Device Type</td>
+              <td>{{home.modal.data.deviceType}}</td>
+            </tr>
+            <tr>
+              <td class="details">Device Model</td>
+              <td>{{home.modal.data.modelNo}}</td>
+            </tr>
+            <tr>
+              <td class="details">Device ID</td>
+              <td>{{home.modal.data.deviceIdentifier | limitTo:3}}***{{home.modal.data.deviceIdentifier | limitTo:-3}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div> <!-- end: Modal content for Device Policy -->
+    </div>
+  </div>
+</div> <!--end: Modal Section -->
+
