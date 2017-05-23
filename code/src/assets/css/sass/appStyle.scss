@@ -116,13 +116,68 @@ what users say Section
       text-align: left;
     }
   }
+
+svg {
+  padding: 5px;
+}
+  .arrow {
+  cursor: pointer;
+  position: absolute;
+  top: 60%;
+  margin-top: -45px;
+  margin-left: -35px;
+  width: 70px;
+  height: 90px;
+}
+
+.left {
+  left: 10%;
+  
+}
+.right {
+  right: 2%;
+}
+
+
+// // // previous and next button styling
+
+
+.left:hover polyline,
+.left:focus polyline {
+  stroke-width: 3;
+  
+}
+
+.left:active polyline {
+  stroke-width: 6;
+  transition: all 100ms ease-in-out;
+  stroke: #08c7aa;
+}
+
+.right:hover polyline,
+.right:focus polyline {
+  stroke-width: 3;
+}
+
+.right:active polyline {
+  stroke-width: 6;
+  transition: all 100ms ease-in-out;
+  stroke: #08c7aa;
+}
+
+polyline {
+  transition: all 250ms ease-in-out;
+}
+
+// end of next and prev button control 
+
   .carousel-control.left {
         background-image: none;
-        margin-left: -15px;
+       
     }
     .carousel-control.right {
         background-image: none;
-        margin-right: -15px;
+       
     }
     .carousel-indicators {
         margin-bottom: 5px;

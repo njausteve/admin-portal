@@ -100,12 +100,40 @@ what users say Section
       .wus .wus-comment {
         margin-top: 50px;
         text-align: left; } }
+  .wus svg {
+    padding: 5px; }
+  .wus .arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 60%;
+    margin-top: -45px;
+    margin-left: -35px;
+    width: 70px;
+    height: 90px; }
+  .wus .left {
+    left: 10%; }
+  .wus .right {
+    right: 2%; }
+  .wus .left:hover polyline,
+  .wus .left:focus polyline {
+    stroke-width: 3; }
+  .wus .left:active polyline {
+    stroke-width: 6;
+    transition: all 100ms ease-in-out;
+    stroke: #08c7aa; }
+  .wus .right:hover polyline,
+  .wus .right:focus polyline {
+    stroke-width: 3; }
+  .wus .right:active polyline {
+    stroke-width: 6;
+    transition: all 100ms ease-in-out;
+    stroke: #08c7aa; }
+  .wus polyline {
+    transition: all 250ms ease-in-out; }
   .wus .carousel-control.left {
-    background-image: none;
-    margin-left: -15px; }
+    background-image: none; }
   .wus .carousel-control.right {
-    background-image: none;
-    margin-right: -15px; }
+    background-image: none; }
   .wus .carousel-indicators {
     margin-bottom: 5px; }
     @media (min-width: 576px) {

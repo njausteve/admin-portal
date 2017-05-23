@@ -400,14 +400,23 @@
 <!-- overidding modal to inject touch functions -->
 <script type="text/ng-template" id="/tpl.html">
  <div class="carousel-inner" ng-transclude ng-swipe-right="prev()" ng-swipe-left="next()" ></div>
-<a role="button" href class="left carousel-control hidden-sm-down" ng-click="prev()" ng-class="{ disabled: isPrevDisabled() }" ng-show="slides.length > 1">
-  <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+
+<a  role="button" href class="left carousel-control hidden-sm-down arrow" ng-click="prev()" ng-class="{ disabled: isPrevDisabled() }" ng-show="slides.length > 1">
+  <svg aria-hidden="true" width="40px" height="40px" viewBox="0 0 50 80" xml:space="preserve">
+    <polyline fill="none" stroke="#838383" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="
+	48.63,85.8 0.375,38.087 48.63,0.375 "/>
+  </svg>  
   <span class="sr-only">previous</span>
 </a>
-<a role="button" href class="right carousel-control hidden-sm-down" ng-click="next()" ng-class="{ disabled: isNextDisabled() }" ng-show="slides.length > 1">
-  <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+
+<a role="button" href class="right arrow carousel-control hidden-sm-down" ng-click="next()" ng-class="{ disabled: isNextDisabled() }" ng-show="slides.length > 1" >
+  <svg  aria-hidden="true xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40px" height="40px" viewBox="0 0 50 80" xml:space="preserve">
+    <polyline fill="none" stroke="#838383" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="
+	0.375,0.375 45.63,38.087 0.375,75.8 "/>
+  </svg>
   <span class="sr-only">next</span>
 </a>
+ 
 <ol class="carousel-indicators" ng-show="slides.length > 1">
   <li ng-repeat="slide in slides | orderBy:indexOfSlide track by $index" ng-class="{ active: isActive(slide) }" ng-click="select(slide)">
     <span class="sr-only">slide {{ $index + 1 }} of {{ slides.length }}<span ng-if="isActive(slide)">, currently active</span></span>
