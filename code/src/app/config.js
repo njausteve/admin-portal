@@ -7,9 +7,12 @@
 
     /** @ngInject */
     function config($logProvider, $ocLazyLoadProvider, cfpLoadingBarProvider, $httpProvider) {
+
         // Enable log
         $logProvider.debugEnabled(true);
 
+        // pushing interceptor in Angular module
+        $httpProvider.interceptors.push('httpInterceptor');
 
         //ocLazyLoding config
         $ocLazyLoadProvider.config({
@@ -17,19 +20,19 @@
                 // Home module
                 {
                     name: 'HomeModule',
-                    files: ['assets/css/app.css', 'assets/css/sass/appStyle.css', 'app/components/home/home.controller.js', 'app/components/home/home.service.js', 'app/externalModules/ng-device-detector.min.js', 'app/externalModules/re-tree.min.js', 'app/externalModules/angular-touch.min.js']
+                    files: ['assets/css/app.css', 'assets/css/sass/appStyle.css', 'app/components/home/home.controller.js', 'app/components/faq/faq.controller.js', 'app/components/home/home.service.js', 'app/externalModules/ng-device-detector.min.js', 'app/externalModules/re-tree.min.js', 'app/externalModules/angular-toastr.tpls.min.js', 'assets/css/external/angular-toastr.min.css']
                 },
 
                 // About module
                 {
                     name: 'AboutModule',
-                    files: ['app/components/about/about.controller.js', 'app/externalModules/angular-toastr.tpls.min.js', 'assets/css/external/angular-toastr.min.css']
+                    files: ['app/components/about/about.controller.js']
                 },
 
-                // Device Details Module
+                // Error module
                 {
-                    name: 'DeviceDetailsModule',
-                    files: ['app/components/deviceDetails/deviceDetails.controller.js']
+                    name: 'ErrorModule',
+                    files: ['app/components/error/error.controller.js']
                 }
             ]
         });
@@ -38,14 +41,11 @@
         //COMMENT this while building Production version
 
         $ocLazyLoadProvider.config({
-            debug: true
+            debug: false
         });
 
         //loading bar config
         cfpLoadingBarProvider.includeSpinner = false;
-
-        // pushing interceptor in Angular module
-        $httpProvider.interceptors.push('httpInterceptor');
 
 
     }

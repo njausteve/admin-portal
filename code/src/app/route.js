@@ -11,9 +11,16 @@
 
             .state('home', {
                 url: '/',
-                templateUrl: 'app/components/home/home.html',
-                controller: 'HomeController',
-                controllerAs: 'home',
+                views: {
+                    '': {
+                        templateUrl: 'app/components/home/home.html',
+                        controller: 'HomeController',
+                        controllerAs: 'home'
+                    },
+                    '@home': {
+                        templateUrl: 'app/components/home/home-content.html'
+                    }
+                },
                 resolve: {
                     deps: ['$ocLazyLoad', 'cfpLoadingBar', function($ocLazyLoad, cfpLoadingBar) {
                         cfpLoadingBar.start();
@@ -25,7 +32,18 @@
                     }]
                 }
             })
-            .state('about', {
+            .state('home.faq', {
+                url: 'faq',
+                views: {
+                    '@home': {
+                        templateUrl: 'app/components/faq/faq.html',
+                        controller: 'faqController',
+                        controllerAs: 'faq'
+                    }
+                }
+            })
+
+        .state('about', {
                 url: '/about',
                 templateUrl: 'app/components/about/about.html',
                 controller: 'AboutController',
@@ -41,16 +59,17 @@
                     }]
                 }
             })
-            .state('deviceDetails', {
-                url: '/device',
-                templateUrl: 'app/components/deviceDetails/deviceDetails.html',
-                controller: 'DeviceDetailsController',
-                controllerAs: 'device',
+            .state('error', {
+                url: '/error',
+                templateUrl: 'app/components/error/error.html',
+                controller: 'ErrorController',
+                controllerAs: 'error',
+                params: { 'errorData': null },
                 resolve: {
                     deps: ['$ocLazyLoad', 'cfpLoadingBar', function($ocLazyLoad, cfpLoadingBar) {
                         cfpLoadingBar.start();
                         return $ocLazyLoad.load([
-                            'DeviceDetailsModule'
+                            'ErrorModule'
                         ]).then(function() {
                             cfpLoadingBar.complete();
                         });

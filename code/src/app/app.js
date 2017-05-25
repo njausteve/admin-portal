@@ -5,9 +5,9 @@
  * by Stephen, Piyush & the Pirate
  */
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('ssp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'oc.lazyLoad', 'angular-loading-bar', 'cfp.loadingBar']);
+  angular
+    .module('ssp', ['ngAnimate', 'angular-loading-bar', 'cfp.loadingBar', 'oc.lazyLoad', 'ui.router', 'ui.bootstrap']);
 
 })();

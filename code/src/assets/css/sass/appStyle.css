@@ -23,6 +23,50 @@ Mixins
 
 ******************************************************************/
 /*-----------------------  -----------------------
+            help and suport jumbotron
+---------------------- ------------------------ */
+.faq-jumbotron {
+  background: linear-gradient(90deg, #11406c 10%, #0c7c7e 90%, #0b9188 95%);
+  padding-bottom: 10px;
+  padding-top: 20px; }
+  .faq-jumbotron h1,
+  .faq-jumbotron h2,
+  .faq-jumbotron h4 {
+    font-weight: 300; }
+  .faq-jumbotron h1 {
+    font-size: 32px;
+    margin: 10px auto; }
+  .faq-jumbotron a {
+    color: #ffffff;
+    text-decoration: none; }
+  .faq-jumbotron h4 {
+    font-size: 18px; }
+
+.faq-section {
+  background: #EEEEEE;
+  padding-bottom: 10px;
+  padding-top: 20px; }
+  .faq-section h2 {
+    background: linear-gradient(90deg, #133778 10%, #08c9ab 85%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 34px;
+    font-weight: 300; }
+  .faq-section .faq-list {
+    max-width: 750px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 4px 4px 11px 4px #C5D9D7;
+    -webkit-box-shadow: 4px 4px 11px 4px #C5D9D7;
+    -moz-box-shadow: 4px 4px 11px 4px #C5D9D7;
+    -o-box-shadow: 4px 4px 11px 4px #C5D9D7;
+    padding: 30px 20px 0 20px;
+    overflow-y: auto;
+    overflow-x: hidden; }
+    .faq-section .faq-list .row {
+      margin-bottom: 10px; }
+
+/*-----------------------  -----------------------
             device management Section
 ---------------------- ------------------------ */
 .devices {
@@ -92,6 +136,14 @@ what users say Section
 ---------------------- ------------------------ */
 .wus {
   background-color: #F5FBFB; }
+  .wus .glyphicon-chevron-left {
+    top: 48% !important; }
+    .wus .glyphicon-chevron-left:before {
+      content: ""; }
+  .wus .glyphicon-chevron-right {
+    top: 48% !important; }
+    .wus .glyphicon-chevron-right:before {
+      content: ""; }
   .wus .wus-comment {
     margin: initial;
     margin-top: -30px;
@@ -100,40 +152,25 @@ what users say Section
       .wus .wus-comment {
         margin-top: 50px;
         text-align: left; } }
-  .wus svg {
-    padding: 5px; }
-  .wus .arrow {
-    cursor: pointer;
-    position: absolute;
-    top: 60%;
-    margin-top: -45px;
-    margin-left: -35px;
-    width: 70px;
-    height: 90px; }
-  .wus .left {
-    left: 10%; }
-  .wus .right {
-    right: 2%; }
-  .wus .left:hover polyline,
-  .wus .left:focus polyline {
-    stroke-width: 3; }
-  .wus .left:active polyline {
-    stroke-width: 6;
-    transition: all 100ms ease-in-out;
-    stroke: #08c7aa; }
-  .wus .right:hover polyline,
-  .wus .right:focus polyline {
-    stroke-width: 3; }
-  .wus .right:active polyline {
-    stroke-width: 6;
-    transition: all 100ms ease-in-out;
-    stroke: #08c7aa; }
-  .wus polyline {
-    transition: all 250ms ease-in-out; }
+  .wus .carousel-control {
+    opacity: 1;
+    -webkit-filter: none;
+            filter: none; }
+  .wus .carousel-control:hover,
+  .wus .carousel-control:focus {
+    opacity: 1;
+    -webkit-filter: none;
+            filter: none; }
+  .wus .carousel-control svg {
+    fill: #709090; }
+  .wus .carousel-control svg:hover {
+    fill: #08c7aa; }
   .wus .carousel-control.left {
-    background-image: none; }
+    background-image: none;
+    margin-left: -15px; }
   .wus .carousel-control.right {
-    background-image: none; }
+    background-image: none;
+    margin-right: -15px; }
   .wus .carousel-indicators {
     margin-bottom: 5px; }
     @media (min-width: 576px) {
@@ -542,3 +579,9 @@ Modal Section
   100% {
     -webkit-transform: scale(0);
             transform: scale(0); } }
+
+.confirmation * {
+  text-align: center !important; }
+
+.confirmation img {
+  margin-left: 35px; }

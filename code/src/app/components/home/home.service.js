@@ -16,7 +16,8 @@
 
     var service = {
       getTaggedDevices: _getTaggedDevices,
-      untaggDevice: _untaggDevice
+      untaggDevice: _untaggDevice,
+      downloadAppmart : _downloadAppmart
     };
 
     return service;
@@ -33,35 +34,59 @@
         .catch(getTaggedDevicesFailed);
 
       function getTaggedDevicesComplete(response) {
-          console.log("getTaggedDevicesComplete response", response);
-           // $log.info("getTaggedDevices response: ", response);
         return response.data;
       }
 
       function getTaggedDevicesFailed(error) {
-          console.log("error", error);
-        console.log('XHR Failed.\n' + angular.toJson(error.data, true));
-              return $q.reject(error);
+        //ignore... handlled in implemetation...
+        return $q.reject(error);
       }
     }
 
     // Un-tagg Devic
-    function _untaggDevice(device) {
+    function _untaggDevice(data) {
 
-      return $http.post( api.apiHost + 'untagDevice', device)
+      // data.empId = "1038040";
+
+      return $http.post( api.apiHost + 'untagDevice', data)
         .then(untaggDeviceComplete)
         .catch(untaggDeviceFailed);
 
       function untaggDeviceComplete(response) {
-           // $log.info("untaggDevice response: ", response);
         return response.data;
       }
 
       function untaggDeviceFailed(error) {
-        console.log('XHR Failed for untaggDevice.\n' + angular.toJson(error.data, true));
-              return $q.reject(error);
+        //ignore... handlled in implemetation...
+        return $q.reject(error);
       }
     }
+
+
+    // Downlaod AppMart
+    function _downloadAppmart(deviceType) {
+
+      if(deviceType == 'android'){
+        return $http.post( api.apiHost + 'downloadAPK', {"appId" : 2000})
+        .then(_downloadAppmartComplete)
+        .catch(_downloadAppmartFailed);
+      }else{
+        return $http.post( api.apiHost + 'downloadPlist', {"appId" : 2000})
+          .then(_downloadAppmartComplete)
+          .catch(_downloadAppmartFailed);
+      }
+
+
+      function _downloadAppmartComplete(response) {
+        return response;
+      }
+
+      function _downloadAppmartFailed(error) {
+        //ignore... handlled in implemetation...
+        return $q.reject(error);
+      }
+    }
+
 
   }
 })();

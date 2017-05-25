@@ -12,69 +12,88 @@
   .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController(deviceDetector, homeService, $log) {
-    var vm = this;
-    vm.os = '';
-    vm.browser = '';
-    vm.device = '';
-    vm.showDownloadButton = false;
-    vm.user = {};
-    vm.modal = {};
-    vm.taggedDevices = [
-    {
-      "deviceName": "SAMSUNG",
-      "deviceType": "Android",
-      "deviceIdentifier": "861895037955581",
-      "modelNo": "GALAXY-GRAND"
-    },
-    {
-      "deviceName": "Samsung",
-      "deviceType": "Android",
-      "deviceIdentifier": "7890654321345",
-      "modelNo": "Galaxy"
-    },
-    {
-      "deviceName": "Lenovo K6",
-      "deviceType": "Android",
-      "deviceIdentifier": "861895037955582",
-      "modelNo": "AS3456"
-    }
-    ];
+  function HomeController(deviceDetector, homeService, $log, toastrConfig, toastr) {
 
- // Carousel settings
-        vm.myInterval = 4000;
-        vm.noWrapSlides = false;
-        vm.active = 0;
-        vm.users = [
+// Toastr configuration
+toastrConfig.allowHtml = true;
+toastrConfig.timeOut = 8000;
+toastrConfig.positionClass = 'toast-bottom-right';
+toastrConfig.preventDuplicates = false;
+toastrConfig.progressBar = true;
 
-            {
-                name: 'Pramod Mohandas',
-                title: 'PL AppMart',
-                image: '/assets/images/user.svg',
-                comment: 'Lorem ipsum dolor sit amet, Possimus voluptate cum nobis Lorem ipsum dolor sit amet, Possimus voluptate cum nobis Lorem ipsum dolor sit amet, an aeque discere duo, ea meis voluptua constituam cum. Cu eum iusto oporteat. Decore fastidii id est, ex quo quidam conclusionemque. Petentium constituto in nam. Id nonumy delicatissimi necessitatibus has, mel eripuit eligendi euripidis id, ut amet homero cum.',
-                id: 2
 
-            },
-            {
-                name: 'Abhijit Mazumder',
-                title: 'Global Head,Strategic Solutions & Sales Enablement',
-                image: '/assets/images/user.svg',
-                comment: 'Ius cu vero contentiones, ei eloquentiam. Suscipit  ipsum legimus consectetuer an duo. Nam te dicta ridens, pri doctus volumus oportere et, te ius illud perpetua postulant. Sea ea invenire maiestatis suscipiantur, no vim eligendi ponderum, vis no nostro alterum.',
-                id: 0
+var vm = this;
+vm.os = '';
+vm.browser = '';
+vm.device = '';
+vm.showDownloadButton = false;
 
-            }, {
-                name: 'Anurag Sinha',
-                title: 'Program Manager Ultimatix-Special Projects',
-                image: '/assets/images/user.svg',
-                comment: 'Qui ut summo debet feugiat, per et agam definitiones mediocritatem. Nullam sanctus definitiones qui id, id exerci quodsi sed. Ei brute debet mandamus mel. Cu eos sale reque omittantur, in vidisse voluptaria scripserit pri. Ne sea partiendo voluptaria. Et vel timeam apeirian gubergren, vim an diceret dissentiunt consequuntur, solum harum recteque no quo.',
-                id: 1
+vm.user = {};
+vm.modal = {};
 
-            },
-        ];
+vm.taggedDevices = [];
 
-//temp User value
+vm.untaggDevice = _untaggDevice;
+vm.downloadAppmart = _downloadAppmart;
+
+// Temp settings for taggedDevices
+// vm.taggedDevices = [
+// {
+//   "deviceName": "SAMSUNG",
+//   "deviceType": "Android",
+//   "deviceIdentifier": "861895037955581",
+//   "modelNo": "GALAXY-GRAND"
+// },
+// {
+//   "deviceName": "Samsung",
+//   "deviceType": "Android",
+//   "deviceIdentifier": "7890654321345",
+//   "modelNo": "Galaxy"
+// },
+// {
+//   "deviceName": "Lenovo K6",
+//   "deviceType": "Android",
+//   "deviceIdentifier": "861895037955582",
+//   "modelNo": "AS3456"
+// }
+// ];
+
+// Carousel settings
+vm.myInterval = 4000;
+vm.noWrapSlides = false;
+vm.active = 0;
+
+vm.users = [
+
+{
+  name: 'Pramod Mohandas',
+  title: 'PL AppMart',
+  image: '/assets/images/user.svg',
+  comment: 'Lorem ipsum dolor sit amet, Possimus voluptate cum nobis Lorem ipsum dolor sit amet, Possimus voluptate cum nobis Lorem ipsum dolor sit amet, an aeque discere duo, ea meis voluptua constituam cum. Cu eum iusto oporteat. Decore fastidii id est, ex quo quidam conclusionemque. Petentium constituto in nam. Id nonumy delicatissimi necessitatibus has, mel eripuit eligendi euripidis id, ut amet homero cum.',
+  id: 2
+
+},
+{
+  name: 'Abhijit Mazumder',
+  title: 'Global Head,Strategic Solutions & Sales Enablement',
+  image: '/assets/images/user.png',
+  comment: 'Ius cu vero contentiones, ei eloquentiam. Suscipit  ipsum legimus consectetuer an duo. Nam te dicta ridens, pri doctus volumus oportere et, te ius illud perpetua postulant. Sea ea invenire maiestatis suscipiantur, no vim eligendi ponderum, vis no nostro alterum.',
+  id: 0
+
+}, {
+  name: 'Anurag Sinha',
+  title: 'Program Manager Ultimatix-Special Projects',
+  image: '/assets/images/user.svg',
+  comment: 'Qui ut summo debet feugiat, per et agam definitiones mediocritatem. Nullam sanctus definitiones qui id, id exerci quodsi sed. Ei brute debet mandamus mel. Cu eos sale reque omittantur, in vidisse voluptaria scripserit pri. Ne sea partiendo voluptaria. Et vel timeam apeirian gubergren, vim an diceret dissentiunt consequuntur, solum harum recteque no quo.',
+  id: 1
+
+},
+];
+
+
+//temp User value 528707
 var user = {
-  userID:"1000287"
+  userID:"528707"
 };
 
 activate();
@@ -84,7 +103,6 @@ function activate(){
   _getTaggedDevices(user);
   _detectDevice();
   _showDownloadButton();
-
 }
 
 ///////////////////////////////////////////////////////////////
@@ -96,8 +114,9 @@ var modalBackground = document.getElementsByClassName("modal-background");
 var body = document.body;
 
 // Open Modal
-vm.openModal = function(modalIdentity, modalData){
+vm.openModal = function(modalIdentity, modalData, index){
   vm.modal.data = modalData || 0;
+  vm.modal.index = index || 0;
   vm.modal.identity = modalIdentity;
   modal.removeAttribute("class");
   modal.classList.add("in");
@@ -140,34 +159,86 @@ function _showDownloadButton() {
   }
 }
 
-function _getUser() {
-  return homeService.getUser(user).then(function(response){
-    vm.user = response.data;
-    return vm.user;
-  });
-}
 
 function _getTaggedDevices(user) {
 // it always return a promise
 return homeService.getTaggedDevices(user).then(function(response){
-  console.log("response", response);
-  vm.taggedDevices = response.data;
+  vm.taggedDevices = response.data || null;
   return vm.taggedDevices;
 })
-.catch(getTaggedDevicesFailed);
+.catch(function(error){
+  if(error.status != 404 && error.status != 500){
+    toastr.error('Error '+ error.status +' while getting Tagged Devices list', 'Opppss...', {
+      closeButton: true,
+      timeOut : 10000,
+      progressBar: false,
+      allowHtml: true
+    });
+  }}
+  );
 }
 
-function getTaggedDevicesFailed(error) {
-  console.log("error", error);
-  $log.error('XHR Failed for getTaggedDevices.\n' + angular.toJson(error.data, true));
-}
 
-function _untaggDevice(device) {
+function _untaggDevice(device, index) {
+
+  vm.closeModal();
+  var data = {};
+  data.empId = user.userID;
+  data.deviceIdentifier = device.deviceIdentifier;
+  data.macAddress = device.macAddress;
+
 // it always return a promise
-return homeService.untaggDevice(device).then(function(response){
-  vm.taggedDevices = response.data;
+return homeService.untaggDevice(data).then(function(response){
+
+  if(response.data.responseStatus == 'failure'){
+    toastr.error('Something went wrong while Untagging the Devices<br>Please try again.', 'Opppss...', {
+      closeButton: true,
+      timeOut : 10000,
+      progressBar: false,
+      allowHtml: true
+    });
+    return vm.taggedDevices;
+  }else{
+
+    vm.taggedDevices.splice(index, 1 );
+
+    toastr.success('Selected device removed successfully.', 'Success', {
+      closeButton: true,
+      timeOut : 10000,
+      progressBar: false,
+      allowHtml: true
+    });
+  }
   return vm.taggedDevices;
-});
+})
+.catch(function(error){
+  if(error.status != 404 && error.status != 500){
+    toastr.error('Error '+ error.status +' while Untagging the Devices', 'Opppss...', {
+      closeButton: true,
+      timeOut : 10000,
+      progressBar: false,
+      allowHtml: true
+    });
+  }
+}
+);
+}
+
+function _downloadAppmart(deviceType) {
+// it always return a promise
+return homeService.downloadAppmart(deviceType).then(function(response){
+  return response;
+})
+.catch(function(error){
+  if(error.status != 404 && error.status != 500){
+    toastr.error('Error '+ error.status +' while Downloading Appmart <br>Please try again.', 'Opppss...', {
+      closeButton: true,
+      timeOut : 10000,
+      progressBar: false,
+      allowHtml: true
+    });
+  }}
+  );
 }
 
 }

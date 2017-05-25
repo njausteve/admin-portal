@@ -1,9 +1,9 @@
 /**
- * (C) TATA Consultancy Services, 2017
- * Highly Confidential and Inflammable also
- * AppMart SSP Portal
- * by Stephen, Piyush & the Pirate
- */
+* (C) TATA Consultancy Services, 2017
+* Highly Confidential and Inflammable also
+* AppMart SSP Portal
+* by Stephen, Piyush & the Pirate
+*/
 (function() {
   'use strict';
 
@@ -12,7 +12,7 @@
   .controller('mainController', mainController);
 
   /** @ngInject */
-  function mainController($log, $http, api) {
+  function mainController($log, $http, api, $state) {
     var vm = this;
     vm.user = {};
 
@@ -21,59 +21,62 @@
     vm.isNavCollapsed = true;
     vm.isProfCollapsed = true;
 
-    // toggle navigation and profile collapse
-    vm.expandContent = _expandContent;
-    vm.clicked = _clicked;
+// toggle navigation and profile collapse
+vm.expandContent = _expandContent;
+vm.clicked = _clicked;
 
-    activate();
+activate();
 
-    function activate(){
+function activate(){
 
-      vm.user = _getUser();
-      if(vm.user){
-        vm.username = "User Name";
-        vm.UserId = "EMP ID";
-      }
+  vm.user = _getUser();
+  if(vm.user){
+    vm.username = "User Name";
+    vm.UserId = "EMP ID";
+  }
 
-    }
+}
 
-    /////////////////////////////////////////////////////////////////////////
-    /// implementation
-    /// all internal functions shall be prefixed with '_' for differentiating
+/////////////////////////////////////////////////////////////////////////
+/// implementation
+/// all internal functions shall be prefixed with '_' for differentiating
 
-    function _clicked() {
-      // Collapsing all navbar when clicked
-      vm.isNavCollapsed = true;
-      vm.isProfCollapsed = true;
+function _clicked() {
+// Collapsing all navbar when clicked
+vm.isNavCollapsed = true;
+vm.isProfCollapsed = true;
 
-    }
+}
 
-    function _expandContent(param) {
-      if (param === "prof") {
-        vm.isNavCollapsed = true;
-        vm.isProfCollapsed = !vm.isProfCollapsed;
-      } else if (param === "nav") {
-        vm.isProfCollapsed = true;
-        vm.isNavCollapsed = !vm.isNavCollapsed;
-      }
-    }
+function _expandContent(param) {
+  if (param === "prof") {
+    vm.isNavCollapsed = true;
+    vm.isProfCollapsed = !vm.isProfCollapsed;
+  } else if (param === "nav") {
+    vm.isProfCollapsed = true;
+    vm.isNavCollapsed = !vm.isNavCollapsed;
+  }
+}
 
-    // Get User Service
-    function _getUser() {
+// Get User Service
+function _getUser() {
 
-      return $http.get(api.apiHost + 'getUser')
-        .then(getUserComplete)
-        .catch(getUserFailed);
+  return $http.get(api.apiHost + 'getUser')
+  .then(getUserComplete)
+  .catch(getUserFailed);
 
-      function getUserComplete(response) {
-        return response.data;
-      }
+  function getUserComplete(response) {
+    return response.data;
+  }
 
-      function getUserFailed(error) {
-        // $log.error('XHR Failed for getUser.\n' + angular.toJson(error.data, true));
-      }
-    }
+  function getUserFailed(error) {
 
+// if(error.status != 404 && error.status != 500){
+//   $state.go('error', {'errorData': error})
+// }
+
+}
+}
 }
 
 })();

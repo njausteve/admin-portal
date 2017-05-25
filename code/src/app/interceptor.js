@@ -6,12 +6,13 @@
   .factory('httpInterceptor', httpInterceptor);
 
   /** @ngInject */
-  function httpInterceptor($q) {
+  function httpInterceptor($q, $injector) {
+
+
+
     return {
 
       request: function (config) {
-
-          config.requestTimestamp = new Date().getTime();
           // console.log(config); // Contains the data about the request before it is sent.
 
           // Return the config or wrap it in a promise if blank.
@@ -28,9 +29,6 @@
 
       // On response success
       response: function (response) {
-
-          response.config.responseTimestamp = new Date().getTime();
-
           // console.log(response); // Contains the data from the response.
 
           // Return the response or promise.
@@ -39,14 +37,23 @@
 
       // On response failture
       responseError: function (rejection) {
-          console.log(rejection); // Contains the data about the error.
+
+          var rejectedAPI = rejection.config.url.split("/");
+          switch (rejection.status) {
+              // case 404:
+              // turning off for testing puurpose
+              case 500:
+                  $injector.get("$state").go('error', {'errorData': rejection})
+                  break;
+              default:
+                  // May handle with interceptor (but avoid)
+                  // It will be handled at implementation level
+          }
 
           // Return the promise rejection.
           return $q.reject(rejection);
       }
-
     }
-
   }
 
 })();

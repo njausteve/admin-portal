@@ -13,14 +13,7 @@
 
 
   /** @ngInject */
-  function AboutController(toastr, toastrConfig) {
-
-        // // Set options third-party lib
-    toastrConfig.allowHtml = true;
-    toastrConfig.timeOut = 8000;
-    toastrConfig.positionClass = 'toast-bottom-right';
-    toastrConfig.preventDuplicates = false;
-    toastrConfig.progressBar = true;
+  function AboutController(toastr) {
 
     var vm = this;
     vm.name = "Pirate";
