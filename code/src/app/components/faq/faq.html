@@ -3,13 +3,9 @@
 
         <div class="text-left">
             <a class="hidden-sm-down" ui-sref="home">
-                <svg aria-hidden="true" width="20px" height="10px" viewBox="0 0 50 80" xml:space="preserve">
-                    <polyline fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="
-                    48.63,85.8 0.375,38.087 48.63,0.375 "/>
-              </svg>
                 <span> Back</span></a>
         </div>
-        <h1>Help & Contact</h1>
+        <h1>Help & Contact </h1>
         <h4>Here are some most common Questions we get</h4>
 
     </div>
@@ -19,26 +15,35 @@
     <h2>FAQ</h2>
     <div class="row justify-content-center">
         <div class="col-11 col-md-12 faq-list">
-            <uib-accordion close-others="faq.oneAtATime" template-url="app/externalModules/ui-bootstrap/template/accordion.html">
+            <uib-accordion close-others="faq.oneAtATime" template-url="app/externalModules/ui-bootstrap/accordion.html">
 
-                <div uib-accordion-group class="" is-open="faq.open " template-url="app/externalModules/ui-bootstrap/template/accordion-group-template.html ">
+                <div uib-accordion-group class="accordion-item " is-open="faq.open" template-url="app/externalModules/ui-bootstrap/accordion-group-template.html " ng-repeat=" faq in faq.faqList ">
                     <uib-accordion-heading>
-                        I can have markup, too! <i class="pull-right glyphicon " ng-class="{ 'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open} "></i>
+                        {{faq.question}}<i class="pull-right" ng-class="{ 'add-icon': faq.open, 'minus-icon': !faq.open} ">
+                            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+
+  <g id="svg_1">
+   <path id="svg_2" 
+         fill="#030104" 
+         d="m40.727,0.177l-37.311,0l0,-0.001c-1.884,0 -3.416,1.532 -3.416,3.416l0,36.958c0,1.885 1.532,3.416 3.416,3.416l37.311,0c1.885,0 3.416,-1.531 3.416,-3.416l0,-36.957c0,-1.884 -1.531,-3.416 -3.416,-3.416zm1.416,40.373c0,0.781 -0.635,1.416 -1.416,1.416l-37.311,0c-0.781,0 -1.416,-0.634 -1.416,-1.416l0,-36.958c0,-0.781 0.635,-1.416 1.416,-1.416l37.311,0c0.781,-0.001 1.416,0.634 1.416,1.416l0,36.958z"/>
+   <path transform="rotate(-91.09992218017578 21.88995361328125,22.435091018676758) "
+            id="svg_3" 
+            fill="#030104" 
+            d="m34.556954,21.435091l-25.334,0c-0.553,0 -1,0.447 -1,1s0.447,1 1,1l25.334,0c0.553,0 1,-0.447 1,-1c0,-0.554 -0.447,-1 -1,-1z"
+    />
+   <path id="svg_19"
+         fill="#030104" 
+          d="m34.738,21.073l-25.334,0c-0.553,0 -1,0.447 -1,1s0.447,1 1,1l25.334,0c0.553,0 1,-0.447 1,-1c0,-0.554 -0.447,-1 -1,-1z"
+    />
+  </g>
+ 
+
+</svg>
+                        </i>
                     </uib-accordion-heading>
-                    This is just some content to illustrate fancy headings.
+                    {{faq.answer}}
                 </div>
-                <div uib-accordion-group class="" is-open="faq.open " template-url="app/externalModules/ui-bootstrap/template/accordion-group-template.html ">
-                    <uib-accordion-heading>
-                        I can have markup, too! <i class="pull-right glyphicon " ng-class="{ 'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open} "></i>
-                    </uib-accordion-heading>
-                    This is just some content to illustrate fancy headings.
-                </div>
-                <div uib-accordion-group class="" is-open="faq.open " template-url="app/externalModules/ui-bootstrap/template/accordion-group-template.html ">
-                    <uib-accordion-heading>
-                        I can have markup, too! <i class="pull-right glyphicon " ng-class="{ 'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open} "></i>
-                    </uib-accordion-heading>
-                    This is just some content to illustrate fancy headings.
-                </div>
+
             </uib-accordion>
 
         </div>

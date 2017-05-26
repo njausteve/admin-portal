@@ -47,24 +47,46 @@ Mixins
   padding-bottom: 10px;
   padding-top: 20px; }
   .faq-section h2 {
-    background: linear-gradient(90deg, #133778 10%, #08c9ab 85%);
+    background: linear-gradient(to right, #133778, #08c9ab);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 34px;
     font-weight: 300; }
   .faq-section .faq-list {
-    max-width: 750px;
+    max-width: 800px;
     background-color: #ffffff;
     border-radius: 4px;
     box-shadow: 4px 4px 11px 4px #C5D9D7;
     -webkit-box-shadow: 4px 4px 11px 4px #C5D9D7;
     -moz-box-shadow: 4px 4px 11px 4px #C5D9D7;
     -o-box-shadow: 4px 4px 11px 4px #C5D9D7;
-    padding: 30px 20px 0 20px;
+    padding: 15px 0px 15px 0px;
     overflow-y: auto;
     overflow-x: hidden; }
+    .faq-section .faq-list .glyphicon {
+      font-family: "Glyphicons Halflings" !important; }
     .faq-section .faq-list .row {
       margin-bottom: 10px; }
+    .faq-section .faq-list h4 a {
+      color: #2c333f !important;
+      font-size: 14px;
+      font-weight: normal;
+      text-decoration: none; }
+    .faq-section .faq-list .accordion-item {
+      border-top: 1px solid #dfdfdf;
+      border-radius: 0px; }
+      .faq-section .faq-list .accordion-item:first-of-type {
+        border-top: 0px; }
+    .faq-section .faq-list .panel-group {
+      margin-bottom: 0px; }
+    .faq-section .faq-list .panel-heading {
+      padding: 15px 20px; }
+    .faq-section .faq-list .panel-body {
+      padding: 0px 20px 20px;
+      border-top: 0px !important;
+      font-size: 13px;
+      font-weight: 300;
+      color: #2c333f; }
 
 /*-----------------------  -----------------------
             device management Section
@@ -234,7 +256,7 @@ what users say Section
 Support Section
 ---------------------- ------------------------ */
 .support {
-  background: url("/assets/images/Support_bg.jpg") no-repeat center center;
+  background: url("../../../assets/images/Support_bg.jpg") no-repeat center center;
   background-size: cover;
   color: #ffffff !important;
   text-align: center;

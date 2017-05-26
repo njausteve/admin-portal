@@ -10,10 +10,9 @@
 </div>
  -->
 
-
-
+<!-- home content and nested faq view willl be loaded here-->
 <div ui-view></div>
-
+<!---->
 <!-- support section -->
 <div class="support">
     <div class="container-fluid text-center">
@@ -84,11 +83,11 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-md-6 align-self-center text-center copyright">
-                    <img src="/assets/images/tcs_logo.png " alt="Tata Consultancy Services" width="218" height="10">
+                    <img src="assets/images/tcs_logo.png" alt="Tata Consultancy Services" width="218" height="10">
                     <h4>Copyright &copy; 2017 Tata Consultancy Services</h4>
                 </div>
                 <div class="col-md-6 align-self-center text-center compatibility">
-                    <img src="/assets/images/tata_logo.png " alt="Tata" width="71" height="14">
+                    <img src="assets/images/tata_logo.png" alt="Tata" width="71" height="14">
                     <h4><a href=" ">Browser and Display Compatibility</a></h4>
                 </div>
             </div>
@@ -145,8 +144,6 @@
             </div>
             <!--end: Modal content for Device Policy -->
 
-
-
             <div ng-show="home.modal.identity == 'modal'">
                 <!-- Modal for Device details -->
                 <table>
@@ -156,16 +153,24 @@
                             <td>{{home.modal.data.deviceName}}</td>
                         </tr>
                         <tr>
-                            <td class="details">Device Type</td>
-                            <td>{{home.modal.data.deviceType}}</td>
-                        </tr>
-                        <tr>
                             <td class="details">Device Model</td>
                             <td>{{home.modal.data.modelNo}}</td>
                         </tr>
                         <tr>
+                            <td class="details">Device Type</td>
+                            <td>{{home.modal.data.deviceType}}</td>
+                        </tr>
+                        <tr>
                             <td class="details">Device ID</td>
                             <td>{{home.modal.data.deviceIdentifier | limitTo:3}}***{{home.modal.data.deviceIdentifier | limitTo:-3}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Device MAC</td>
+                            <td>{{home.modal.data.macAddress | limitTo:3}}***{{home.modal.data.deviceIdentifier | limitTo:-3}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Last login</td>
+                            <td>{{home.modal.data.lastLogin | dateFilter}}</td>
                         </tr>
                     </tbody>
                 </table>

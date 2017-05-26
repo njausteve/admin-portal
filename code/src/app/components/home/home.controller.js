@@ -36,6 +36,7 @@ vm.taggedDevices = [];
 vm.untaggDevice = _untaggDevice;
 vm.downloadAppmart = _downloadAppmart;
 
+
 // Temp settings for taggedDevices
 // vm.taggedDevices = [
 // {
@@ -68,7 +69,7 @@ vm.users = [
 {
   name: 'Pramod Mohandas',
   title: 'PL AppMart',
-  image: '/assets/images/user.svg',
+  image: 'assets/images/user.svg',
   comment: 'Lorem ipsum dolor sit amet, Possimus voluptate cum nobis Lorem ipsum dolor sit amet, Possimus voluptate cum nobis Lorem ipsum dolor sit amet, an aeque discere duo, ea meis voluptua constituam cum. Cu eum iusto oporteat. Decore fastidii id est, ex quo quidam conclusionemque. Petentium constituto in nam. Id nonumy delicatissimi necessitatibus has, mel eripuit eligendi euripidis id, ut amet homero cum.',
   id: 2
 
@@ -76,14 +77,14 @@ vm.users = [
 {
   name: 'Abhijit Mazumder',
   title: 'Global Head,Strategic Solutions & Sales Enablement',
-  image: '/assets/images/user.png',
+  image: 'assets/images/user.png',
   comment: 'Ius cu vero contentiones, ei eloquentiam. Suscipit  ipsum legimus consectetuer an duo. Nam te dicta ridens, pri doctus volumus oportere et, te ius illud perpetua postulant. Sea ea invenire maiestatis suscipiantur, no vim eligendi ponderum, vis no nostro alterum.',
   id: 0
 
 }, {
   name: 'Anurag Sinha',
   title: 'Program Manager Ultimatix-Special Projects',
-  image: '/assets/images/user.svg',
+  image: 'assets/images/user.svg',
   comment: 'Qui ut summo debet feugiat, per et agam definitiones mediocritatem. Nullam sanctus definitiones qui id, id exerci quodsi sed. Ei brute debet mandamus mel. Cu eos sale reque omittantur, in vidisse voluptaria scripserit pri. Ne sea partiendo voluptaria. Et vel timeam apeirian gubergren, vim an diceret dissentiunt consequuntur, solum harum recteque no quo.',
   id: 1
 
@@ -93,7 +94,7 @@ vm.users = [
 
 //temp User value 528707
 var user = {
-  userID:"528707"
+  userID:"583758"
 };
 
 activate();
@@ -227,7 +228,7 @@ return homeService.untaggDevice(data).then(function(response){
 function _downloadAppmart(deviceType) {
 // it always return a promise
 return homeService.downloadAppmart(deviceType).then(function(response){
-  return response;
+  return;
 })
 .catch(function(error){
   if(error.status != 404 && error.status != 500){

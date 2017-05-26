@@ -112,7 +112,7 @@ gulp.task('images', function() {
 
 // minify HTML
 gulp.task('minify-html', function() {
-  gulp.src(['./src/**/**/*.html'])
+  gulp.src(['./src/**/**/*.html', '!./src/bower_components/**/*.html'])
   .pipe($.bytediff.start())
   .pipe($.htmlmin({
     collapseWhitespace: true,

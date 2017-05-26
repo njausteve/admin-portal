@@ -94,7 +94,7 @@
                         <img class="align-self-center" ng-src="{{device.deviceType == 'Android' ? 'assets/images/android.svg' : 'assets/images/apple.svg'}}" alt="{{device.deviceType}}" width="22" height="22">
                         <div>
                             <span class="device_name">{{device.deviceName}} {{device.modelNo}}</span> <br>
-                            <span class="registration_date">Registered on 15th Jan 2017</span>
+                            <span class="registration_date">Registered on {{device.enrolmentTime | dateFilter }}</span>
                             <a href="" ng-click="home.openModal( 'modal',device)" id="tooltip" data-microtip=">{{device.deviceName}}" data-microtip-position="bottom">
                                 <svg fill="#709090" width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 0h24v24H0z" fill="none"/>
@@ -103,6 +103,7 @@
                             </a>
                         </div>
                     </div>
+
                     <div class="col-12 col-sm-4 remove-btn">
                         <button type="button" ng-click="home.openModal('confirmation', device, $index)" class="btn btn-default align-self-center">REMOVE</button>
                     </div>
@@ -184,7 +185,6 @@
 </div>
 <!--end: About AppMart -->
 
-
 <!-- what users say section-->
 <div class="wus">
     <div class="container-fluid">
@@ -194,8 +194,8 @@
             </div>
         </div>
         <!--carousel : what users say -->
-        <div uib-carousel template-url="app/externalModules/ui-bootstrap/template/carousel-template.html" active="home.active" interval="home.myInterval" no-wrap="home.noWrapSlides">
-            <div uib-slide template-url="app/externalModules/ui-bootstrap/template/carousel-slide.html" ng-repeat="user in home.users " index="user.id">
+        <div uib-carousel template-url="app/externalModules/ui-bootstrap/carousel-template.html" active="home.active" interval="home.myInterval" no-wrap="home.noWrapSlides">
+            <div uib-slide template-url="app/externalModules/ui-bootstrap/carousel-slide.html" ng-repeat="user in home.users " index="user.id">
                 <div class="row justify-content-center wus-comment">
                     <div class="col-md-3 col-lg-3 profile_pic" style=" background: url('{{user.image}}') no-repeat center center;">
                     </div>

@@ -12,7 +12,7 @@
     .factory('homeService', homeService);
 
   /** @ngInject */
-  function homeService($log, $http, $q, api) {
+  function homeService($log, $http, $q, api, FileSaver, Blob) {
 
     var service = {
       getTaggedDevices: _getTaggedDevices,
@@ -68,16 +68,24 @@
 
       if(deviceType == 'android'){
         return $http.post( api.apiHost + 'downloadAPK', {"appId" : 2000})
-        .then(_downloadAppmartComplete)
+        .then(_downloadAppmartAPKComplete)
         .catch(_downloadAppmartFailed);
       }else{
         return $http.post( api.apiHost + 'downloadPlist', {"appId" : 2000})
-          .then(_downloadAppmartComplete)
+          .then(_downloadAppmartIOSComplete)
           .catch(_downloadAppmartFailed);
       }
 
 
-      function _downloadAppmartComplete(response) {
+      function _downloadAppmartAPKComplete(response) {
+        var data = new Blob([response], { type: 'application/octet-stream' });
+        FileSaver.saveAs(data, 'appmart.apk');
+        return response;
+      }
+
+      function _downloadAppmartIOSComplete(response) {
+        var data = new Blob([response], { type: 'application/octet-stream' });
+        FileSaver.saveAs(data, 'plist.xml');
         return response;
       }
 

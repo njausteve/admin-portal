@@ -42,8 +42,7 @@
                     }
                 }
             })
-
-        .state('about', {
+            .state('about', {
                 url: '/about',
                 templateUrl: 'app/components/about/about.html',
                 controller: 'AboutController',

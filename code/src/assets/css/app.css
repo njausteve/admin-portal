@@ -93,7 +93,7 @@
 /*Main Banner*/
 
 .banner{
-  background: black url(/assets/images/bg.jpg) no-repeat center center;
+  background: black url("../../assets/images/bg.jpg") no-repeat center center;
   height: 445px;
 }
 
@@ -156,7 +156,9 @@ background: linear-gradient(to left, #53346D, #000000);
 }
 
 .banner-sm{
-  background: url(/assets/images/bg-small.png) no-repeat center center;
+   background-image: url("../../assets/images/bg-small.png") ;
+   background-repeat: no-repeat;
+   background-position: center;
   height: inherit;
   min-height: inherit;
   max-height: inherit;
