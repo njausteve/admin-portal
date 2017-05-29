@@ -36,7 +36,7 @@
 
 .faq-section {
     background: #EEEEEE;
-    padding-bottom: 10px;
+    padding-bottom: 50px;
     padding-top: 20px;
     h2 {
         background: -webkit-linear-gradient(to right, #133778, #08c9ab);
@@ -47,7 +47,7 @@
         font-weight: 300;
     }
     .faq-list {
-        max-width: 800px;
+        max-width: 850px;
         background-color: $white;
         border-radius: 4px;
         box-shadow: 4px 4px 11px 4px #C5D9D7;
@@ -57,12 +57,7 @@
         padding: 15px 0px 15px 0px;
         overflow-y: auto;
         overflow-x: hidden;
-        .glyphicon {
-            font-family: 'Glyphicons Halflings'!important;
-        }
-        .row {
-            margin-bottom: 10px;
-        }
+        margin: 0px 20px;
         h4 {
             a {
                 color: #2c333f !important;
@@ -70,6 +65,10 @@
                 font-weight: normal;
                 text-decoration: none;
             }
+        }
+        .no-padding {
+            padding-right: 10px;
+            padding-left: 0px;
         }
         .accordion-item {
             border-top: 1px solid #dfdfdf;
@@ -82,7 +81,13 @@
             margin-bottom: 0px;
         }
         .panel-heading {
-            padding: 15px 20px;
+            padding: 15px 20px 0px;
+            margin-bottom: 15px;
+            @media only screen and (min-width: 768px) {
+                margin-bottom: 0px;
+                padding-bottom: 15px;
+                height: 44px;
+            }
         }
         .panel-body {
             padding: 0px 20px 20px;
@@ -91,8 +96,27 @@
             font-weight: 300;
             color: #2c333f;
         }
-        i {
-            &hover {}
+        i:hover,
+        active {
+            svg {
+                path {
+                    fill: #08c7aa;
+                }
+            }
+        }
+        .minus-icon {
+            svg {
+                #svg-plus {
+                    path {
+                        display: none;
+                    }
+                }
+                #svg-minus {
+                    path {
+                        fill: #08c7aa;
+                    }
+                }
+            }
         }
     }
 }

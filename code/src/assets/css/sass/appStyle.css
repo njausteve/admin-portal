@@ -44,7 +44,7 @@ Mixins
 
 .faq-section {
   background: #EEEEEE;
-  padding-bottom: 10px;
+  padding-bottom: 50px;
   padding-top: 20px; }
   .faq-section h2 {
     background: linear-gradient(to right, #133778, #08c9ab);
@@ -53,7 +53,7 @@ Mixins
     font-size: 34px;
     font-weight: 300; }
   .faq-section .faq-list {
-    max-width: 800px;
+    max-width: 850px;
     background-color: #ffffff;
     border-radius: 4px;
     box-shadow: 4px 4px 11px 4px #C5D9D7;
@@ -62,16 +62,16 @@ Mixins
     -o-box-shadow: 4px 4px 11px 4px #C5D9D7;
     padding: 15px 0px 15px 0px;
     overflow-y: auto;
-    overflow-x: hidden; }
-    .faq-section .faq-list .glyphicon {
-      font-family: "Glyphicons Halflings" !important; }
-    .faq-section .faq-list .row {
-      margin-bottom: 10px; }
+    overflow-x: hidden;
+    margin: 0px 20px; }
     .faq-section .faq-list h4 a {
       color: #2c333f !important;
       font-size: 14px;
       font-weight: normal;
       text-decoration: none; }
+    .faq-section .faq-list .no-padding {
+      padding-right: 10px;
+      padding-left: 0px; }
     .faq-section .faq-list .accordion-item {
       border-top: 1px solid #dfdfdf;
       border-radius: 0px; }
@@ -80,13 +80,26 @@ Mixins
     .faq-section .faq-list .panel-group {
       margin-bottom: 0px; }
     .faq-section .faq-list .panel-heading {
-      padding: 15px 20px; }
+      padding: 15px 20px 0px;
+      margin-bottom: 15px; }
+      @media only screen and (min-width: 768px) {
+        .faq-section .faq-list .panel-heading {
+          margin-bottom: 0px;
+          padding-bottom: 15px;
+          height: 44px; } }
     .faq-section .faq-list .panel-body {
       padding: 0px 20px 20px;
       border-top: 0px !important;
       font-size: 13px;
       font-weight: 300;
       color: #2c333f; }
+    .faq-section .faq-list i:hover svg path,
+    .faq-section .faq-list active svg path {
+      fill: #08c7aa; }
+    .faq-section .faq-list .minus-icon svg #svg-plus path {
+      display: none; }
+    .faq-section .faq-list .minus-icon svg #svg-minus path {
+      fill: #08c7aa; }
 
 /*-----------------------  -----------------------
             device management Section
