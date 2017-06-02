@@ -12,7 +12,7 @@
   .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController(deviceDetector, homeService, $log, toastrConfig, toastr) {
+  function HomeController(deviceDetector, homeService, $log, toastrConfig, toastr, constants) {
 
 // Toastr configuration
 toastrConfig.allowHtml = true;
@@ -34,7 +34,6 @@ vm.modal = {};
 vm.taggedDevices = [];
 
 vm.untaggDevice = _untaggDevice;
-vm.downloadAppmart = _downloadAppmart;
 
 
 // Temp settings for taggedDevices
@@ -94,7 +93,7 @@ vm.users = [
 
 //temp User value 528707
 var user = {
-  userID:"583758"
+  userID:"318153"
 };
 
 activate();
@@ -149,6 +148,13 @@ function _detectDevice() {
   vm.os       = deviceDetector.os;
   vm.browser  = deviceDetector.browser;
   vm.device   = deviceDetector.device;
+
+  if(vm.device == 'android'){
+    vm.downloadURL = constants.downloadUrlAndroid;
+
+  }else{
+    vm.downloadURL = constants.downloadUrliOS;
+  }
   return vm;
 }
 
@@ -164,12 +170,20 @@ function _showDownloadButton() {
 function _getTaggedDevices(user) {
 // it always return a promise
 return homeService.getTaggedDevices(user).then(function(response){
+  if(response.statusCode == 100){
+    toastr.error('Error \''+ response.statusMsg +'\' while getting Tagged Devices list.', 'Opppss...', {
+      closeButton: true,
+      timeOut : 10000,
+      progressBar: false,
+      allowHtml: true
+    });
+  }
   vm.taggedDevices = response.data || null;
   return vm.taggedDevices;
 })
 .catch(function(error){
   if(error.status != 404 && error.status != 500){
-    toastr.error('Error '+ error.status +' while getting Tagged Devices list', 'Opppss...', {
+    toastr.error('Error '+ error.status +' while getting Tagged Devices list.', 'Opppss...', {
       closeButton: true,
       timeOut : 10000,
       progressBar: false,
@@ -191,7 +205,14 @@ function _untaggDevice(device, index) {
 // it always return a promise
 return homeService.untaggDevice(data).then(function(response){
 
-  if(response.data.responseStatus == 'failure'){
+  if(response.statusCode == 100){
+    toastr.error('Error \''+ response.statusMsg +'\' while Untagging the Devices<br>Please try again.', 'Opppss...', {
+      closeButton: true,
+      timeOut : 10000,
+      progressBar: false,
+      allowHtml: true
+    });
+  }else if(response.data.responseStatus == 'failure'){
     toastr.error('Something went wrong while Untagging the Devices<br>Please try again.', 'Opppss...', {
       closeButton: true,
       timeOut : 10000,
@@ -223,23 +244,6 @@ return homeService.untaggDevice(data).then(function(response){
   }
 }
 );
-}
-
-function _downloadAppmart(deviceType) {
-// it always return a promise
-return homeService.downloadAppmart(deviceType).then(function(response){
-  return;
-})
-.catch(function(error){
-  if(error.status != 404 && error.status != 500){
-    toastr.error('Error '+ error.status +' while Downloading Appmart <br>Please try again.', 'Opppss...', {
-      closeButton: true,
-      timeOut : 10000,
-      progressBar: false,
-      allowHtml: true
-    });
-  }}
-  );
 }
 
 }

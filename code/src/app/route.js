@@ -42,22 +42,6 @@
                     }
                 }
             })
-            .state('about', {
-                url: '/about',
-                templateUrl: 'app/components/about/about.html',
-                controller: 'AboutController',
-                controllerAs: 'about',
-                resolve: {
-                    deps: ['$ocLazyLoad', 'cfpLoadingBar', function($ocLazyLoad, cfpLoadingBar) {
-                        cfpLoadingBar.start();
-                        return $ocLazyLoad.load([
-                            'AboutModule'
-                        ]).then(function() {
-                            cfpLoadingBar.complete();
-                        });
-                    }]
-                }
-            })
             .state('error', {
                 url: '/error',
                 templateUrl: 'app/components/error/error.html',

@@ -23,6 +23,7 @@
     <!-- Custom Bootstrap CSS; without grid -->
     <!-- New grid system is imported from Bootstrap 4 at assets/css/grid.css-->
     <!-- build:css assets/css/style.min.css -->
+    <link rel="stylesheet" type="text/css" href="/bower_components/aos/dist/aos.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap_custom/css/bootstrap.css">
     <link rel='stylesheet' type='text/css' href='/bower_components/angular-loading-bar/build/loading-bar.css' />
     <link rel="stylesheet" type="text/css" href="/assets/css/grid.css">
@@ -46,9 +47,9 @@
         <div class="navbar-inverse hidden-sm-down top-bar">
             <div class="container">
                 <div class="row">
-                    <a ng-click="main.clicked()" href="/" class="col-md-1 text-center home"> Home</a>
-                    <a ng-click="main.clicked()" href="/" class="col">Apps</a>
-                    <a ng-click="main.clicked()" href="/" class="col logout">Logout</a>
+                    <a ng-click="main.clicked()" ui-sref="home" class="col-md-1 text-center home"> Home</a>
+                    <a ng-click="main.clicked()" ui-sref="home" class="col">Apps</a>
+                    <a ng-click="main.clicked()" ui-sref="home" class="col logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -73,20 +74,20 @@
               </svg>
             </span>
           </button>
-                    <a ng-click="main.clicked()" href="/">
+                    <a ng-click="main.clicked()" ui-sref="home">
                         <img class="navbar-brand logo hidden-xs-down" src="assets/images/ultimatix_logo.png" alt="Ultimatix" width="155" height="55">
                         <img class="navbar-brand logo appmart-logo" src="assets/images/appmart.png" alt="Appmart">
                     </a>
 
                 </div>
-                <div class="pull-right hidden-sm-down ult_profile" style="cursor: pointer;">
+                <div class="pull-right hidden-sm-down ult_profile  " style="cursor: pointer;">
                     <div class="row justify-content-center">
                         <div class="col align-self-center" style="max-width: 60px;">
-                            <img src="assets/images/user.svg" alt="" width="50">
+                            <img src="assets/images/user.svg" alt="profile_pic" width="40">
                         </div>
                         <div class="col align-self-center">
-                            <h4>{{main.username}} ( {{main.UserId}})</h4>
-                            <h4>Dess Developer</h4>
+                            <h4>{{main.user.userName}} ( {{main.user.userId}})</h4>
+                            <h4>{{main.user.emailId}}</h4>
                         </div>
                     </div>
                 </div>
@@ -103,11 +104,11 @@
                 <div class="collapse navbar-collapse text-center profile_mobile" uib-collapse="main.isProfCollapsed ">
                     <div class="container ">
                         <img class="navbar-text" src="assets/images/user.svg" alt="Profile Pic" width="50" height="50">
-                        <p class="navbar-text ">{{main.username}} ( {{main.UserId}})</p>
+                        <p class="navbar-text ">{{main.user.userName}} ( {{main.user.userId}})</p>
+                        <p class="navbar-text ">{{main.user.emailId}}</p>
                     </div>
                 </div>
             </div>
-
         </nav>
 
         <div class="hidden-sm-down navbar-inverse justify-content-center menu-navigation">
@@ -134,6 +135,7 @@
 <script type="text/javascript" src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script type="text/javascript" src="/bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
 <script type="text/javascript" src='/bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
+<script type="text/javascript" src="/bower_components/aos/dist/aos.js"></script>
 <!-- endbuild -->
 
 <!-- Angular components -->
@@ -148,8 +150,13 @@
 <script type="text/javascript" src="app/date.filter.js"></script>
 <!-- endbuild -->
 
-<!-- Service worker registration code -->
+
+
 <script type="text/javascript">
+    <!-- Animation on Scroll initiate -->
+    AOS.init();
+
+    <!-- Service worker registration code -->
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js').then(function() {
             console.log("Service Worker Registered");

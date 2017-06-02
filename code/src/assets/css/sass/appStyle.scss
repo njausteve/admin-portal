@@ -9,7 +9,7 @@
 @import "mixins";
 
 /*-----------------------  -----------------------
-            help and suport jumbotron
+help and suport jumbotron
 ---------------------- ------------------------ */
 
 .faq-jumbotron {
@@ -22,7 +22,7 @@
         font-weight: 300;
     }
     h1 {
-        font-size: 32px;
+        font-size: 2em;
         margin: 10px auto;
     }
     a {
@@ -30,7 +30,7 @@
         text-decoration: none;
     }
     h4 {
-        font-size: 18px;
+        font-size: 1.17em;
     }
 }
 
@@ -43,25 +43,24 @@
         background: linear-gradient(to right, #133778, #08c9ab);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        font-size: 34px;
+        font-size: 2.125em;
         font-weight: 300;
     }
     .faq-list {
         max-width: 850px;
         background-color: $white;
         border-radius: 4px;
-        box-shadow: 4px 4px 11px 4px #C5D9D7;
-        -webkit-box-shadow: 4px 4px 11px 4px #C5D9D7;
-        -moz-box-shadow: 4px 4px 11px 4px #C5D9D7;
-        -o-box-shadow: 4px 4px 11px 4px #C5D9D7;
+        -webkit-box-shadow: 0px -1px 17px 4px #dcdcdc;
+        -moz-box-shadow: 0px -1px 17px 4px #dcdcdc;
+        -o-box-shadow: 0px -1px 17px 4px #dcdcdc;
+        box-shadow: 0px -1px 17px 4px#dcdcdc;
         padding: 15px 0px 15px 0px;
         overflow-y: auto;
         overflow-x: hidden;
-        margin: 0px 20px;
         h4 {
             a {
                 color: #2c333f !important;
-                font-size: 14px;
+                font-size: 0.875em;
                 font-weight: normal;
                 text-decoration: none;
             }
@@ -76,6 +75,9 @@
             &:first-of-type {
                 border-top: 0px;
             }
+        }
+        .panel {
+            box-shadow: none;
         }
         .panel-group {
             margin-bottom: 0px;
@@ -92,7 +94,7 @@
         .panel-body {
             padding: 0px 20px 20px;
             border-top: 0px !important;
-            font-size: 13px;
+            font-size: 0.83em;
             font-weight: 300;
             color: #2c333f;
         }
@@ -123,7 +125,7 @@
 
 
 /*-----------------------  -----------------------
-            device management Section
+device management Section
 ---------------------- ------------------------ */
 
 .devices {
@@ -247,7 +249,7 @@ what users say Section
     }
     .carousel-control {
         svg {
-            fill: #709090;
+            fill: #d5e6e6;
         }
     }
     .carousel-control {
@@ -315,19 +317,17 @@ what users say Section
         h4 {
             font-weight: 300;
             color: #778383 !important;
-            margin-top: 0px;
             margin-bottom: 20px;
-            #quotes {
-                background: linear-gradient(90deg, #00537E 10%, #3AA17E 90%, #12BFA3 95%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                font-size: 50px;
-                vertical-align: bottom;
+            @media screen and (min-width: 768px) {
+                margin-left: 36px;
             }
         }
         #wus_name {
             font-weight: 600;
             color: #133778 !important;
+            @media screen and (min-width: 768px) {
+                margin-left: 36px;
+            }
             span {
                 font-weight: 300;
             }
@@ -341,11 +341,16 @@ Support Section
 ---------------------- ------------------------ */
 
 .support {
-    background: url("../../../assets/images/Support_bg.jpg") no-repeat center center;
+    background-image: url("../../images/Support_bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     color: $white !important;
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 60px;
+    @media screen and (min-width: 768px) {
+        padding-bottom: 30px;
+    }
     .flex {
         display: flex;
     }
@@ -354,22 +359,20 @@ Support Section
         font-size: 2em;
         font-weight: 400;
     }
-    .support_row {
-        margin-bottom: 10px;
-    }
     .support_statement {
-        margin-bottom: 20px;
-    }
-    .support_icon {
-        text-align: center;
-        @media screen and (min-width: 768px) {
-            text-align: right;
+        h4 {
+            margin-top: 15px;
+            margin-bottom: 20px;
         }
     }
-    .support_content {
-        text-align: center;
+    .support_icon {
+        margin-top: 30px;
+        margin-bottom: 15px;
         @media screen and (min-width: 768px) {
-            text-align: left;
+            margin: 1.1em 0;
+            margin-right: 20px;
+            padding: 0px;
+            text-align: right;
         }
     }
 }
@@ -389,12 +392,11 @@ footer Section
     }
     .upper_footer {
         a {
-            color: white !important;
+            color: black !important;
         }
-        background-color: black;
-        padding: 30px 0 20px 0;
+        background-color: #E9EAEF;
+        padding: 30px 0 30px 0;
         @media(min-width: 768px) {
-            background-color: white;
             a {
                 color: black !important;
             }
@@ -455,6 +457,7 @@ footer Section
             flex-direction: column;
             max-width: 550px;
             text-align: center;
+            padding-top: 15px;
             img {
                 order: 2;
                 margin-bottom: 20px;

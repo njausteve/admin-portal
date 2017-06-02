@@ -6,7 +6,7 @@
         .config(config);
 
     /** @ngInject */
-    function config($logProvider, $ocLazyLoadProvider, cfpLoadingBarProvider, $httpProvider) {
+    function config($logProvider, $ocLazyLoadProvider, cfpLoadingBarProvider, $httpProvider, $compileProvider) {
 
         // Enable log
         $logProvider.debugEnabled(true);
@@ -20,7 +20,7 @@
                 // Home module
                 {
                     name: 'HomeModule',
-                    files: ['assets/css/app.css', 'assets/css/sass/appStyle.css', 'app/components/home/home.controller.js', 'app/components/faq/faq.controller.js', 'app/components/home/home.service.js', 'app/externalModules/ng-device-detector.min.js', 'app/externalModules/re-tree.min.js', 'app/externalModules/angular-toastr.tpls.min.js', 'assets/css/external/angular-toastr.min.css', 'app/externalModules/angular-file-saver.bundle.min.js']
+                    files: ['assets/css/app.css', 'assets/css/sass/appStyle.css', 'app/components/home/home.controller.js', 'app/components/faq/faq.controller.js', 'app/components/home/home.service.js', 'app/externalModules/ng-device-detector.min.js', 'app/externalModules/re-tree.min.js', 'app/externalModules/angular-toastr.tpls.min.js', 'app/externalModules/angular-touch.min.js', 'assets/css/external/angular-toastr.min.css']
                 },
 
                 // About module
@@ -46,6 +46,9 @@
 
         //loading bar config
         cfpLoadingBarProvider.includeSpinner = false;
+
+        //white-listing URL protocols Specifically itms-services
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|itms-services):/);
 
 
     }

@@ -40,11 +40,13 @@
 
           var rejectedAPI = rejection.config.url.split("/");
           switch (rejection.status) {
+
               // case 404:
               // turning off for testing puurpose
               case 500:
-                  $injector.get("$state").go('error', {'errorData': rejection})
+                  $injector.get("$state").go('error', {'errorData': rejection});
                   break;
+
               default:
                   // May handle with interceptor (but avoid)
                   // It will be handled at implementation level

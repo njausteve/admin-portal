@@ -12,7 +12,7 @@
   .controller('mainController', mainController);
 
   /** @ngInject */
-  function mainController($log, $http, api, $state) {
+  function mainController($log, $http, constants, $state) {
     var vm = this;
     vm.user = {};
 
@@ -61,18 +61,21 @@ function _expandContent(param) {
 // Get User Service
 function _getUser() {
 
-  return $http.get(api.apiHost + 'getUser')
+  return $http.get(constants.apiHost + 'getUser')
   .then(getUserComplete)
   .catch(getUserFailed);
 
   function getUserComplete(response) {
+    if(response.statusCode == 100){
+      $state.go('error', {'errorData': ''});
+  }else
     return response.data;
   }
 
   function getUserFailed(error) {
 
 // if(error.status != 404 && error.status != 500){
-//   $state.go('error', {'errorData': error})
+//   $state.go('error', {'errorData': error});
 // }
 
 }

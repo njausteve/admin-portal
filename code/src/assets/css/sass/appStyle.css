@@ -23,7 +23,7 @@ Mixins
 
 ******************************************************************/
 /*-----------------------  -----------------------
-            help and suport jumbotron
+help and suport jumbotron
 ---------------------- ------------------------ */
 .faq-jumbotron {
   background: linear-gradient(90deg, #11406c 10%, #0c7c7e 90%, #0b9188 95%);
@@ -34,13 +34,13 @@ Mixins
   .faq-jumbotron h4 {
     font-weight: 300; }
   .faq-jumbotron h1 {
-    font-size: 32px;
+    font-size: 2em;
     margin: 10px auto; }
   .faq-jumbotron a {
     color: #ffffff;
     text-decoration: none; }
   .faq-jumbotron h4 {
-    font-size: 18px; }
+    font-size: 1.17em; }
 
 .faq-section {
   background: #EEEEEE;
@@ -50,23 +50,20 @@ Mixins
     background: linear-gradient(to right, #133778, #08c9ab);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 34px;
+    font-size: 2.125em;
     font-weight: 300; }
   .faq-section .faq-list {
     max-width: 850px;
     background-color: #ffffff;
     border-radius: 4px;
-    box-shadow: 4px 4px 11px 4px #C5D9D7;
-    -webkit-box-shadow: 4px 4px 11px 4px #C5D9D7;
-    -moz-box-shadow: 4px 4px 11px 4px #C5D9D7;
-    -o-box-shadow: 4px 4px 11px 4px #C5D9D7;
+    -o-box-shadow: 0px -1px 17px 4px #dcdcdc;
+    box-shadow: 0px -1px 17px 4px #dcdcdc;
     padding: 15px 0px 15px 0px;
     overflow-y: auto;
-    overflow-x: hidden;
-    margin: 0px 20px; }
+    overflow-x: hidden; }
     .faq-section .faq-list h4 a {
       color: #2c333f !important;
-      font-size: 14px;
+      font-size: 0.875em;
       font-weight: normal;
       text-decoration: none; }
     .faq-section .faq-list .no-padding {
@@ -77,6 +74,8 @@ Mixins
       border-radius: 0px; }
       .faq-section .faq-list .accordion-item:first-of-type {
         border-top: 0px; }
+    .faq-section .faq-list .panel {
+      box-shadow: none; }
     .faq-section .faq-list .panel-group {
       margin-bottom: 0px; }
     .faq-section .faq-list .panel-heading {
@@ -90,7 +89,7 @@ Mixins
     .faq-section .faq-list .panel-body {
       padding: 0px 20px 20px;
       border-top: 0px !important;
-      font-size: 13px;
+      font-size: 0.83em;
       font-weight: 300;
       color: #2c333f; }
     .faq-section .faq-list i:hover svg path,
@@ -102,7 +101,7 @@ Mixins
       fill: #08c7aa; }
 
 /*-----------------------  -----------------------
-            device management Section
+device management Section
 ---------------------- ------------------------ */
 .devices {
   background: #ECE9E6;
@@ -197,7 +196,7 @@ what users say Section
     -webkit-filter: none;
             filter: none; }
   .wus .carousel-control svg {
-    fill: #709090; }
+    fill: #d5e6e6; }
   .wus .carousel-control svg:hover {
     fill: #08c7aa; }
   .wus .carousel-control.left {
@@ -251,17 +250,16 @@ what users say Section
     .wus .user_comments h4 {
       font-weight: 300;
       color: #778383 !important;
-      margin-top: 0px;
       margin-bottom: 20px; }
-      .wus .user_comments h4 #quotes {
-        background: linear-gradient(90deg, #00537E 10%, #3AA17E 90%, #12BFA3 95%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 50px;
-        vertical-align: bottom; }
+      @media screen and (min-width: 768px) {
+        .wus .user_comments h4 {
+          margin-left: 36px; } }
     .wus .user_comments #wus_name {
       font-weight: 600;
       color: #133778 !important; }
+      @media screen and (min-width: 768px) {
+        .wus .user_comments #wus_name {
+          margin-left: 36px; } }
       .wus .user_comments #wus_name span {
         font-weight: 300; }
 
@@ -269,11 +267,16 @@ what users say Section
 Support Section
 ---------------------- ------------------------ */
 .support {
-  background: url("../../../assets/images/Support_bg.jpg") no-repeat center center;
+  background-image: url("../../images/Support_bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   color: #ffffff !important;
   text-align: center;
-  padding-bottom: 30px; }
+  padding-bottom: 60px; }
+  @media screen and (min-width: 768px) {
+    .support {
+      padding-bottom: 30px; } }
   .support .flex {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -282,20 +285,18 @@ Support Section
     margin: 45px 0 20px 0;
     font-size: 2em;
     font-weight: 400; }
-  .support .support_row {
-    margin-bottom: 10px; }
-  .support .support_statement {
+  .support .support_statement h4 {
+    margin-top: 15px;
     margin-bottom: 20px; }
   .support .support_icon {
-    text-align: center; }
+    margin-top: 30px;
+    margin-bottom: 15px; }
     @media screen and (min-width: 768px) {
       .support .support_icon {
+        margin: 1.1em 0;
+        margin-right: 20px;
+        padding: 0px;
         text-align: right; } }
-  .support .support_content {
-    text-align: center; }
-    @media screen and (min-width: 768px) {
-      .support .support_content {
-        text-align: left; } }
 
 /*-----------------------  -----------------------
 footer Section
@@ -307,13 +308,12 @@ footer Section
   .footer a {
     text-decoration: none; }
   .footer .upper_footer {
-    background-color: black;
-    padding: 30px 0 20px 0; }
+    background-color: #E9EAEF;
+    padding: 30px 0 30px 0; }
     .footer .upper_footer a {
-      color: white !important; }
+      color: black !important; }
     @media (min-width: 768px) {
       .footer .upper_footer {
-        background-color: white;
         padding: 12px 0 12px 0; }
         .footer .upper_footer a {
           color: black !important; } }
@@ -378,7 +378,8 @@ footer Section
           -ms-flex-direction: column;
               flex-direction: column;
       max-width: 550px;
-      text-align: center; }
+      text-align: center;
+      padding-top: 15px; }
       .footer .lower_footer .compatibility img {
         -webkit-box-ordinal-group: 3;
             -ms-flex-order: 2;
