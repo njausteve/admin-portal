@@ -30,9 +30,11 @@ activate();
 function activate(){
 
   vm.user = _getUser();
-  if(vm.user){
-    vm.username = "User Name";
-    vm.UserId = "EMP ID";
+  if(!vm.user.emailId || !vm.user.userName){
+    vm.user.userName = "User Name";
+    vm.user.emailId = "Email Id";
+  }else if(vm.user.userId == null){
+    $state.go('error', {'errorData': null});
   }
 
 }
@@ -74,9 +76,9 @@ function _getUser() {
 
   function getUserFailed(error) {
 
-// if(error.status != 404 && error.status != 500){
-//   $state.go('error', {'errorData': error});
-// }
+if(error.status != 404 && error.status != 500){
+  $state.go('error', {'errorData': error});
+}
 
 }
 }

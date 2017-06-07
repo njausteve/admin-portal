@@ -103,6 +103,7 @@
 
 .banner-content{
   max-width: 500px;
+   margin-left: 10%;
 }
 
 .banner-content h1{
@@ -173,12 +174,14 @@ background: linear-gradient(to left, #53346D, #000000);
 
 .banner-content-sm{
   max-width: 405px;
+ 
 }
 
 .banner-content-sm h1{
   font-size: 1.5em;
   font-weight: 300;
-  margin: 40px 0 10px 0;
+  margin: 35px 0 10px 0;
+  line-height: inherit;
 }
 .banner-content-sm h4{
   font-size: 1em;

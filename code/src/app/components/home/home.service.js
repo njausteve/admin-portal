@@ -16,7 +16,8 @@
 
     var service = {
       getTaggedDevices: _getTaggedDevices,
-      untaggDevice: _untaggDevice
+      untaggDevice: _untaggDevice,
+      getUserDevicePolicy: _getUserDevicePolicy
     };
 
     return service;
@@ -56,6 +57,22 @@
       }
 
       function untaggDeviceFailed(error) {
+        //ignore... handlled in implemetation...
+        return $q.reject(error);
+      }
+    }
+    // Get Devices Policy
+    function _getUserDevicePolicy() {
+
+      return $http.post( constants.apiHost + 'getUserDevicePolicy')
+        .then(getUserDevicePolicyComplete)
+        .catch(getUserDevicePolicyFailed);
+
+      function getUserDevicePolicyComplete(response) {
+        return response.data;
+      }
+
+      function getUserDevicePolicyFailed(error) {
         //ignore... handlled in implemetation...
         return $q.reject(error);
       }

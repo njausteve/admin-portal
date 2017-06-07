@@ -363,6 +363,7 @@ Support Section
         h4 {
             margin-top: 15px;
             margin-bottom: 20px;
+            line-height: inherit;
         }
     }
     .support_icon {
@@ -428,23 +429,26 @@ footer Section
             color: white !important;
         }
         @media (min-width: 768px) {
-            padding: 12px 0 10px 0;
+            padding: 11px 0 7px 0;
         }
         .copyright {
             order: 2;
             max-width: 550px;
             text-align: center;
-            img {
-                margin-bottom: 20px;
+            svg {
+                margin-bottom: 0px;
             }
             h4 {
-                margin-bottom: 30px;
+                margin-bottom: 20px;
+            }
+            img{
+                    margin-bottom: 15px;
             }
             @media(min-width:768px) {
                 order: 1;
                 text-align: left;
                 img {
-                    margin-bottom: 10px;
+                    margin-bottom: 7px;
                 }
                 h4 {
                     margin-bottom: initial;
@@ -458,6 +462,9 @@ footer Section
             max-width: 550px;
             text-align: center;
             padding-top: 15px;
+             @media (min-width: 768px) {
+                   padding-top: 0px;
+             }
             img {
                 order: 2;
                 margin-bottom: 20px;
@@ -472,7 +479,7 @@ footer Section
                 text-align: right;
                 img {
                     order: 1;
-                    margin-bottom: 8px;
+                    margin-bottom: 6px;
                     align-self: flex-end;
                 }
                 h4 {
@@ -544,7 +551,7 @@ Modal Section
             background: white;
             padding: 25px;
             display: inline-block;
-            border-radius: 3px;
+            border-radius: 5px;
             font-weight: 400;
             position: relative;
             @media (min-width: 768px) {
@@ -654,5 +661,71 @@ Modal Section
     }
     img {
         margin-left: 35px;
+    }
+}
+
+// modal identity
+.identity {
+    img {
+        display: block;
+        margin: auto;
+        padding-left: 20px;
+        @media screen and (min-width: 768px) {
+            float: right;
+            margin-top: 80px;
+        }
+    }
+    table {
+        h1 {
+            background: -webkit-linear-gradient(to right, #133778, #08c9ab);
+            background: linear-gradient(to right, #133778, #08c9ab);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center !important;
+            margin-top: 0px;
+            
+        }
+    }
+    @media screen and (min-width: 768px) {
+        float: left;
+    }
+}
+
+// device policy modal
+.device-policy {
+    img {
+        display: block;
+        margin: auto;
+        @media screen and (min-width: 768px) {
+            float: right;
+        }
+    }
+    h1 {
+        background: -webkit-linear-gradient(to right, #133778, #08c9ab);
+        background: linear-gradient(to right, #133778, #08c9ab);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center !important;
+        @media screen and (min-width: 768px) {
+          text-align: left!important;
+        }
+    }
+    h3 {
+        padding: 15px;
+        margin-bottom: 0px;
+    }
+    ul {
+        list-style-type: none;
+    }
+    li:before {
+        /* the custom styled bullets */
+        content: "";
+        margin-right: 10px;
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background-color: #14CCBB;
+        border-radius: 50%;
+        margin-bottom: 2px;
     }
 }

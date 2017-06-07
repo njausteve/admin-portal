@@ -35,6 +35,8 @@ vm.taggedDevices = [];
 
 vm.untaggDevice = _untaggDevice;
 
+vm.devicePolicy = '';
+
 
 // Temp settings for taggedDevices
 // vm.taggedDevices = [
@@ -93,7 +95,7 @@ vm.users = [
 
 //temp User value 528707
 var user = {
-  userID:"318153"
+  userID:"318152"
 };
 
 activate();
@@ -103,6 +105,7 @@ function activate(){
   _getTaggedDevices(user);
   _detectDevice();
   _showDownloadButton();
+  _getUserDevicePolicy();
 }
 
 ///////////////////////////////////////////////////////////////
@@ -245,6 +248,33 @@ return homeService.untaggDevice(data).then(function(response){
 }
 );
 }
+
+function _getUserDevicePolicy() {
+// it always return a promise
+return homeService.getUserDevicePolicy().then(function(response){
+  if(response.statusCode == 100){
+    toastr.error('Error \''+ response.statusMsg +'\' while getting Devices Policy.', 'Opppss...', {
+      closeButton: true,
+      timeOut : 10000,
+      progressBar: false,
+      allowHtml: true
+    });
+  }
+  vm.devicePolicy = response.data.total || '5';
+  return vm.devicePolicy;
+})
+.catch(function(error){
+  if(error.status != 404 && error.status != 500){
+    toastr.error('Error '+ error.status +' while getting Devices Policy.', 'Opppss...', {
+      closeButton: true,
+      timeOut : 10000,
+      progressBar: false,
+      allowHtml: true
+    });
+  }}
+  );
+}
+
 
 }
 })();
