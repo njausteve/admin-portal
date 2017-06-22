@@ -10,21 +10,27 @@
   describe('HomeController', function(){
     var vm,
         deviceDetector,
-        homeService;
+        homeService,
+        toastrConfig,
+        toastr;
 
 
-    beforeEach(module('ssp'));
+    beforeEach(angular.mock.module('ssp'));
+    beforeEach(angular.mock.module('toastr'));
     beforeEach(angular.mock.module('ng.deviceDetector'));
 
 
-    beforeEach(inject(function(_$controller_, _deviceDetector_, _homeService_) {
+    beforeEach(inject(function(_$controller_,  _deviceDetector_, _homeService_, _toastr_, _toastrConfig_ ) {
 
-      spyOn(_homeService_, 'getUser').and.callThrough();
+      //spyOn(_homeService_, 'getUser').and.callThrough();
       spyOn(_homeService_, 'getTaggedDevices').and.callThrough();
 
       vm = _$controller_('HomeController');
       homeService = _homeService_;
       deviceDetector = _deviceDetector_;
+      toastrConfig= _toastrConfig_;
+      toastr= _toastr_;
+
 
     }));
 

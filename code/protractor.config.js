@@ -8,20 +8,20 @@
 
 // A configuration file.
 exports.config = {
-  // Capabilities to be passed to the webdriver instance.
-  capabilities: {
-    'browserName': 'chrome'
-  },
+    // Capabilities to be passed to the webdriver instance.
+    capabilities: {
+        'browserName': 'chrome'
+    },
 
-  debug: true,
+    debug: true,
 
-  // Spec patterns are relative to the current working directory when
-  // protractor is called.
-  specs: ['./e2e/**/*.js'],
+    // Spec patterns are relative to the current working directory when
+    // protractor is called.
+    specs: ['./e2e/**/*.js'],
 
-  // Options to be passed to Jasmine-node.
-  jasmineNodeOpts: {
-    showColors: true,
-    defaultTimeoutInterval: 30000
-  }
+    // Options to be passed to Jasmine-node.
+    jasmineNodeOpts: {
+        showColors: true,
+        defaultTimeoutInterval: 30000
+    }
 };

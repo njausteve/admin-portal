@@ -13,7 +13,7 @@
 
 
     /** @ngInject */
-    function faqController() {
+    function faqController(constants) {
 
         var vm = this;
 
@@ -24,32 +24,32 @@
         vm.faqList = [
 
             {
-                question: 'What is the programme applicable to ? will i get access to all available Tcs Enterprise  Applications on my device  ?',
-                answer: 'All employees of TCS and its subsidiaries globally may choose to register for this program. The TCS App store provides a list of enterprise applications you may download. Access to Enterprise Application is role based. For example, time sheets will be enabled for all employees whereas Smart Sales will be available to employees in key sales and client facing roles.'
+                question: 'How do I download '+ constants.application_name+ '?',
+                answer: 'On mobile browser, go to url : apps.ultimatix.net and tap on download.'
             },
             {
-                question: 'How will my device be impacted ?',
-                answer: 'Id nullam definitionem sed, eu malorum copiosae eum. Amet appareat te vel. Nibh atomorum id sed. Te ius homero incorrupte adversarium, labitur detraxit torquatos pro ut.'
+                question: 'What credentials should I use to log-in to  '+ constants.application_name+ '?',
+                answer: 'Your Ultimatix credentials.'
             },
             {
-                question: 'What are the possible implications if I decide not to enroll ? ',
-                answer: 'Usu ea cibo solum appetere, est vitae denique salutandi no. Deleniti complectitur per cu. Nulla evertitur contentiones eos ex, ad stet congue qui, nam quis facer in. Per at sint dicat eirmod. Vim id sale brute equidem.'
+                question: 'What is a tagged device?  ',
+                answer: 'Whenever a user logs into  '+ constants.application_name+ ' through any mobile device, the device gets tagged to the respective user and can be viewed in the device list.'
             },
             {
-                question: 'I am facing problems with registration. How can I get help ?',
-                answer: 'Has te aeque causae animal. Vim tota persius noluisse in, saepe aliquip ea sed, explicari referrentur vim et. Ei case accusam eam, dolor mentitum liberavisse id duo'
+                question: 'How does a device get tagged?',
+                answer: 'Whenever a user logs into  '+ constants.application_name+ ' from a mobile device for the first time, the device gets tagged to the respective user and can be viewed in the device list.'
             },
             {
-                question: 'What happens if I choose to discontinue to be a part of the program ?',
-                answer: 'Eam no liber adipisci sadipscing, mel ex aliquid offendit tacimates. Quo at nulla equidem, autem assum senserit has an. Quod reque quo cu, vidit inani referrentur ea sit. Laoreet suscipit consetetur eos ea, utamur delectus cu eam.'
+                question: 'How many devices can I tag? Or What is the device policy?',
+                answer: 'Each user can tag up to five devices.'
             },
             {
-                question: 'Is there any restrictions on how many times I will be allowed to access through my device ?',
-                answer: ' sit in integre saperet aliquando. Et quis eros erroribus mea, mea liber neglegentur ex. Aliquam mediocrem an vix, an veniam nemore ornatus usu.'
+                question: 'What happens when I try to tag more devices than the maximum allowed limit? Or What do I do when I get You have exhausted the limit of registering maximum devices allowed error?',
+                answer: 'You have exhausted the limit of registering maximum devices allowed appears when a user has exhausted the maximum allowed limit (i.e, five devices) and tries to log into  '+ constants.application_name+ ' from another device. To log in to  '+ constants.application_name+ ' through this device, user should un-tag one of his devices before logging in through this.'
             },
             {
-                question: 'What credentials should I use to log-in into Appmart ?',
-                answer: 'You’re Ultimatix Credentials.'
+                question: 'How to un-tag a device?',
+                answer: 'There are two ways to un-tag a device: 1.  On the native application, Menu Drawer>> Device Management>> Un-tag the desired devices 2.  On the Self Service Portal, Device Management >> Un-tag the desired devices'
             }
         ];
     }

@@ -38,12 +38,11 @@ help and suport jumbotron
     background: #EEEEEE;
     padding-bottom: 50px;
     padding-top: 20px;
-    h2 {
+    h1 span {
         background: -webkit-linear-gradient(to right, #133778, #08c9ab);
         background: linear-gradient(to right, #133778, #08c9ab);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        font-size: 2.125em;
         font-weight: 300;
     }
     .faq-list {
@@ -83,20 +82,25 @@ help and suport jumbotron
             margin-bottom: 0px;
         }
         .panel-heading {
-            padding: 15px 20px 0px;
+            padding: 15px 10px 0px 20px;
             margin-bottom: 15px;
             @media only screen and (min-width: 768px) {
                 margin-bottom: 0px;
                 padding-bottom: 15px;
                 height: 44px;
-            }
+
+           }
         }
+
         .panel-body {
-            padding: 0px 20px 20px;
+            padding: 5px 60px 15px 20px ; 
             border-top: 0px !important;
             font-size: 0.83em;
-            font-weight: 300;
+            font-weight: 500;
             color: #2c333f;
+                 @media only screen and (max-width: 576px) {
+                        padding: 5px 20px 15px 20px ; 
+                  }
         }
         i:hover,
         active {
@@ -272,6 +276,7 @@ what users say Section
         }
         li {
             background-color: #76BCB4;
+            margin: 0 5px;
         }
         .active {
             background-color: #0F587B;
@@ -410,6 +415,7 @@ footer Section
                 text-align: right;
                 border-right: 1px solid $dark-gray;
                 margin: initial;
+                margin-bottom: 0;
             }
         }
         .policy {
@@ -441,8 +447,8 @@ footer Section
             h4 {
                 margin-bottom: 20px;
             }
-            img{
-                    margin-bottom: 15px;
+            img {
+                margin-bottom: 15px;
             }
             @media(min-width:768px) {
                 order: 1;
@@ -462,9 +468,9 @@ footer Section
             max-width: 550px;
             text-align: center;
             padding-top: 15px;
-             @media (min-width: 768px) {
-                   padding-top: 0px;
-             }
+            @media (min-width: 768px) {
+                padding-top: 0px;
+            }
             img {
                 order: 2;
                 margin-bottom: 20px;
@@ -535,6 +541,14 @@ Modal Section
                 animation: scaleForward .5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
             }
         }
+        .terms{
+            h4{
+                ol{
+                    padding:15px;
+                    text-align:justify;
+                }
+            }
+        }
     }
     .modal-background {
         cursor: pointer;
@@ -560,7 +574,7 @@ Modal Section
                 max-width: 80vw;
             }
             * {
-                color: black !important;
+                color: #2a2a2a !important;
                 text-align: left;
                 font-weight: 300;
             }
@@ -662,6 +676,14 @@ Modal Section
     img {
         margin-left: 35px;
     }
+    h1 span {
+        background: -webkit-linear-gradient(to right, #133778, #08c9ab);
+        background: linear-gradient(to right, #133778, #08c9ab);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center !important;
+        margin-top: 0px;
+    }
 }
 
 // modal identity
@@ -676,14 +698,13 @@ Modal Section
         }
     }
     table {
-        h1 {
+        h1 span {
             background: -webkit-linear-gradient(to right, #133778, #08c9ab);
             background: linear-gradient(to right, #133778, #08c9ab);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-align: center !important;
             margin-top: 0px;
-            
         }
     }
     @media screen and (min-width: 768px) {
@@ -693,29 +714,63 @@ Modal Section
 
 // device policy modal
 .device-policy {
+   
+
+    h1 {
+        margin-top: 0px;
+        margin-bottom: 11px;
+        text-align: center !important;
+        @media screen and (min-width: 768px) {
+            text-align: left!important;
+        }
+        
+    }
     img {
         display: block;
         margin: auto;
+   
         @media screen and (min-width: 768px) {
             float: right;
+            margin-left:10px;
+         
+             margin-top: -30px;
+            margin-right:30px;
         }
+
     }
-    h1 {
+    h1 span {
         background: -webkit-linear-gradient(to right, #133778, #08c9ab);
         background: linear-gradient(to right, #133778, #08c9ab);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center !important;
-        @media screen and (min-width: 768px) {
-          text-align: left!important;
-        }
+        
     }
     h3 {
-        padding: 15px;
-        margin-bottom: 0px;
+        margin-top: 11px;
+        margin-bottom: 11px;
+        font-size: 14px;
+        font-weight: 400 !important;
+                
+    }
+  
+    h2 {
+        margin-top: 9px;
+        margin-bottom: 9px;
+        font-size: 16px;
+        color: #2a2a2a !important;
+        font-weight: 400 !important;
+
     }
     ul {
         list-style-type: none;
+        padding-left: 10px;
+    }
+    li {
+        margin-bottom: 5px;
+        margin-top:5px;
+        font-size: 13px;
+        font-weight: 400 !important;
     }
     li:before {
         /* the custom styled bullets */
@@ -726,6 +781,15 @@ Modal Section
         height: 5px;
         background-color: #14CCBB;
         border-radius: 50%;
-        margin-bottom: 2px;
+     
     }
+    .bg-policy{
+        background-color: #faefbc;
+        display: inline-block;
+        font-size: 12px !important;
+       font-weight: 400 !important;
+        border-radius: 3px;
+        margin:0px;
+        padding: 12px 20px;
+        }
 }
