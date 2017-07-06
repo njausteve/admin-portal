@@ -1,0 +1,249 @@
+/*Plain CSS should go here*/
+
+
+/*Common Heading Style*/
+
+.heading {
+    font-size: 2.125em;
+    font-weight: 300;
+    margin: 35px 0 20px 0;
+}
+
+.heading span {
+    position: relative;
+    background: -webkit-gradient(linear, left top, right top, from(#133778), to(#08c9ab));
+    background: linear-gradient(to right, #133778, #08c9ab);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.logout h4:hover {
+    color: #10cda7 !important;
+}
+
+
+/*About Section*/
+
+.about-container {
+    background-color: white;
+    padding-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+    .about-container {
+        padding-bottom: 0px;
+    }
+}
+
+.about-div {
+    max-width: 678px;
+}
+
+@media (min-width: 768px) {
+    .about-div {
+        max-width: 400px;
+    }
+}
+
+.about-row {
+    padding: initial;
+}
+
+@media (min-width: 768px) {
+    .about-row {
+        padding: 20px 0 35px 0;
+    }
+}
+
+.about-img {
+    max-width: 200px;
+    margin: 50px 0 10px 0;
+}
+
+@media (min-width: 768px) {
+    .about-img {
+        max-width: 160px;
+        margin: 0px;
+    }
+}
+
+.about-section {
+    max-width: 500px;
+    text-align: center;
+    margin: auto;
+}
+
+@media (min-width: 768px) {
+    .about-section {
+        text-align: left;
+    }
+}
+
+.about-heading-content {
+    max-width: 1140px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+@media (min-width: 786px) {
+    .about-heading-content {
+        margin-bottom: 25px;
+    }
+}
+
+.about-heading-content,
+.about-section {
+    font-size: 1em;
+    font-weight: 500;
+    color: #2c333f !important;
+}
+
+.about-heading {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #2c333f !important;
+    margin-bottom: 10px;
+}
+
+
+/*Main Banner*/
+
+.banner {
+    background: #efefef url("../images/bg.jpg") no-repeat center center;
+    height: 445px;
+}
+
+.height-inherit {
+    height: inherit;
+}
+
+.banner-content {
+    max-width: 500px;
+    margin-left: 10%;
+}
+
+.banner-content h1 {
+    font-size: 2em;
+    font-weight: 300;
+    margin: 20px 0 12px 0;
+}
+
+.banner-content h3 {
+    font-weight: 300;
+    margin: 0 0 20px 0;
+}
+
+.banner-content h4 {
+    font-weight: 400;
+    margin: 0 0 0 0;
+}
+
+.banner-content h5 {
+    font-weight: 400;
+    color: #778383 !important;
+    margin: 7px 0 12px 0;
+}
+
+.banner-line {
+    display: block;
+    opacity: 0.2;
+    border: none;
+    margin: 0 0 20px 0;
+    color: white;
+    height: 1px;
+    background: #F0F0F0;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #565656, #F0F0F0);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #565656, #F0F0F0);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.banner-img {
+    margin-bottom: 10px;
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.banner-sm-background {
+    background: #efefef;
+    height: 75vh;
+    min-height: 400px;
+    max-height: 800px;
+}
+
+.banner-sm {
+    background-image: url("../images/bg-small.png");
+    background-repeat: no-repeat;
+    background-position: 50% 75%;
+    height: inherit;
+    min-height: inherit;
+    max-height: inherit;
+    background-size: 55%;
+}
+
+.height-inherit-sm {
+    height: inherit;
+    min-height: inherit;
+    max-height: inherit;
+}
+
+.banner-content-sm {
+    max-width: 405px;
+}
+
+.banner-content-sm h1 {
+    font-size: 1.5em;
+    font-weight: 300;
+    line-height: inherit;
+}
+
+.banner-content-sm h4 {
+    font-size: 1em;
+    font-weight: 300;
+    margin: 10px 0 20px 0;
+}
+
+.download-btn {
+    display: inline-block;
+    border-radius: 3px;
+    color: #ffffff !important;
+    font-size: 1.15em;
+    background: #10cda7;
+    padding: 10px 15px 10px 15px;
+    border: solid #10cda7 1px;
+    text-decoration: none;
+    width: inherit;
+    max-width: 405px;
+    margin-bottom: 10px;
+}
+
+.download-btn svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.banner-sm-line {
+    display: block;
+    border: none;
+    width: 35%;
+    margin: auto;
+    color: transperent;
+    height: 1px;
+    background: black;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(black), to(white), color-stop(50%, black));
+    background: gradient(linear, 0 0, 100% 0, from(black), to(white), color-stop(50%, black));
+}
+
+.removeDev {
+    background-color: #10cda7;
+}
+
+.removeDev:hover {
+    background-color: #0ac3a7 !important;
+}
+
+.open {
+    font-weight: 600;
+}

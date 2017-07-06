@@ -1,0 +1,284 @@
+<!-- Banner Section -->
+<div class="hidden-sm-down banner">
+    <!-- Banner Section for md and lg  -->
+    <div class="container-fluid height-inherit">
+        <!-- Container div -->
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row justify-content-center height-inherit">
+            <!-- Row div -->
+            <div class="col-md-4" style="max-width: 350px;">
+                <!-- Positioning Balancing div -->
+            </div>
+            <div class="col-md-6 align-self-center banner-content">
+                <!-- Banner Content -->
+                <h1>Introducing <span style="font-weight: 600;">APPS</span> <br> <span style="font-size: 18px;">A one stop portal for mobile applications.</span></h1>
+                <h3>Simple. Secure. Superior.</h3>
+                <span class="banner-line"></span>
+                <div class="row">
+                    <div class="col-2 align-self-center">
+                        <img class="banner-img" src="./assets/images/mobile_banner.svg" width="512" alt="Download {{application_name}}">
+                    </div>
+                    <div class="col align-self-center">
+                        <div ng-show="!home.showDownloadButton">
+                            <h4>Open
+                            <span style="font-size:1.5em; color: #10cda7; font-style: italic; font-weight: 700;">{{application_name | lowercase}}.ultimatix.net</span></h4>
+                            <h5>to download on your smartphone or tablet</h5>
+                            <h5 style="color: #acc4c4 !important">Available on <img style="margin: 0 5px 5px 5px;" src="assets/images/android.svg" alt="Android logo" width="15" height="15"> <span style="color: #709090 !important">Android</span> <img style="margin: 0 5px 9px 5px;" src="assets/images/apple.svg"
+                                    alt="iOS logo" width="15" height="15"> <span style="color: #709090 !important">iOS</span></h5>
+                        </div>
+                        <div ng-show="home.showDownloadButton">
+                            <div ng-show="home.validOS">
+                                <a href="{{home.downloadURL}}">
+                                    <button class="download-btn align-self-center" style="max-height:60px;min-height:60px;">Download {{application_name}}
+                                        <svg fill="#FFFFFF" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                                            <path d="M0 0h24v24H0z" fill="none" />
+                                        </svg>
+                                    </button>
+                                </a>
+                            </div>
+                            <div ng-show="!home.validOS">
+                                <div ng-show="home.os=='ios'">
+                                    <h3>
+                                  {{application_name}} is only supported in <img style="margin: 0 5px 9px 5px;" src="assets/images/apple.svg" alt="iOS logo" width="22" height="22"> version {{home.supportedOsVersions[1].minVersion}} to {{home.supportedOsVersions[1].maxVersion}}
+                                </h3>
+                                </div>
+                                <div ng-show="home.os=='android'">
+                                    <h3>
+                                  {{application_name}} is only supported in <img style="margin: 0 5px 5px 5px;" src="assets/images/android.svg" alt="Android logo"
+                              width="22" height="22"> version {{home.supportedOsVersions[0].minVersion}} to {{home.supportedOsVersions[0].maxVersion}}
+                                </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end: Banner Content -->
+        </div>
+        <!--end: Row div -->
+    </div>
+    <!--end: Container div -->
+</div>
+<!--end: Banner Section for md and lg  -->
+<div class="hidden-md-up banner-sm-background">
+    <!-- Banner Section for sm and xm  -->
+    <div class="banner-sm">
+        <div class="container height-inherit-sm">
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row justify-content-center height-inherit-sm">
+                <div class="col-12 text-center align-self-start banner-content-sm">
+                    <h1>Introducing <span style="font-weight: 600;">APPS</span> <br> A one stop portal for mobile applications.</h1>
+                    <!--<span class="banner-sm-line"></span>-->
+                    <img src="./assets/images/mobile_title_border.png" alt="border" width=" 90%">
+                    <h4>Simple. Secure. Superior.</h4>
+                </div>
+                <div class="col-12 text-center align-self-end">
+                    <div ng-show="home.showDownloadButton">
+                        <div ng-show="home.validOS">
+                            <a href="{{home.downloadURL}}">
+                                <button class="download-btn align-self-center" style="max-height:60px;min-height:60px;">Download {{application_name}}
+                                    <svg fill="#FFFFFF" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                    </svg>
+                                </button>
+                            </a>
+                        </div>
+                        <div ng-show="!home.validOS">
+                            <div ng-show="home.os=='ios'">
+                                <h3>
+                              {{application_name}} is only supported in <img style="margin: 0 5px 9px 5px;" src="assets/images/apple.svg" alt="iOS logo" width="22" height="22"> version {{home.supportedOsVersions[1].minVersion}} to {{home.supportedOsVersions[1].maxVersion}}
+                            </h3>
+                            </div>
+                            <div ng-show="home.os=='android'">
+                                <h3>
+                              {{application_name}} is only supported in <img style="margin: 0 5px 5px 5px;" src="assets/images/android.svg" alt="Android logo"
+                          width="22" height="22"> version {{home.supportedOsVersions[0].minVersion}} to {{home.supportedOsVersions[0].maxVersion}}
+                            </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="!home.showDownloadButton">
+                        <h2>
+                      {{application_name}} is only avalibale on <img style="margin: 0 5px 9px 5px;" src="assets/images/apple.svg" alt="iOS logo" width="22" height="22"> &amp; <img style="margin: 0 5px 5px 5px;" src="assets/images/android.svg" alt="Android logo"
+                          width="22" height="22">
+                    </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end: Banner Section for sm and xm  -->
+<!--end: Banner Section -->
+<!--device management  section-->
+<div class="devices" ng-hide="home.taggedDevices.length == 0 || home.taggedDevices == null">
+    <div class="container-fluid">
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row justify-content-center text-center">
+            <div class="col-12 heading">
+                <span class="heading-not-ie" ng-if="home.browser!='ie'">Your Devices</span>
+                <span class="heading-ie" ng-if="home.browser=='ie'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="210" height="50" viewBox="0 0 0 0">
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                        <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                    </linearGradient>
+                <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">Your Devices</text>
+                </svg>
+            </span>
+            </div>
+        </div>
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row justify-content-center">
+            <div class="col-11 col-md-12 device_list">
+                <div class="row align-items-center" ng-repeat="device in home.taggedDevices">
+                    <div class="col-12 col-sm-8 device_details">
+                        <img class="align-self-center" ng-src="{{device.deviceType == 'Android' ? 'assets/images/android.svg' : 'assets/images/apple.svg'}}" alt="{{device.deviceType}}" width="22" height="22">
+                        <div>
+                            <span class="device_name">{{device.deviceName}} {{device.modelNo}}</span>
+                            <br>
+                            <span class="registration_date">Registered on {{device.enrolmentTime | dateFilter }}</span>
+                            <a href="" ng-click="home.openModal( 'modal',device)" id="tooltip" data-microtip=">{{device.deviceName}}" data-microtip-position="bottom">
+                                <svg style="display: inline-block;vertical-align: middle;" fill="#709090" width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-4 remove-btn">
+                        <button type="button" ng-click="home.openModal('confirmation', device, $index)" class="btn btn-default align-self-center">REMOVE</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-center align-content-center view_policy">
+                    <h4><a href="" ng-click="home.openModal('device-policy')">View Device Policy</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end: device management  section -->
+<!-- About Section -->
+<div class="container-fluid about-container">
+    <!-- About AppMart -->
+    <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row text-center justify-content-center">
+        <!-- Heading Section -->
+        <div class="col-12 heading">
+            <span class="heading-not-ie" ng-if="home.browser!='ie'">About {{application_name}}</span>
+            <span class="heading-ie" ng-if="home.browser=='ie'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="250" height="50" viewBox="0 0 0 0">
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                        <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                    </linearGradient>
+                <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">About {{application_name}}</text>
+                </svg>
+
+            </span>
+        </div>
+        <div class="col-12 about-heading-content">TCS endeavors to give early TCSers the power and ability to collaborate, ideate and innovate without being restricted to the confines of their work desk. One of the significant benefits is the flexibility and comfort of using your own device. The {{application_name}} is the app catalog for all the TCs owned apps. It is widely used among associates to download the apps according to their requirement. The objective is to provide associates easy access to the TCS owned apps.
+        </div>
+    </div>
+    <!--end: Heading Section -->
+    <div class="row justify-content-center about-row">
+        <!-- About Content Section Row 1 -->
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-2 col-10 text-center align-self-center about-img">
+            <img src="./assets/images/home_tcs_apps_icon.svg" alt="Home for TCS apps" width="100%" height="100%">
+        </div>
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-4 col-12 about-div">
+            <div class="about-section">
+                <div class="about-heading">Home for TCS Apps</div>
+                <div>{{application_name}} is a one stop place to explore wide range of TCS mobile applications. It provides easy download and update of all applications to its users.
+                </div>
+            </div>
+        </div>
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-2 col-10 text-center align-self-center about-img">
+            <img src="./assets/images/multiple_device_policy_icon.svg" alt="Multiple Device Policy" width="100%" height="100%">
+        </div>
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-4 col-12 about-div">
+            <div class="about-section">
+                <div class="about-heading">Multiple Device Policy</div>
+                <div>{{application_name}} allows a user to register into it through five devices. It also provides user the facility to remove any of his devices through mobile application as well as web as web portal.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end: About Content Section Row 1 -->
+    <div class="row justify-content-center about-row">
+        <!-- About Content Section Row 2 -->
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-2 col-10 text-center align-self-center about-img">
+            <img src="./assets/images/fast_reliable_icon.svg" alt="Fast and Reliable" width="100%" height="100%">
+        </div>
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-4 col-12 about-div">
+            <div class="about-section">
+                <div class="about-heading">Fast and Reliable</div>
+                <div>Built using the latest tech stack, {{application_name}} works smoothly on a variety of latest mobile devices.
+                </div>
+            </div>
+        </div>
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-2 col-10 text-center align-self-center about-img">
+            <img src="./assets/images/interactive_user_interface_icon.svg" alt="Interactive User Interface" width="100%" height="100%">
+        </div>
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-4 col-12 about-div">
+            <div class="about-section">
+                <div class="about-heading">Interactive User Interface </div>
+                <div>{{application_name}} is an easy-to-navigate app that delivers a suite of key functionalities and mobile services through an intuitive, entertaining user interface.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end About Content Section Row 2 -->
+</div>
+<!--end: About AppMart -->
+<!-- what users say section-->
+<div class="wus">
+    <div class="container-fluid">
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row justify-content-center text-center">
+            <div class="col-12 heading">
+                <span class="heading-not-ie" ng-if="home.browser!='ie'">What our users say</span>
+                <span class="heading-ie" ng-if="home.browser=='ie'">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="315" height="50" viewBox="0 0 0 0">
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                        </linearGradient>
+                        <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">What our users say</text>
+                      </svg>
+                </span>
+            </div>
+        </div>
+        <!--carousel : what users say -->
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" uib-carousel template-url="app/externalModules/ui-bootstrap/carousel-template.html" active="home.active" interval="home.myInterval" no-wrap="home.noWrapSlides">
+            <div uib-slide template-url="app/externalModules/ui-bootstrap/carousel-slide.html" ng-repeat="user in home.users " index="user.id">
+                <div class="row justify-content-center wus-comment">
+                    <div class="col-md-3 col-lg-3 profile_pic" style=" background: url('{{user.image}}') no-repeat center center;">
+                    </div>
+                    <div class="col-md-9 col-lg-9 user_comments">
+                        <svg class="pull-left" version="1.1" xmlns="http://www.w3.org/2000/svg" width="26px" height="22px" viewBox="0 0 26 22">
+                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.7358" y1="10.8057" x2="24.3604" y2="10.8057">
+                                <stop offset="0" style="stop-color:#253A76" />
+                                <stop offset="1" style="stop-color:#3CBCA5" />
+                            </linearGradient>
+                            <path fill="url(#SVGID_1_)" d="M10.989,0.654V2.09c-2.16,1.066-3.678,2.304-4.553,3.712C5.562,7.21,5.125,9.104,5.125,11.482
+                                    c0,0.656,0.088,1.073,0.267,1.251C5.569,12.912,5.986,13,6.642,13c1.203,0,2.229,0.39,3.076,1.169s1.271,1.729,1.271,2.851
+                                    c0,1.066-0.396,1.989-1.189,2.769s-1.736,1.169-2.83,1.169c-1.832,0-3.329-0.744-4.491-2.235
+                                    c-1.163-1.49-1.743-3.425-1.743-5.804c0-2.898,0.957-5.489,2.871-7.772C5.521,2.863,7.981,1.366,10.989,0.654z M24.36,0.654V2.09
+                                    c-2.133,1.066-3.643,2.317-4.531,3.753s-1.334,3.316-1.334,5.64c0,0.629,0.082,1.039,0.246,1.23S19.315,13,19.972,13
+                                    c1.23,0,2.27,0.39,3.117,1.169s1.271,1.729,1.271,2.851c0,1.066-0.396,1.989-1.189,2.769s-1.736,1.169-2.83,1.169
+                                    c-1.832,0-3.328-0.744-4.49-2.235c-1.162-1.49-1.744-3.425-1.744-5.804c0-2.898,0.951-5.489,2.852-7.772
+                                    C18.858,2.863,21.325,1.366,24.36,0.654z" />
+                        </svg>
+                        <h4>
+                            {{user.comment}}
+                        </h4>
+                        <p id="wus_name">~{{user.name}}
+                            <br>
+                            <span>{{user.title}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end :  carousel-->
+    </div>
+</div>
+<!--end: what users say-->

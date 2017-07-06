@@ -1,0 +1,89 @@
+<div style="box-shadow: -2px 0px 40px 1px #898989, 2px 0px 40px 1px #898989; max-width: 1525px;min-height: 100vh; margin:auto;background-color: white">
+    <!-- Header Section-->
+    <header ng-cloak>
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-btn navbar-toggle pull-left" ng-click="main.expandContent('nav'); ">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span>
+<svg fill="#729090" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 0h24v24H0z" fill="none"/>
+<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+</svg>
+</span>
+                    </button>
+                    <button type="button" class="navbar-btn navbar-toggle pull-right" ng-click="main.expandContent('prof');">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+<title>user_icon</title>
+<path fill="#729090" d="M21.333 10.667c0 2.946-2.388 5.333-5.333 5.333s-5.333-2.388-5.333-5.333c0-2.946 2.388-5.333 5.333-5.333s5.333 2.388 5.333 5.333z"></path>
+<path fill="#729090" d="M16 18.667c-8.133 0-10.667 5.333-10.667 5.333v2.667h21.333v-2.667c0 0-2.533-5.333-10.667-5.333z"></path>
+</svg>
+          </span>
+                    </button>
+                    <a ng-click="main.clicked()" ui-sref="main.home">
+                        <img class="navbar-brand logo hidden-xs-down" src="assets/images/ultimatix_logo.png" alt="Ultimatix" style="height: 55px;width: 155px;">
+                        <img class="navbar-brand logo appmart-logo" src="assets/images/appmart.png" alt="{{application_name}}" style="height: 48px;width: 90px; margin-top: 8px;">
+                    </a>
+                </div>
+                <div class="pull-right hidden-sm-down ult_profile">
+                    <div class="row justify-content-center">
+                        <div class="col align-self-center" style="max-width: 60px;margin-left:-60px;">
+                            <img src="assets/images/user.svg" alt="profile_pic" width="40" height="40">
+                        </div>
+                        <div class="col align-self-center" style="min-width:150px; margin-left:22px;-webkit-margin-start: 0px;-moz-margin-start: 0px;">
+                            <h4 class="ng-cloak">{{main.user.userName}} ( {{main.user.userId}})</h4>
+                            <h4 class="ng-cloak">{{main.user.emailId}}</h4>
+                        </div>
+                        <div class="align-self-center" style="margin-left:22px;-webkit-margin-start: 0px;-moz-margin-start: 0px;text-align: right; display: inline-block; vertical-align:middle; ">
+                            <a style="text-decoration:none;" ng-click="main.logout()" href="" id="uam_modal">
+                                <svg style="  display: inline-block;vertical-align: middle;" fill="#9d9d9d" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" />
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="align-self-center logout" style="width: 75px;">
+                            <a style="text-decoration:none;" ng-click="main.logout()" href="" id="uam_modal">
+                                <h4 style="font-size: 15px; color: #9d9d9d !important;">Logout</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden-md-up" style="background-color:#F2F2F2; ">
+                <div class="collapse navbar-collapse" uib-collapse="main.isNavCollapsed">
+                    <div class="container ">
+                        <ul class="nav navbar-nav">
+                            <li><a style="color: #2f2f2f !important;" ng-click="main.clicked()" ui-sref="main.home.faq" ui-sref-active="active">Help &amp; Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse text-center profile_mobile" uib-collapse="main.isProfCollapsed ">
+                    <div class="container ">
+                        <img style="margin-top: 5px;" class="navbar-text" src="assets/images/user.svg" alt="Profile Pic" width="50" height="50">
+                        <p style="margin-top: 5px;" class="navbar-text ">{{main.user.userName}} ( {{main.user.userId}} )</p>
+                        <p style="margin-top: 5px;" class="navbar-text ">{{main.user.emailId}}</p>
+                        <p style="margin-top: 5px;">
+                            <a style="text-decoration:none;" ng-click="main.logout()" href="" id="uam_modal">
+                                <h4 style="font-size: 15px; color: #9d9d9d !important;">Logout</h4>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="hidden-sm-down navbar-inverse justify-content-center menu-navigation" style="background-color: #f2f2f6; border: 1px solid #e6e6ee;">
+            <div class="container">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="main.clicked()" ui-sref="main.home.faq" ui-sref-active="active">Help &amp; Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!--end: Header Section-->
+    <!-- UI view -->
+    <div ui-view></div>
+</div>

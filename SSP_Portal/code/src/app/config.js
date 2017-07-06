@@ -1,38 +1,51 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  angular
-  .module('ssp')
-  .config(config);
+    angular
+        .module('ssp')
+        .config(config);
 
-  /** @ngInject */
-  function config($logProvider, $ocLazyLoadProvider, cfpLoadingBarProvider) {
-    // Enable log
-    $logProvider.debugEnabled(true);
+    /** @ngInject */
+    function config($logProvider, $ocLazyLoadProvider, cfpLoadingBarProvider, $httpProvider, $compileProvider) {
 
+        // Enable log
+        $logProvider.debugEnabled(true);
 
-    //ocLazyLoding config
-    $ocLazyLoadProvider.config({
-      modules: [
-      // [0] test module
-      {
-        name: 'AboutModule',
-        files: ['app/components/about/about.controller.js', 'app/externalModules/angular-toastr.tpls.min.js', 'assets/css/external/angular-toastr.min.css']
-      },
-      {
-        name: 'DeviceDetailsModule',
-        files: ['app/components/deviceDetails/deviceDetails.controller.js']
-      }
-      ]
-    });
+        // Pushing Interceptor in Angular module
+        $httpProvider.interceptors.push('httpInterceptor');
 
-    $ocLazyLoadProvider.config({
-      debug: true
-    });
+        // ocLazyLoding config
+        $ocLazyLoadProvider.config({
+            modules: [
+                // Home module
+                {
+                    name: 'HomeModule',
+                    files: ['assets/css/app.css', 'assets/css/ie.css', 'assets/css/sass/appStyle.css', 'app/components/home/home.controller.js', 'app/components/faq/faq.controller.js', 'app/components/home/home.service.js', 'app/externalModules/ng-device-detector.min.js', 'app/externalModules/re-tree.min.js', 'app/externalModules/angular-toastr.tpls.min.js', 'app/externalModules/angular-touch.min.js', 'assets/css/external/angular-toastr.min.css']
+                },
+                // About module
+                {
+                    name: 'AboutModule',
+                    files: ['app/components/about/about.controller.js']
+                },
+                // Error module
+                {
+                    name: 'ErrorModule',
+                    files: ['app/components/error/error.controller.js']
+                }
+            ]
+        });
 
-    //loading bar config
-    cfpLoadingBarProvider.includeSpinner = false;
+        // ocLazyLoad debuging mode true/false
+        // set false or COMMENT this while building Production version
+        $ocLazyLoadProvider.config({
+            debug: false
+        });
 
-  }
+        // Loading bar config
+        cfpLoadingBarProvider.includeSpinner = true;
+
+        // white-listing URL protocols Specifically itms-services
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|itms-services):/);
+    }
 
 })();

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html ng-app="ssp">
+
+<head>
+    <base href="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="{{application_name}} SSP">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>Self Service Portals | Ultimatix Apps</title>
+    <!-- mobile meta -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-navbutton-color" content="#F9F9FB">
+    <meta name="apple-mobile-web-app-title" content="Ultimatix Apps">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#F9F9FB">
+    <meta name="application-name" content="Ultimatix Apps">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml?v=3">
+    <link rel="manifest" href="/favicon/manifest.json?v=3">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=3">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg?v=3" color="#5bbad5">
+    <link rel="icon" sizes="192x192" href="/favicon/android-chrome-192x192.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png?v=3">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png?v=3">
+    <link rel="shortcut icon" href="/favicon/favicon.ico?v=3">
+    <!-- Google-fonts Open-Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,700i" rel="stylesheet">
+    <!-- CSS -->
+    <!-- Custom Bootstrap CSS; without grid -->
+    <!-- New grid system is imported from Bootstrap 4 at assets/css/grid.css-->
+    <!-- build:css assets/css/style.min.css -->
+    <link rel="stylesheet" type="text/css" href="/bower_components/aos/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap_custom/css/bootstrap.css">
+    <link rel='stylesheet' type='text/css' href='/bower_components/angular-loading-bar/build/loading-bar.css' />
+    <link rel="stylesheet" type="text/css" href="/assets/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/sass/style.css" />
+    <!-- endbuild -->
+    <!-- Loading Bar and Spinner CSS -->
+    <style type="text/css">
+    #loading-bar .bar {
+        height: 2px;
+    }
+    
+    #loading-bar-spinner {
+        top: 50%;
+        left: 50%;
+    }
+    
+    #loading-bar-spinner .spinner-icon {
+        width: 35px;
+        height: 35px;
+        margin-left: -18px;
+        margin-top: -18px;
+    }
+    
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x- ng-cloak {
+        display: none !important;
+    }
+    </style>
+</head>
+
+<body style="background-color: #f2f2f7">
+    <!-- Siteminder Logout solution: Invisible on DOM -->
+    <input type="hidden" id="uam_logoutUrl" name="uam_logoutUrl" value="rest/logout" />
+    <input type="hidden" id="uam_appSessionOff" name="uam_appSessionOff" value="rest/logoutApp" />
+    <div id="uam_boxes" style="text-align: left"></div>
+    <a class="logout-home" ui-sref="main.home" href="#popup" id="uam_modal"></a>
+    <a class="logout-faq" ui-sref="main.home.faq" href="#popup" id="uam_modal"></a>
+    <!-- UI view -->
+    <div ui-view></div>
+    <!-- The snackbar to get latest improvement-->
+    <div id="snackbar" onclick="reload()">
+        <h3>Get latest improvement.
+            <svg fill="#FFFFFF" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+                <path d="M0 0h24v24H0z" fill="none" />
+            </svg>
+        </h3>
+    </div>
+</body>
+<!-- Angular libraries for application -->
+<!-- build:angularlibs assets/js/angularlibs.min.js -->
+<script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-animate/angular-animate.min.js"></script>
+<!-- custom UI bootstrap (Collapse + Carousel) -->
+<script type="text/javascript" src="/app/externalModules/ui-bootstrap/ui-bootstrap-custom-2.5.0.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="/bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+<script type="text/javascript" src='/bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
+<script type="text/javascript" src="/bower_components/aos/dist/aos.js"></script>
+<!-- endbuild -->
+<!-- Angular components -->
+<!-- build:appcomponents assets/js/appcomponents.min.js -->
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/config.js"></script>
+<script type="text/javascript" src="app/constants.js"></script>
+<script type="text/javascript" src="app/route.js"></script>
+<script type="text/javascript" src="app/run.js"></script>
+<script type="text/javascript" src="app/interceptor.js"></script>
+<script type="text/javascript" src="app/date.filter.js"></script>
+<!-- endbuild -->
+<script type="text/javascript">
+// Animation on Scroll initiate
+AOS.init();
+
+// Service worker registration code
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').then(function() {
+        console.log("Service worker registered.");
+    });
+    navigator.serviceWorker.addEventListener('controllerchange', function() {
+        // This fires when the service worker controlling this page // changes, eg a new worker has as skipped waiting and become the new active worker.
+        console.log("New version found!");
+        showSnackar();
+        // Get the snackbar DIV var
+        function showSnackar() {
+            var x = document.getElementById("snackbar");
+            // Add the "show" class to DIV
+            x.className = "show";
+            // After 8 seconds, remove the show class from DIV
+            setTimeout(function() {
+                x.className = x.className.replace("show", "");
+            }, 15000);
+        }
+    });
+}
+
+function reload() {
+    // Reload the browser
+    window.location.reload();
+}
+</script>
+<script src="https://authsit.ultimatix.net/logout/js/jquery-latest.pack.js" type="text/javascript"></script>
+<script src="app/externalModules/SMImport.js" type="text/javascript"></script>
+
+</html>

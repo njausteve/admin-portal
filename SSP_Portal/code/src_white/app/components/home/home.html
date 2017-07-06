@@ -1,0 +1,508 @@
+<!-- home content and nested faq view willl be loaded here-->
+<ui-view>
+    <!-- Banner Section -->
+    <div class="hidden-sm-down banner">
+        <!-- Banner Section for md and lg  -->
+        <div class="container-fluid height-inherit">
+            <!-- Container div -->
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row justify-content-center height-inherit">
+                <!-- Row div -->
+                <div class="col-md-4" style="max-width: 350px;">
+                    <!-- Positioning Balancing div -->
+                </div>
+                <div class="col-md-6 banner-content" style="margin-top: 60px;">
+                    <!-- Banner Content -->
+                    <h1 style="color: #2f2f2f !important;">Introducing <span style="font-weight: 600;">{{application_name}}</span> <br> <span style="font-size: 18px;">A one stop portal for mobile applications.</span></h1>
+                    <h3 style="color: #565656 !important;">Simple. Secure. Superior.</h3>
+                    <span class="banner-line"></span>
+                    <div class="row">
+                        <div class="col-2 align-self-center">
+                            <img class="banner-img" src="./assets/images/mobile_banner.svg" width="512" alt="Download {{application_name}}">
+                        </div>
+                        <div class="col align-self-center" style="padding-left: 0;">
+                            <div ng-show="!home.showDownloadButton">
+                                <h4 style="color: #565656 !important;font-size: 13px;    margin-bottom: 6px;">Open
+                            <span style="font-size:1.5em; color: #10cda7; font-style: italic; font-weight: 700;">apps.ultimatix.net</span> </h4>
+                                <h4 style="color: #565656 !important; font-size: 13px;">to download on your smartphone or tablet</h4>
+                                <h5 style="color: #565656 !important">Available on <img style="margin: 0 5px 5px 5px;" src="assets/images/android.svg" alt="Android logo" width="15" height="15"> <span style="color: #949494 !important">Android</span> <img style="margin: 0 5px 9px 5px;" src="assets/images/apple.svg"
+                                    alt="iOS logo" width="15" height="15"> <span style="color: #949494 !important">iOS</span></h5>
+                            </div>
+                            <div ng-show="home.showDownloadButton">
+                                <div ng-show="home.validOS">
+                                    <a href="{{home.downloadURL}}">
+                                        <button class="download-btn align-self-center" style="margin-left: 10px; max-width: 350px; max-height:60px;min-height:60px;">Download {{application_name}}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 141.732 141.732">
+                                                <path fill="#FFF" d="M120.674 125.138h-99.88v16.594h99.88v-16.594zm-1.655-66.362c-2.563-2.563-6.717-2.563-9.276 0L77.21 91.312V6.562C77.21 2.936 74.27 0 70.648 0c-3.624 0-6.56 2.938-6.56 6.563v84.75L31.99 59.218c-2.562-2.563-6.715-2.563-9.277 0-2.564 2.563-2.564 6.717 0 9.28L66.01 111.79c.15.154.313.3.48.438.076.062.155.112.234.176.094.064.186.142.278.206.098.063.192.114.286.174.088.054.174.105.266.153.1.056.198.1.298.146l.282.132c.1.04.196.072.296.105.104.038.207.078.312.11.1.028.197.05.297.075.107.023.213.06.323.078.115.02.23.033.346.055.097.015.19.03.288.042.43.042.865.042 1.295 0 .1-.01.19-.027.29-.042.113-.02.232-.03.343-.055.11-.02.218-.055.324-.078.103-.024.2-.047.3-.076.104-.032.206-.072.312-.11.102-.03.195-.063.295-.105.096-.04.19-.087.283-.132.1-.048.2-.092.297-.146.09-.048.177-.104.264-.153.1-.06.194-.11.288-.174.096-.064.19-.142.28-.206.077-.063.157-.113.233-.176.25-.204.48-.438.695-.67.076-.067.154-.132.23-.203l43.293-43.296c2.563-2.57 2.563-6.723 0-9.284" />
+                                            </svg>
+                                        </button>
+                                    </a>
+                                </div>
+                                <div ng-show="!home.validOS">
+                                    <div ng-show="home.os=='ios'">
+                                        <h3 style="color: #565656 !important;">
+                                  {{application_name}} is only supported in <img style="margin: 0 5px 9px 5px;" src="assets/images/apple.svg" alt="iOS logo" width="22" height="22"> version {{home.supportedOsVersions[1].minVersion}} to {{home.supportedOsVersions[1].maxVersion}}
+                                </h3>
+                                    </div>
+                                    <div ng-show="home.os=='android'">
+                                        <h3 style="color: #565656 !important;">
+                                  {{application_name}} is only supported in <img style="margin: 0 5px 5px 5px;" src="assets/images/android.svg" alt="Android logo"
+                              width="22" height="22"> version {{home.supportedOsVersions[0].minVersion}} to {{home.supportedOsVersions[0].maxVersion}}
+                                </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Banner Content -->
+            </div>
+            <!--end: Row div -->
+        </div>
+        <!--end: Container div -->
+    </div>
+    <!--end: Banner Section for md and lg  -->
+    <div class="hidden-md-up banner-sm-background">
+        <!-- Banner Section for sm and xm  -->
+        <div class="banner-sm">
+            <div class="container height-inherit-sm">
+                <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row justify-content-center height-inherit-sm">
+                    <div class="col-12 text-center align-self-start banner-content-sm">
+                        <h1 style="color: #2f2f2f !important;">Introducing <span style="font-weight: 600;">{{application_name}}</span> <br> A one stop portal for mobile applications.</h1>
+                        <!-- <span class="banner-sm-line"></span> -->
+                        <!-- <img src="./assets/images/mobile_title_border.png" alt="border" width=" 90%">
+ -->
+                        <h4 style="color: #565656 !important;">Simple. Secure. Superior.</h4>
+                    </div>
+                    <div class="col-12 text-center align-self-end">
+                        <div ng-show="home.showDownloadButton">
+                            <div ng-show="home.validOS">
+                                <a href="{{home.downloadURL}}">
+                                    <button class="download-btn align-self-center" style="width: 80vw; max-width: 400px; max-height:60px;min-height:60px;">Download {{application_name}}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 141.732 141.732">
+                                            <path fill="#FFF" d="M120.674 125.138h-99.88v16.594h99.88v-16.594zm-1.655-66.362c-2.563-2.563-6.717-2.563-9.276 0L77.21 91.312V6.562C77.21 2.936 74.27 0 70.648 0c-3.624 0-6.56 2.938-6.56 6.563v84.75L31.99 59.218c-2.562-2.563-6.715-2.563-9.277 0-2.564 2.563-2.564 6.717 0 9.28L66.01 111.79c.15.154.313.3.48.438.076.062.155.112.234.176.094.064.186.142.278.206.098.063.192.114.286.174.088.054.174.105.266.153.1.056.198.1.298.146l.282.132c.1.04.196.072.296.105.104.038.207.078.312.11.1.028.197.05.297.075.107.023.213.06.323.078.115.02.23.033.346.055.097.015.19.03.288.042.43.042.865.042 1.295 0 .1-.01.19-.027.29-.042.113-.02.232-.03.343-.055.11-.02.218-.055.324-.078.103-.024.2-.047.3-.076.104-.032.206-.072.312-.11.102-.03.195-.063.295-.105.096-.04.19-.087.283-.132.1-.048.2-.092.297-.146.09-.048.177-.104.264-.153.1-.06.194-.11.288-.174.096-.064.19-.142.28-.206.077-.063.157-.113.233-.176.25-.204.48-.438.695-.67.076-.067.154-.132.23-.203l43.293-43.296c2.563-2.57 2.563-6.723 0-9.284" />
+                                        </svg>
+                                    </button>
+                                </a>
+                            </div>
+                            <div ng-show="!home.validOS">
+                                <div ng-show="home.os=='ios'">
+                                    <h3 style="color: #565656 !important;">
+                              {{application_name}} is only supported in <img style="margin: 0 5px 9px 5px;" src="assets/images/apple.svg" alt="iOS logo" width="22" height="22"> version {{home.supportedOsVersions[1].minVersion}} to {{home.supportedOsVersions[1].maxVersion}}
+                            </h3>
+                                </div>
+                                <div ng-show="home.os=='android'">
+                                    <h3 style="color: #565656 !important;">
+                              {{application_name}} is only supported in <img style="margin: 0 5px 5px 5px;" src="assets/images/android.svg" alt="Android logo"
+                          width="22" height="22"> version {{home.supportedOsVersions[0].minVersion}} to {{home.supportedOsVersions[0].maxVersion}}
+                            </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="!home.showDownloadButton">
+                            <h2 style="color: #565656 !important;">
+                      {{application_name}} is only
+ avalibale on <img style="margin: 0 5px 9px 5px;" src="assets/images/apple.svg" alt="iOS logo" width="22" height="22"> &amp; <img style="margin: 0 5px 5px 5px;" src="assets/images/android.svg" alt="Android logo"
+                          width="22" height="22">
+                    </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end: Banner Section for sm and xm  -->
+    <!--end: Banner Section -->
+    <!--device management  section-->
+    <div class="devices" ng-hide="home.taggedDevices.length == 0 || home.taggedDevices == null">
+        <div class="container-fluid">
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row justify-content-center text-center">
+                <div class="col-12 heading">
+                    <span class="heading-not-ie" ng-if="home.browser!='ie'">Your Devices</span>
+                    <span class="heading-ie" ng-if="home.browser=='ie'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="210" height="50" viewBox="0 0 0 0">
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                        <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                    </linearGradient>
+                <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">Your Devices</text>
+                </svg>
+            </span>
+                </div>
+            </div>
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row justify-content-center">
+                <div class="col-11 col-md-12 device_list">
+                    <div class="row align-items-center" ng-repeat="device in home.taggedDevices">
+                        <div class="col-12 col-sm-8 device_details">
+                            <img class="align-self-center" ng-src="{{device.deviceType == 'Android' ? 'assets/images/android.svg' : 'assets/images/apple.svg'}}" alt="{{device.deviceType}}" width="22" height="22">
+                            <div>
+                                <span class="device_name">{{device.deviceName}} {{device.modelNo}}</span>
+                                <br>
+                                <span class="registration_date">Registered on {{device.enrolmentTime | dateFilter }}</span>
+                                <a href="" ng-click="home.openModal( 'modal',device)" id="tooltip" data-microtip=">{{device.deviceName}}" data-microtip-position="bottom">
+                                    <svg style="display: inline-block;vertical-align: middle;" fill="#709090" width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4 remove-btn">
+                            <button type="button" ng-click="home.openModal('confirmation', device, $index)" class="btn btn-default align-self-center">REMOVE</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center align-content-center view_policy">
+                        <h4><a href="" ng-click="home.openModal('device-policy')">View Device Policy</a></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end: device management  section -->
+    <!-- About Section -->
+    <div class="container-fluid about-container">
+        <!-- About AppMart -->
+        <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row text-center justify-content-center">
+            <!-- Heading Section -->
+            <div class="col-12 heading">
+                <span class="heading-not-ie" ng-if="home.browser!='ie'">About {{application_name}}</span>
+                <span class="heading-ie" ng-if="home.browser=='ie'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="250" height="50" viewBox="0 0 0 0">
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                        <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                    </linearGradient>
+                <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">About {{application_name}}</text>
+                </svg>
+
+            </span>
+            </div>
+            <div class="col-12 about-heading-content">TCS endeavors to give early TCSers the power and ability to collaborate, ideate and innovate without being restricted to the confines of their work desk. One of the significant benefits is the flexibility and comfort of using your own device. The {{application_name}} is the app catalog for all the TCs owned apps. It is widely used among associates to download the apps according to their requirement. The objective is to provide associates easy access to the TCS owned apps.
+            </div>
+        </div>
+        <!--end: Heading Section -->
+        <div class="row justify-content-center about-row">
+            <!-- About Content Section Row 1 -->
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-2 col-10 text-center align-self-center about-img">
+                <img src="./assets/images/home_tcs_apps_icon.svg" alt="Home for TCS apps" width="100%" height="100%">
+            </div>
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-4 col-12 about-div">
+                <div class="about-section">
+                    <div class="about-heading">Home for TCS Apps</div>
+                    <div>{{application_name}} is a one stop place to explore wide range of TCS mobile applications. It provides easy download and update of all applications to its users.
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-2 col-10 text-center align-self-center about-img">
+                <img src="./assets/images/multiple_device_policy_icon.svg" alt="Multiple Device Policy" width="100%" height="100%">
+            </div>
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-4 col-12 about-div">
+                <div class="about-section">
+                    <div class="about-heading">Multiple Device Policy</div>
+                    <div>{{application_name}} allows a user to register into it through five devices. It also provides user the facility to remove any of his devices through mobile application as well as web as web portal.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end: About Content Section Row 1 -->
+        <div class="row justify-content-center about-row">
+            <!-- About Content Section Row 2 -->
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-2 col-10 text-center align-self-center about-img">
+                <img src="./assets/images/fast_reliable_icon.svg" alt="Fast and Reliable" width="100%" height="100%">
+            </div>
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-4 col-12 about-div">
+                <div class="about-section">
+                    <div class="about-heading">Fast and Reliable</div>
+                    <div>Built using the latest tech stack, {{application_name}} works smoothly on a variety of latest mobile devices.
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-2 col-10 text-center align-self-center about-img">
+                <img src="./assets/images/interactive_user_interface_icon.svg" alt="Interactive User Interface" width="100%" height="100%">
+            </div>
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="col-md-4 col-12 about-div">
+                <div class="about-section">
+                    <div class="about-heading">Interactive User Interface </div>
+                    <div>{{application_name}} is an easy-to-navigate app that delivers a suite of key functionalities and mobile services through an intuitive, entertaining user interface.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end About Content Section Row 2 -->
+    </div>
+    <!--end: About AppMart -->
+    <!-- what users say section-->
+    <div class="wus">
+        <div class="container-fluid">
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="row justify-content-center text-center">
+                <div class="col-12 heading">
+                    <span class="heading-not-ie" ng-if="home.browser!='ie'">What our users say</span>
+                    <span class="heading-ie" ng-if="home.browser=='ie'">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="315" height="50" viewBox="0 0 0 0">
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                        </linearGradient>
+                        <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">What our users say</text>
+                      </svg>
+                </span>
+                </div>
+            </div>
+            <!--carousel : what users say -->
+            <div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" uib-carousel template-url="app/externalModules/ui-bootstrap/carousel-template.html" active="home.active" interval="home.myInterval" no-wrap="home.noWrapSlides">
+                <div uib-slide template-url="app/externalModules/ui-bootstrap/carousel-slide.html" ng-repeat="user in home.users " index="user.id">
+                    <div class="row justify-content-center wus-comment">
+                        <div class="col-md-3 col-lg-3 profile_pic" style=" background: url('{{user.image}}') no-repeat center center;">
+                        </div>
+                        <div class="col-md-9 col-lg-9 user_comments">
+                            <svg class="pull-left" xmlns="http://www.w3.org/2000/svg" width="26" height="22" viewBox="0 0 26 22">
+                                <linearGradient id="a" gradientUnits="userSpaceOnUse" x1=".736" y1="10.806" x2="24.36" y2="10.806">
+                                    <stop offset="0" stop-color="#253A76" />
+                                    <stop offset="1" stop-color="#3CBCA5" />
+                                </linearGradient>
+                                <path fill="url(#a)" d="M10.99.654V2.09C8.83 3.156 7.31 4.394 6.435 5.802c-.874 1.408-1.31 3.302-1.31 5.68 0 .656.087 1.073.266 1.25.177.18.594.268 1.25.268 1.203 0 2.23.39 3.076 1.17s1.27 1.728 1.27 2.85c0 1.066-.395 1.99-1.188 2.77s-1.736 1.168-2.83 1.168c-1.832 0-3.33-.744-4.49-2.235C1.315 17.233.735 15.298.735 12.92c0-2.9.957-5.49 2.87-7.773C5.522 2.863 7.982 1.367 10.99.654zm13.37 0V2.09c-2.133 1.066-3.643 2.317-4.53 3.753s-1.335 3.316-1.335 5.64c0 .63.082 1.04.246 1.23s.575.287 1.232.287c1.23 0 2.27.39 3.117 1.17s1.27 1.728 1.27 2.85c0 1.066-.396 1.99-1.19 2.77s-1.735 1.168-2.83 1.168c-1.83 0-3.327-.744-4.49-2.235-1.16-1.49-1.743-3.425-1.743-5.804 0-2.9.95-5.49 2.852-7.773 1.898-2.284 4.365-3.78 7.4-4.493z" />
+                            </svg>
+                            <h4>
+                            {{user.comment}}
+                        </h4>
+                            <p id="wus_name">~{{user.name}}
+                                <br>
+                                <span>{{user.title}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end :  carousel-->
+        </div>
+    </div>
+    <!--end: what users say-->
+</ui-view>
+<!---->
+<!-- support section -->
+<div class="support">
+    <div class="container-fluid text-center">
+        <div class="row justify-content-center text-center">
+            <div class="col-12 support_heading">
+                <span>Support</span>
+            </div>
+        </div>
+        <div class="row justify-content-center text-center support_statement">
+            <div class="col-md-6">
+                <h4>{{application_name}} support is here to help. <a ui-sref="main.home.faq">Learn more</a> and find resources that will help you with all of your queries.
+                </h4>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-sm-12 col-md-6 ">
+                <div class="row justify-content-center justify-content-md-end no-gutters">
+                    <div class="col-md-1 support_icon ">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 524.184 524.184" width="24" height="24">
+                            <path d="M483.606 75.31H40.542C18.34 75.31 0 93.65 0 115.852v292.48c0 22.2 18.34 40.542 40.542 40.542h443.064c22.2 0 40.542-18.34 40.542-40.542v-292.48c.965-22.202-17.376-40.542-40.542-40.542zm-151.55 197.883L500.982 142.88v261.59L332.058 273.194zM41.507 99.443h442.1c7.72 0 14.478 5.79 16.41 12.548L276.07 285.74c-8.688 6.758-23.167 6.758-30.89 0L24.133 113.92c1.93-7.72 8.688-14.478 17.375-14.478zM24.133 404.47V144.81l166.994 129.348L24.132 404.47zm17.375 22.202c-1.93 0-3.86 0-4.826-.965l174.717-136.105 19.306 15.444c8.688 6.757 19.306 9.653 29.924 9.653 10.618 0 22.2-2.897 29.924-9.654l21.237-16.41 176.646 137.07c-1.93.965-2.896.965-4.826.965h-442.1z" fill="#FFF" />
+                        </svg>
+                    </div>
+                    <a href="mailto:nagpur.appmart@tcs.com" style="text-decoration: none;">
+                        <h4>nagpur.appmart@tcs.com</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="row justify-content-center justify-content-md-start no-gutters">
+                    <div class="col-md-1 support_icon ">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.731 29.731" width="24" height="24">
+                            <path d="M23.895 29.73c-1.237 0-2.73-.31-4.374-.93-3.6-1.357-7.52-4.04-11.034-7.555C4.97 17.73 2.286 13.81.928 10.208-.307 6.933-.31 4.245.92 3.015c.178-.177.358-.367.544-.563 1.123-1.18 2.392-2.51 4.074-2.45C6.698.05 7.82.77 8.97 2.202c3.398 4.225 1.866 5.73.093 7.477l-.313.31c-.29.29-.838 1.632 4.26 6.73 1.664 1.664 3.083 2.882 4.217 3.62.714.463 1.99 1.165 2.515.64l.315-.317c1.744-1.77 3.25-3.296 7.473.1 1.43 1.15 2.15 2.27 2.198 3.432.07 1.68-1.27 2.953-2.452 4.075-.195.186-.385.366-.562.542-.61.612-1.588.92-2.82.92zM5.418 1c-1.195 0-2.274 1.136-3.23 2.14-.19.203-.377.4-.56.582-.917.916-.824 3.323.236 6.134 1.31 3.472 3.913 7.266 7.33 10.683 3.416 3.414 7.208 6.017 10.68 7.326 2.812 1.062 5.22 1.152 6.134.237.183-.183.38-.37.58-.56 1.028-.976 2.193-2.082 2.142-3.31-.035-.842-.65-1.75-1.825-2.694-3.52-2.83-4.503-1.832-6.135-.177l-.32.323c-.78.78-2.047.608-3.767-.51-1.193-.776-2.667-2.038-4.38-3.75-4.23-4.23-5.583-6.82-4.26-8.147l.32-.316c1.66-1.632 2.66-2.617-.17-6.138C7.244 1.65 6.338 1.036 5.495 1h-.078z" fill="#FFF" />
+                        </svg>
+                    </div>
+                    <a href="tel:1800 267 6563" style="text-decoration: none;">
+                        <h4>1800 267 6563
+
+                        </h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer section-->
+<div class="footer ">
+    <div class="upper_footer">
+        <!--upper footer -->
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-3 terms">
+                    <a href ng-click="home.openModal('terms-condition')">Terms of use</a>
+                </div>
+                <div class="col-md-3 policy">
+                    <a href ng-click="home.openModal('device-policy')">{{application_name}} Device Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end: upper footer -->
+    <!-- lower footer section -->
+    <div class="lower_footer">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6 align-self-center text-center copyright">
+                    <img src="assets/images/TCS_text_logo.svg" alt="Tata Consultancy Services" width="194" height="10">
+                    <h4>Copyright &copy; 2017 Tata Consultancy Services</h4>
+                </div>
+                <div class="col-md-6 align-self-center text-center compatibility">
+                    <img src="assets/images/TATA_logo.svg" alt="Tata" width="65" height="14">
+                    <h4><a href=" ">Browser and Display Compatibility</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end : lower footer -->
+</div>
+<!--end : footer-->
+<!-- Modal Section -->
+<div id="modal-container">
+    <div class="modal-background">
+        <div class="modal">
+            <div class="pull-right close-button">
+                <!-- Close button -->
+                <span ng-click="home.closeModal();">
+          <svg fill="#000000" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+          </svg>
+        </span>
+            </div>
+            <!--end: Close button -->
+            <div ng-show="home.modal.identity == 'terms-condition'" class="terms">
+                <!-- Modal content for Terms and Conditions -->
+                <h2>Copyright © 2017 Tata Consultancy Services.</h2>
+                <h3>All rights reserved.</h3>
+                <h4>
+                <ol>
+                  <li>
+                    I have read and undertake to abide by all relevant TCS policies and practices including but not limited to Tata Code of Conduct, Security Responsibilities for Users and Social Media Policy.
+                  </li> <br>
+                  <li>
+                    I undertake to abide by the terms and conditions of the Confidentiality and IP Protection Agreement signed by me while accessing TCS Enterprise Applications.
+                  </li> <br>
+                  <li>
+                    I consent to the incorporation of certain applications including security tools into my device before allowing me to access TCS Enterprise Applications through my own Device.
+                  </li> <br>
+                  <li>
+                    I acknowledge that TCS reserves all rights to set up necessary security controls including encryptions of the official content on my device.
+                  </li> <br>
+                  <li>
+                    I acknowledge that TCS will monitor and control all the official data stored on the device for data security purposes.
+                  </li>
+                </ol>
+                </h4>
+            </div>
+            <!--end: Modal content for Terms and Conditions -->
+            <div ng-show="home.modal.identity == 'device-policy'" class="device-policy">
+                <!-- Modal content for Device Policy -->
+                <h1>
+                    <span ng-hide="home.browser=='ie'">Device Policy</span>
+                    <span class="heading-ie" ng-show="home.browser=='ie'">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="300" height="50" viewBox="0 0 0 0">
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                        </linearGradient>
+                        <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">Device Policy</text>
+                      </svg>
+                    </span>
+                </h1>
+                <img src="./assets/images/Device_policy_icon.svg" alt="Interactive User Interface" width="180">
+                <h2>{{application_name}} allows you to log-in into app on up to {{home.devicePolicy}} devices.</h2>
+                <h3>You can choose any {{home.devicePolicy}} devices from the below list:-</h3>
+                <ul>
+                    <li>Android Smart Phone</li>
+                    <li>Android Tablet</li>
+                    <li>iPhone</li>
+                    <li>iPad</li>
+                </ul>
+                <h3 class="bg-policy" style="color: #26251c !important;">If you wish to log-in through a {{home.devicePolicy + 1}}th device, you need to first remove one of the {{home.devicePolicy}} registered devices from your device list.</h3>
+            </div>
+            <!--end: Modal content for Device Policy -->
+            <div ng-show="home.modal.identity == 'modal'" class="identity">
+                <!-- Modal for Device details -->
+                <img src="./assets/images/device_details_icon.svg" alt="Interactive User Interface" width="150">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th colspan="2">
+                                <h1>
+                                    <span ng-hide="home.browser=='ie'">Device Details</span>
+                                    <span class="heading-ie" ng-show="home.browser=='ie'">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="300" height="50" viewBox="0 0 0 0">
+                                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                                        <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                                        </linearGradient>
+                                        <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">Device Details</text>
+                                      </svg>
+                                    </span>
+                                </h1>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="details">Device Name</td>
+                            <td>{{home.modal.data.deviceName}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Device Model</td>
+                            <td>{{home.modal.data.modelNo}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Device Type</td>
+                            <td>{{home.modal.data.deviceType}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Device ID</td>
+                            <td>{{home.modal.data.deviceIdentifier | limitTo:3}}***{{home.modal.data.deviceIdentifier | limitTo:-3}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Device MAC</td>
+                            <td>{{home.modal.data.macAddress | limitTo:3}}***{{home.modal.data.deviceIdentifier | limitTo:-3}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Last login</td>
+                            <td>{{home.modal.data.lastLogin | dateFilter}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- end: Modal content for Device Details -->
+            <div ng-show="home.modal.identity == 'confirmation'" class="confirmation">
+                <!-- Modal for Remove device confirmation -->
+                <div>
+                    <div style="text-align: center !important;">
+                        <img src="./assets/images/interactive_user_interface_icon.svg" alt="Interactive User Interface" width="150">
+                        <br>
+                        <h1>
+                            <span ng-hide="home.browser=='ie'">Remove Device</span>
+                            <span class="heading-ie" ng-show="home.browser=='ie'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="240" height="50" viewBox="0 0 0 0">
+                                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                                        <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                                    </linearGradient>
+                                    <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">Remove Device</text>
+                                </svg>
+                            </span>
+                        </h1>
+                        <h3 style="font-weight: 600; color:#2a343d !important">"{{home.modal.data.deviceName}} {{home.modal.data.modelNo}}"</h3>
+                        <h4>
+                            will get removed and you will be logged out of {{application_name}} app.
+                        </h4>
+                        <h5>
+                            Please note, {{application_name}} will remain on your device.<br> On login same device will get registered again.
+                        </h5>
+                        <hr>
+                        <button class="btn removeDev" ng-click="home.untaggDevice(home.modal.data, home.modal.index)"><span style="color:white !important;">Remove Device</span> </button>
+                    </div>
+                </div>
+            </div>
+            <!-- end: Modal for Remove device confirmation -->
+        </div>
+    </div>
+</div>
+<!--end: Modal Section -->

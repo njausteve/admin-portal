@@ -1,11 +1,11 @@
 /**
  * (C) TATA Consultancy Services, 2017
+ * Highly Confidential and Inflammable also
  * AppMart SSP Portal
- * by Pirate
+ * by Stephen, Piyush & the Pirate
  */
-
 // Declaring gulp variable
-var gulp            = require('gulp'),
+var gulp        = require('gulp'),
 browserSync     = require('browser-sync'),
 reload          = browserSync.reload,
 $               = require('gulp-load-plugins')(),
@@ -71,6 +71,15 @@ gulp.task('clean:build', function (cb) {
     ], cb);
 });
 
+// Clean checkmarx folder
+gulp.task('clean:checkmarx', function (cb) {
+  del([
+    './_checkmarx/'
+    // if we don't want to clean any file we can use negate pattern
+    //'!dist/mobile/deploy.json'
+    ], cb);
+});
+
 
 
 
@@ -103,7 +112,7 @@ gulp.task('images', function() {
 
 // minify HTML
 gulp.task('minify-html', function() {
-  gulp.src(['./src/**/**/*.html'])
+  gulp.src(['./src/**/**/*.html', '!./src/bower_components/**/*.html'])
   .pipe($.bytediff.start())
   .pipe($.htmlmin({
     collapseWhitespace: true,
@@ -128,11 +137,15 @@ gulp.task('minify-index-html', function() {
 
 
 
-// // minify CSS
-// // minifying @src/assets/css only
+// minify CSS
+// minifying @src/assets/css only
 gulp.task('copy-css', function() {
-  gulp.src(['./src/assets/css/external/*'])
-  .pipe(gulp.dest('./_build/assets/css/external/'));
+  gulp.src(['./src/assets/css/**/*.css','!./src/assets/css/bootstrap_custom/**/*.css','!./src/assets/css/grid.css'])
+  .pipe($.bytediff.start())
+  .pipe($.autoprefixer(['last 2 versions']))
+  .pipe(cleanCSS())
+  .pipe($.bytediff.stop(bytediffFormatter))
+  .pipe(gulp.dest('./_build/assets/css/'));
 });
 
 
@@ -140,7 +153,7 @@ gulp.task('copy-css', function() {
 
 // ngAnnotate and minify JS
 gulp.task('minify-js', function() {
-  gulp.src(['./src/app/**/*.js','!./src/app/*js'])
+  gulp.src(['./src/app/**/*.js', '!./src/app/**/*.spec.js', '!./src/app/*.js'])
   .pipe($.ngAnnotate({
     add: true,
     single_quotes: true
@@ -173,6 +186,7 @@ gulp.task('sass', function() {
     title: 'SASS Failed',
     message: 'Error(s) occurred during compile!'
   }))
+  .pipe($.autoprefixer(['last 2 versions']))
   .pipe(gulp.dest('./src/assets/css/sass/'))
   .pipe(reload({
     stream: true
@@ -188,6 +202,8 @@ gulp.task('sass', function() {
 
 // index.html build
 // script/css concatenation n versioning
+//
+// Change log- Autoprefixer removed : creating problem in iPad/safari browser
 gulp.task('usemin', function() {
   return gulp.src('./src/index.html')
     // add templates path
@@ -195,7 +211,7 @@ gulp.task('usemin', function() {
       'templates': '<script type="text/javascript" src="js/templates.js"></script>'
     }))
     .pipe($.usemin({
-      css: [$.autoprefixer('last 3 version', '> 5%'), cleanCSS(), rev()],
+      css: [cleanCSS(), rev()],
       angularlibs: [rev()],
       appcomponents: [$.ngAnnotate({add: true,single_quotes: true}), uglify({output: { comments: saveLicense}}), rev()]
     }))
@@ -222,7 +238,75 @@ gulp.task('build:size', function() {
 
 
 
-// default task to be run with `gulp` command
+// Copy All Files At The Root Level (app)
+gulp.task('copy', function() {
+  return gulp.src([
+    './src/*',
+    '!./src/*.html',
+    '!./src/*js'
+  ], {
+    dot: true
+  }).pipe(gulp.dest('./_build'));
+});
+
+
+// Copy All Files for Chekmarx report
+gulp.task('copy:checkmarx', function() {
+  return gulp.src([
+    './_build/**/*.*',
+    '!./_build/**/*.spec.js'
+  ], {
+    dot: true
+  })
+  .pipe($.rename({dirname: ''}))
+  .pipe(gulp.dest('./_checkmarx'));
+});
+
+
+
+// SW-precache Swervice worker generator
+gulp.task('sw', function(callback) {
+  var swPrecache = require('sw-precache');
+  var rootDir = './_build';
+
+  swPrecache.write(path.join(rootDir, '/sw.js'), {
+    staticFileGlobs: [rootDir + '/**/**/*.*'],
+    stripPrefix: rootDir
+  }, callback);
+
+});
+
+// minify SW
+gulp.task('minify-js-sw', function() {
+  gulp.src(['./_build/sw.js'])
+  .pipe($.bytediff.start())
+  .pipe(uglify())
+  .pipe($.bytediff.stop(bytediffFormatter))
+  .pipe(gulp.dest('./_build/'));
+});
+
+
+
+//SUPPORTING FUNCTIONS
+/////////////////////////////////////////////////////////
+
+ function bytediffFormatter(data) {
+  var difference = (data.savings > 0) ? ' smaller.' : ' larger.';
+  return data.fileName + ' went from ' +
+  (data.startSize / 1000).toFixed(2) + ' kB to ' + (data.endSize / 1000).toFixed(2) + ' kB' +
+  ' and is ' + formatPercent(1 - data.percent, 2) + '%' + difference;
+}
+
+ function formatPercent(num, precision) {
+  return (num * 100).toFixed(precision);
+}
+
+
+
+
+
+
+// Default task to be run with `gulp` command
 // this default task will run BrowserSync & then use Gulp to watch files.
 // when a file is changed, an event is emitted to BrowserSync with the filepath.
 gulp.task('default', ['browser-sync', 'sass'], function() {
@@ -233,21 +317,11 @@ gulp.task('default', ['browser-sync', 'sass'], function() {
   });
   gulp.watch(['./src/*.html', './src/app/**/**/*.html'], ['bs-reload']);
   gulp.watch(['./src/app/*.js','./src/**/**/**/*.js'], ['bs-reload']);
+  gulp.watch(['./src/assets/css/*.css','./src/assets/css/**/*.css'], ['bs-reload']);
   gulp.watch(['./src/assets/css/**/*.scss'], ['sass']);
 });
 
 
-
-// // Copy All Files At The Root Level (app)
-gulp.task('copy', function() {
-  return gulp.src([
-    './src/*',
-    '!./src/*.html',
-    '!./src/*js'
-  ], {
-    dot: true
-  }).pipe(gulp.dest('./_build'));
-});
 
 
 /**
@@ -260,11 +334,13 @@ gulp.task('copy', function() {
  * 6. minify and copy all JS files
  * 7. copy fonts
  * 8. show build folder size
- *
+ * 9. copy files from root folders like favicon
+ * 10. Generate Service Worker at build folder
  */
  gulp.task('build', function(callback) {
   runSequence(
     'clean:build',
+    'clean:checkmarx',
     'sass',
     'minify-html',
     'copy-css',
@@ -276,52 +352,10 @@ gulp.task('copy', function() {
     'build:size',
     'copy',
     'sw',
+    'minify-js-sw',
+    'copy:checkmarx',
     callback);
 });
-
-
-
-
-
-
-
-//need to modify
-gulp.task('sw', function(callback) {
-  var swPrecache = require('sw-precache');
-  var rootDir = './_build';
-
-  swPrecache.write(path.join(rootDir, '/sw.js'), {
-    staticFileGlobs: [rootDir + '/**/**/*.*'],
-    stripPrefix: rootDir
-  }, callback);
-});
-
-
-
-
-//SUPPORTING FUNCTIONS
-/////////////////////////////////////////////////////////
-/**
- * Formatter for bytediff to display the size changes after processing
- * @param  {Object} data - byte data
- * @return {String}      Difference in bytes, formatted
- */
- function bytediffFormatter(data) {
-  var difference = (data.savings > 0) ? ' smaller.' : ' larger.';
-  return data.fileName + ' went from ' +
-  (data.startSize / 1000).toFixed(2) + ' kB to ' + (data.endSize / 1000).toFixed(2) + ' kB' +
-  ' and is ' + formatPercent(1 - data.percent, 2) + '%' + difference;
-}
-
-/**
- * Format a number as a percentage
- * @param  {Number} num       Number to format as a percent
- * @param  {Number} precision Precision of the decimal
- * @return {String}           Formatted percentage
- */
- function formatPercent(num, precision) {
-  return (num * 100).toFixed(precision);
-}
 
 
 
@@ -339,8 +373,52 @@ gulp.task('test', function (done) {
 
 //Continuous run Karma test
 
-gulp.task('test:auto', function (done) {
+gulp.task('test-auto', function (done) {
   new Server({
     configFile: __dirname + '/karma.conf.js',
   }, done).start();
 });
+
+
+
+// Protactor test
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+// Protractor Gulp task
+gulp.task('protractor', ['protractor:src']);
+gulp.task('protractor:src', ['serve', 'webdriver-update'], runProtractor);
+
+
+// Supporting functions
+//////////////////////////////
+
+// Downloads and Update the selenium webdriver
+
+gulp.task('webdriver-update', $.protractor.webdriver_update_specific({
+  browsers: ['ignore_ssl','proxy=http://proxy.tcs.com:8080']
+}));
+
+gulp.task('webdriver-standalone', $.protractor.webdriver_standalone);
+
+// Run Protractor
+
+function runProtractor (done) {
+  var params = process.argv;
+  var args = params.length > 3 ? [params[3], params[4]] : [];
+
+  gulp.src(path.join('e2e/**/*.js'))
+    .pipe($.protractor.protractor({
+      configFile: 'protractor.config.js',
+      args: args
+    }))
+    .on('error', function (err) {
+      // Make sure failed tests cause gulp to exit non-zero
+      throw err;
+    })
+    .on('end', function () {
+      // Close browser sync server
+      browserSync.exit();
+      done();
+    });
+}

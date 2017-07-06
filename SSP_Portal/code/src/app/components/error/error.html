@@ -1,0 +1,17 @@
+<div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="container" ng-show="error.error.status == 404 ">
+    <div class="row text-center justify-content-center align-items-center" style="height: 80vh;">
+        <div class="col-12  ">
+            <img style="height:50vh; " src="assets/images/404_icon.svg" alt="404 Error">
+            <h3 style="color: #778383 !important;">The page you are looking for no longer exists.</h3>
+        </div>
+    </div>
+</div>
+<div data-aos="fade-up" data-aos-easing="ease-in-out-back" data-aos-duration="1200" data-aos-once="true" class="container" ng-show="error.error.status == 500 || !error.error.status || !error.error.data">
+    <div class="row text-center justify-content-center align-items-center" style="height: 80vh;">
+        <div class="col-12  ">
+            <img style="height:50vh; " src="assets/images/Oops_icon.svg" alt="500 Error">
+            <h2 style="color: #778383 !important;">Looks like something went wrong!</h2>
+            <h3 style="color: #778383 !important;">We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, try refreshing.</h3>
+        </div>
+    </div>
+</div>

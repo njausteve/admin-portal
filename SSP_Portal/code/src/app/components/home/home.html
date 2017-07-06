@@ -1,0 +1,220 @@
+<!-- home content and nested faq view willl be loaded here-->
+<div ui-view></div>
+<!---->
+<!-- support section -->
+<div class="support">
+    <div class="container-fluid text-center">
+        <div class="row justify-content-center text-center">
+            <div class="col-12 support_heading">
+                <span>Support</span>
+            </div>
+        </div>
+        <div class="row justify-content-center text-center support_statement">
+            <div class="col-md-6">
+                <h4>{{application_name}} support is here to help. Learn more and find resources that will help you with all of your {{application_name}} queries.
+                </h4>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-sm-12 col-md-6 ">
+                <div class="row justify-content-center justify-content-md-end no-gutters">
+                    <div class="col-md-1 support_icon ">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 524.184 524.184" width="24" height="24">
+                            <path d="M483.606,75.31H40.542C18.34,75.31,0,93.65,0,115.852v292.48c0,22.201,18.34,40.542,40.542,40.542h443.064   c22.201,0,40.542-18.34,40.542-40.542v-292.48C525.113,93.65,506.772,75.31,483.606,75.31z M332.057,273.193L500.981,142.88   v261.591L332.057,273.193z M41.507,99.442h442.098c7.722,0,14.479,5.792,16.41,12.549L276.07,285.741   c-8.688,6.757-23.167,6.757-30.889,0L24.132,113.921C26.063,106.199,32.82,99.442,41.507,99.442z M24.132,404.471V144.81   l166.994,129.348L24.132,404.471z M41.507,426.672c-1.931,0-3.861,0-4.826-0.965l174.716-136.105l19.306,15.444   c8.688,6.757,19.306,9.653,29.924,9.653c10.618,0,22.201-2.896,29.924-9.653l21.236-16.41l176.646,137.07   c-1.931,0.965-2.896,0.965-4.826,0.965H41.507z" fill="#FFFFFF" />
+                        </svg>
+                    </div>
+                    <a href="mailto:nagpur.appmart@tcs.com" style="text-decoration: none;">
+                        <h4>nagpur.appmart@tcs.com</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="row justify-content-center justify-content-md-start no-gutters">
+                    <div class="col-md-1 support_icon ">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.731 29.731" width="24" height="24">
+                            <path d="M23.895,29.731c-1.237,0-2.731-0.31-4.374-0.93c-3.602-1.358-7.521-4.042-11.035-7.556   c-3.515-3.515-6.199-7.435-7.558-11.037C-0.307,6.933-0.31,4.245,0.921,3.015c0.177-0.177,0.357-0.367,0.543-0.563   c1.123-1.181,2.392-2.51,4.074-2.45C6.697,0.05,7.82,0.77,8.97,2.201c3.398,4.226,1.866,5.732,0.093,7.478l-0.313,0.31   c-0.29,0.29-0.838,1.633,4.26,6.731c1.664,1.664,3.083,2.882,4.217,3.619c0.714,0.464,1.991,1.166,2.515,0.642l0.315-0.318   c1.744-1.769,3.25-3.296,7.473,0.099c1.431,1.15,2.15,2.272,2.198,3.433c0.069,1.681-1.27,2.953-2.452,4.075   c-0.195,0.186-0.385,0.366-0.562,0.542C26.103,29.424,25.126,29.731,23.895,29.731z M5.418,1C4.223,1,3.144,2.136,2.189,3.141   C1.997,3.343,1.811,3.539,1.628,3.722C0.711,4.638,0.804,7.045,1.864,9.856c1.31,3.472,3.913,7.266,7.33,10.683   c3.416,3.415,7.208,6.018,10.681,7.327c2.811,1.062,5.218,1.152,6.133,0.237c0.183-0.183,0.379-0.369,0.581-0.56   c1.027-0.976,2.192-2.082,2.141-3.309c-0.035-0.843-0.649-1.75-1.825-2.695c-3.519-2.83-4.503-1.831-6.135-0.176l-0.32,0.323   c-0.78,0.781-2.047,0.608-3.767-0.51c-1.193-0.776-2.667-2.038-4.379-3.751c-4.231-4.23-5.584-6.819-4.26-8.146l0.319-0.315   c1.659-1.632,2.66-2.617-0.171-6.138C7.245,1.651,6.339,1.037,5.496,1.001C5.47,1,5.444,1,5.418,1z" fill="#FFFFFF" />
+                        </svg>
+                    </div>
+                    <a href="tel:1800 267 6563" style="text-decoration: none;">
+                        <h4>1800 267 6563
+
+                        </h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer section-->
+<div class="footer ">
+    <div class="upper_footer">
+        <!--upper footer -->
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-3 terms">
+                    <a href ng-click="home.openModal('terms-condition')">Terms of use</a>
+                </div>
+                <div class="col-md-3 policy">
+                    <a href ng-click="home.openModal('device-policy')">{{application_name}} Device Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end: upper footer -->
+    <!-- lower footer section -->
+    <div class="lower_footer">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6 align-self-center text-center copyright">
+                    <img src="assets/images/TCS_text_logo.svg" alt="Tata Consultancy Services" width="194" height="10">
+                    <h4>Copyright &copy; 2017 Tata Consultancy Services</h4>
+                </div>
+                <div class="col-md-6 align-self-center text-center compatibility">
+                    <img src="assets/images/TATA_logo.svg" alt="Tata" width="65" height="14">
+                    <h4><a href=" ">Browser and Display Compatibility</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end : lower footer -->
+</div>
+<!--end : footer-->
+<!-- Modal Section -->
+<div id="modal-container">
+    <div class="modal-background">
+        <div class="modal">
+            <div class="pull-right close-button">
+                <!-- Close button -->
+                <span ng-click="home.closeModal();">
+          <svg fill="#000000" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+          </svg>
+        </span>
+            </div>
+            <!--end: Close button -->
+            <div ng-show="home.modal.identity == 'terms-condition'" class="terms">
+                <!-- Modal content for Terms and Conditions -->
+                <h2>Copyright © 2017 Tata Consultancy Services.</h2>
+                <h3>All rights reserved.</h3>
+                <h4>
+                    1) &nbsp; I have read and undertake to abide by all relevant TCS policies and practices including but not limited to Tata Code of Conduct, Security Responsibilities for Users and Social Media Policy.
+                    <br><br>
+                    2) &nbsp;  I undertake to abide by the terms and conditions of the Confidentiality and IP Protection Agreement signed by me while accessing TCS Enterprise Applications.<br><br>
+                    3) &nbsp; I consent to the incorporation of certain applications including security tools into my device before allowing me to access TCS Enterprise Applications through my own Device.<br><br>
+                    4) &nbsp; I acknowledge that TCS reserves all rights to set up necessary security controls including encryptions of the official content on my device.<br><br>
+                    5) &nbsp; I acknowledge that TCS will monitor and control all the official data stored on the device for data security purposes.
+
+                </h4>
+            </div>
+            <!--end: Modal content for Terms and Conditions -->
+            <div ng-show="home.modal.identity == 'device-policy'" class="device-policy">
+                <!-- Modal content for Device Policy -->
+                <h1>
+                    <span ng-hide="home.browser=='ie'">Device Policy</span>
+                    <span class="heading-ie" ng-show="home.browser=='ie'">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="300" height="50" viewBox="0 0 0 0">
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                        </linearGradient>
+                        <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">Device Policy</text>
+                      </svg>
+                    </span>
+                </h1>
+                <img src="./assets/images/Device_policy_icon.svg" alt="Interactive User Interface" width="180">
+                <h2>{{application_name}} allows you to log-in into {{application_name}} on up to {{home.devicePolicy}} devices.</h2>
+                <h3>You can choose any {{home.devicePolicy}} devices from the below list:-</h3>
+                <ul>
+                    <li>Android Smart Phone</li>
+                    <li>Android Tablet</li>
+                    <li>iPhone</li>
+                    <li>iPad</li>
+                </ul>
+                <h3 class="bg-policy" style="color: #26251c !important;">If you wish to log-in through a {{home.devicePolicy + 1}}th device, you need to first remove one of the {{home.devicePolicy}} registered devices from your device list.</h3>
+            </div>
+            <!--end: Modal content for Device Policy -->
+            <div ng-show="home.modal.identity == 'modal'" class="identity">
+                <!-- Modal for Device details -->
+                <img src="./assets/images/device_details_icon.svg" alt="Interactive User Interface" width="150">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th colspan="2">
+                                <h1>
+                                    <span ng-hide="home.browser=='ie'">Device Details</span>
+                                    <span class="heading-ie" ng-show="home.browser=='ie'">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="300" height="50" viewBox="0 0 0 0">
+                                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                                        <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                                        </linearGradient>
+                                        <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">Device Details</text>
+                                      </svg>
+                                    </span>
+                                </h1>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="details">Device Name</td>
+                            <td>{{home.modal.data.deviceName}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Device Model</td>
+                            <td>{{home.modal.data.modelNo}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Device Type</td>
+                            <td>{{home.modal.data.deviceType}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Device ID</td>
+                            <td>{{home.modal.data.deviceIdentifier | limitTo:3}}***{{home.modal.data.deviceIdentifier | limitTo:-3}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Device MAC</td>
+                            <td>{{home.modal.data.macAddress | limitTo:3}}***{{home.modal.data.deviceIdentifier | limitTo:-3}}</td>
+                        </tr>
+                        <tr>
+                            <td class="details">Last login</td>
+                            <td>{{home.modal.data.lastLogin | dateFilter}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- end: Modal content for Device Details -->
+            <div ng-show="home.modal.identity == 'confirmation'" class="confirmation">
+                <!-- Modal for Remove device confirmation -->
+                <div>
+                    <div style="text-align: center !important;">
+                        <img src="./assets/images/interactive_user_interface_icon.svg" alt="Interactive User Interface" width="150">
+                        <br>
+                        <h1>
+                            <span ng-hide="home.browser=='ie'">Remove Device</span>
+                            <span class="heading-ie" ng-show="home.browser=='ie'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="240" height="50" viewBox="0 0 0 0">
+                                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#133778;stop-opacity:1"></stop>
+                                        <stop offset="100%" style="stop-color:#08c9ab;stop-opacity:1"></stop>
+                                    </linearGradient>
+                                    <text x="0" y="35" font-family=" 'Open Sans', sans-serif !important" font-size="34" fill="url(#grad1)">Remove Device</text>
+                                </svg>
+                            </span>
+                        </h1>
+                        <h3 style="font-weight: 600; color:#2a343d !important">"{{home.modal.data.deviceName}} {{home.modal.data.modelNo}}"</h3>
+                        <h4>
+                            will get removed and you will be logged out of {{application_name}} app.
+                        </h4>
+                        <h5>
+                            Please note, {{application_name}} will remain on your device.<br> On login same device will get registered again.
+                        </h5>
+                        <hr>
+                        <button class="btn removeDev" ng-click="home.untaggDevice(home.modal.data, home.modal.index)"><span style="color:white !important;">Remove Device</span> </button>
+                    </div>
+                </div>
+            </div>
+            <!-- end: Modal for Remove device confirmation -->
+        </div>
+    </div>
+</div>
+<!--end: Modal Section -->

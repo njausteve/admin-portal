@@ -6,9 +6,11 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log) {
+  function runBlock($log, $rootScope, constants) {
 
-    $log.debug('runBlock end');
+    $log.info('TATA Consultancy Services, 2017 \nTCS internal \nHighly Confidential and Inflammable also! \n(c) Pirates');
+    //setting up application Name
+    $rootScope.application_name = constants.application_name;
   }
 
 })();

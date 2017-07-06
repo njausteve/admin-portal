@@ -1,0 +1,19 @@
+/*Special CSS for IE*/
+
+
+/*Always been pain in the ass !*/
+
+.faq-section h1 span {
+    background: transparent;
+    color: #000;
+}
+
+.device-policy h1 span {
+    background: transparent;
+    color: #000;
+}
+
+.heading-ie {
+    background: transparent !important;
+    color: #000 !important;
+}
